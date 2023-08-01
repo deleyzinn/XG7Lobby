@@ -1,0 +1,3 @@
+name: XG7 Lobby
+version: '${project.version}'
+main: br.com.xg7network.xg7lobby.XG7Lobby
