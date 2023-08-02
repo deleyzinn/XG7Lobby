@@ -1,3 +1,25 @@
-name: XG7 Lobby
+name: XG7Lobby
 version: '${project.version}'
 main: br.com.xg7network.xg7lobby.XG7Lobby
+
+commands:
+  xg7lobbyreloadconfig:
+    description: Recarrega o as configs do plugin
+    aliases: [7lreloadconffig, xg7lreloadconfig, 7lrlcg, xg7lrlcg]
+    usage: "/<command>"
+  xg7lobbyreload:
+    description: Recarrega o plugin
+    aliases: [ 7lreload, xg7lreload, 7lrl, xg7lrl]
+    usage: "/<command>"
+
+permissions:
+  xg7lobby.admin:
+    default: op
+    description: Administradores do plugin
+
+  xg7lobby.command.*:
+    default: op
+    description: Pode usar todos os comandos do plugin
+  xg7lobby.command.reload:
+    default: op
+    description: Pode usar o comando de recarregar o plugin
