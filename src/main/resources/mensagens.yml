@@ -1,0 +1,34 @@
+#Definir uma mensagem para cada coisa do plugin
+#use %player_name% para recolocar o nome do jogador
+#Precisa-se do PlaceHolderAPI para isso!
+
+#Cores:
+#&a - Verde      | &e - Amarelo               | &b - Ciano
+#&9 - Azul       | &1 - Azul escuro           | &f - Branco
+#&7 - Cinza      | &8 - Cinza-escuro          | &0 - Preto
+#&5 - Roxo       | &6 - Laranja               | &d - Rosa
+#&c - Vermelho   | &4 - Vermelho-escuro
+
+#Opções para as letras:
+#&l - Negrito    | &r - Reset para o original | &k - Aleatório
+#&n - Sublinhado | &o - Itálico               | &m - Riscado
+
+#Se estiver true, o aviso vai ser mandado
+#em Action bar, se estiver false
+#o aviso será mandado no chat.
+#Coloque [ACTION] no começo para mandar as mensagens em action bar!
+#Só funciona em +1.10
+
+comandos:
+  permisão: "&cVocê não tem permissão para usar esse comando!"
+
+
+
+eventos:
+  #Coloque %player% para retornar ao player
+
+  MensagemDeEntrada: "&7[&6+&7] &e%player%&r entrou no servidor!"
+  Título:
+    #Coloque "" Se quiser não ter título de entrada
+    TítuloDeEntrada: "&bBem vindo"
+    SubtítuloDeEntrada: "&e%player%, &fao servidor!"

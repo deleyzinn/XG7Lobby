@@ -1,4 +1,4 @@
-package br.com.xg7network.xg7lobby.Eventos;
+package br.com.xg7network.xg7lobby.Eventos.Player;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -16,13 +16,14 @@ public class EntradaESaida implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
         Player p = e.getPlayer();
+        e.setJoinMessage(null);
         ac.executar(cm.getConfig().getStringList("EventosDeEntrada.ações"), p);
     }
 
     @EventHandler
     public void onLeave(PlayerQuitEvent e) {
-        Player p = e.getPlayer();
-        Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&', cm.getMessage().getString("MensagemDeSaida")));
+        e.setQuitMessage(null);
+        Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&', cm.getConfig().getString("MensagemDeSaida").replace("[PLAYER]", e.getPlayer().getName())));
 
     }
 

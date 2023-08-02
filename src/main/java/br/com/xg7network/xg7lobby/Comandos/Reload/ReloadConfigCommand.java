@@ -1,4 +1,4 @@
-package br.com.xg7network.xg7lobby.Comandos;
+package br.com.xg7network.xg7lobby.Comandos.Reload;
 
 import br.com.xg7network.xg7lobby.Configs.PermissionType;
 import org.bukkit.ChatColor;

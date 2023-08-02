@@ -1,0 +1,76 @@
+#Definir Os itens que serão dados aos jogadores quando
+#entrar no lobby e criar.
+#Use %player_name% para recolocar o nome do jogador
+#Precisa-se do PlaceHolderAPI para isso!
+
+#Cores:
+#&a - Verde      | &e - Amarelo               | &b - Ciano
+#&9 - Azul       | &1 - Azul escuro           | &f - Branco
+#&7 - Cinza      | &8 - Cinza-escuro          | &0 - Preto
+#&5 - Roxo       | &6 - Laranja               | &d - Rosa
+#&c - Vermelho   | &4 - Vermelho-escuro
+
+#Opções para as letras:
+#&l - Negrito    | &r - Reset para o original | &k - Aleatório
+#&n - Sublinhado | &o - Itálico               | &m - Riscado
+
+#Tudo isso vai funcionar somente no mundo do lobby!
+
+#ações
+#[ACTIONBAR] Manda uma action bar
+#[MENSAGEM] Manda uma mensagem
+#[TITULO] Manda um título
+#[TIT&SUBTIT] Manda um título e um subtítulo (Use " // " para separar um do outro)
+#[SOM] Manda um som
+#[SUMMON] Sumona uma entidade
+#[PLAYER] retorna ao player da ação
+
+#[ABRIR] Abre um inventário
+#[FECHAR] Fecha um inventário
+
+#Lá no arquivo seletores.yml você pode criar um inventário
+#Modo de uso: [ABRIR] (id), [FECHAR]
+
+
+
+
+
+Seletores:
+  Info:
+
+  ServerSelector:
+
+
+
+
+Inventários:
+  Inventário1:
+    nome: "A"
+    linhas: 3
+    id: 1
+
+    Itens:
+      #Default é o item que envolve o inventário
+      #Importante que você deixe ele em primeira na
+      #ordem.
+      default:
+        item: EMERALD
+
+      item1:
+        item: DIAMOND
+        nome: "&aLegal"
+        glow: true
+        slot: 17
+        lore:
+          - "&fmdsdoceu"
+        ações:
+          - "[MENSAGEM] &ba"
+      item2:
+        item: REDSTONE
+        nome: "&aLegal2"
+        glow: true
+        slot: 11
+        lore:
+          - "&cmdsdoceu"
+        ações:
+          - "[MENSAGEM] &cb"
