@@ -1,6 +1,9 @@
 name: XG7Lobby
-version: '${project.version}'
+version: 'BETA-0.1'
 main: br.com.xg7network.xg7lobby.XG7Lobby
+api-version: 1.13
+prefix: XG7 Lobby
+softdepend: [PlaceholderAPI, Multiverse-Core]
 
 commands:
   xg7lobbyreloadconfig:

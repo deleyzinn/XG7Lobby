@@ -24,7 +24,6 @@
 
 #[ABRIR] Abre um inventário
 #[FECHAR] Fecha um inventário
-
 #Lá no arquivo seletores.yml você pode criar um inventário
 #Modo de uso: [ABRIR] (id), [FECHAR]
 
@@ -45,7 +44,6 @@ EventosDeEntrada:
     - "[MENSAGEM] &8--------------&7**&8-------------"
     - "[SOM] ENTITY_EXPERIENCE_ORB_PICKUP, 10.0, 0.0"
     - "[SUMMON] FIREWORK"
-    - "[ABRIR] 1"
 
 #Efeitos que serão dados ao jogador o tempo
 #inteiro no servidor no mundo do lobby
