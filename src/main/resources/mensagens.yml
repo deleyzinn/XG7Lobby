@@ -13,22 +13,21 @@
 #&l - Negrito    | &r - Reset para o original | &k - Aleatório
 #&n - Sublinhado | &o - Itálico               | &m - Riscado
 
-#Se estiver true, o aviso vai ser mandado
-#em Action bar, se estiver false
-#o aviso será mandado no chat.
 #Coloque [ACTION] no começo para mandar as mensagens em action bar!
 #Só funciona em +1.10
 
 comandos:
-  permisão: "&cVocê não tem permissão para usar esse comando!"
+  permissão: "&cVocê não tem permissão para usar esse comando!"
 
-
+  aviso-lobby: "&cO lobby não foi colocado! Espere para um adm para colocar."
+  aviso-lobby-adm: "&cO lobby não foi colocado! Digite &7/&esetlobby &c para colocar!"
 
 eventos:
-  #Coloque %player% para retornar ao player
 
-  MensagemDeEntrada: "&7[&6+&7] &e%player%&r entrou no servidor!"
-  Título:
-    #Coloque "" Se quiser não ter título de entrada
-    TítuloDeEntrada: "&bBem vindo"
-    SubtítuloDeEntrada: "&e%player%, &fao servidor!"
+  permissão-jogar: "&cVocê não tem permissão para jogar itens!"
+  permissão-pegar: "&cVocê não tem permissão para pegar itens!"
+  permissão-interagir: "&cVocê não tem permissão para interagir com blocos!"
+  permissão-colocar: "&cVocê não tem permissão para colocar blocos!"
+  permissão-quebrar: "&cVocê não tem permissão para quebrar blocos!"
+  permissão-atacar: "&cVocê não permissão para atacar!"
+

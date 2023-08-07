@@ -1,5 +1,6 @@
 package br.com.xg7network.xg7lobby.Modulo;
 
+import br.com.xg7network.xg7lobby.Modulo.Mundo.CancelDayCycle;
 import br.com.xg7network.xg7lobby.XG7Lobby;
 
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ public class ModuleManager {
 
         for (Module module : modules) {
             modules.add(new Efeitos(plugin));
+            modules.add(new CancelDayCycle(plugin));
             module.onEnable();
         }
     }

@@ -8,6 +8,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import static br.com.xg7network.xg7lobby.XG7Lobby.prefix;
 import static br.com.xg7network.xg7lobby.XG7Lobby.va;
 
 public class ReloadCommand implements CommandExecutor {
@@ -21,22 +22,22 @@ public class ReloadCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player) {
             Player p = (Player) sender;
-            if (p.hasPermission(PermissionType.ADMIN.getPerm())) {
-                va.mandarMensagem(ChatColor.GRAY + "Recarregando o plugin...", p);
+            if (p.hasPermission(PermissionType.ADMIN.getPerm()) || p.hasPermission(PermissionType.RELOAD_COMMAND.getPerm()) || p.hasPermission(PermissionType.COMMAND.getPerm())) {
+                va.mandarMensagem(prefix + ChatColor.GRAY + "Recarregando o plugin...", p);
 
                 pl.getServer().getPluginManager().disablePlugin(pl);
                 pl.getServer().getPluginManager().enablePlugin(pl);
 
-                va.mandarMensagem(ChatColor.GREEN + "Recarregado!", p);
+                va.mandarMensagem(prefix + ChatColor.GREEN + "Recarregado!", p);
             }
         } else {
 
-            sender.sendMessage(ChatColor.GRAY + "Recarregando o plugin..");
+            sender.sendMessage(prefix + ChatColor.GRAY + "Recarregando o plugin..");
 
             pl.getServer().getPluginManager().disablePlugin(pl);
             pl.getServer().getPluginManager().enablePlugin(pl);
 
-            sender.sendMessage(ChatColor.GREEN + "Recarregado!");
+            sender.sendMessage(prefix + ChatColor.GREEN + "Recarregado!");
 
         }
         return true;

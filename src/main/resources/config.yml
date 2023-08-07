@@ -31,10 +31,24 @@ mundos-ativados:
   - "lobby"
   - "world"
 
+#Quando você entrar no jogo você da tp para o lobby
+tp-quando-entrar: true
 
+#Quando morrer você dá tp pro lobby
+tp-quando-morrer: false
+aviso-imagem: true
+
+#Coloca tudo no padrão de acordo de sua versão, não mude!
+ConfigDefaults: true
+
+#############################################
+#ENTRADA E SAÍDA                            #
+#############################################
+
+#Quando o jogador entrar tudo que estiver em
+#"ações" será executado
 EventosDeEntrada:
-  ações:
-    - "[BROADCAST] &8[&a+&8] &f[PLAYER] entrou no servidor."
+  acoes:
     - "[TIT&SUBTIT] &bBem-Vindo // &f[PLAYER]"
     - "[MENSAGEM] &8--------------&7**&8-------------"
     - "[MENSAGEM] &bBem-Vindo &f[PLAYER]"
@@ -44,6 +58,7 @@ EventosDeEntrada:
     - "[MENSAGEM] &8--------------&7**&8-------------"
     - "[SOM] ENTITY_EXPERIENCE_ORB_PICKUP, 10.0, 0.0"
     - "[SUMMON] FIREWORK"
+    - "[ABRIR] 1"
 
 #Efeitos que serão dados ao jogador o tempo
 #inteiro no servidor no mundo do lobby
@@ -51,7 +66,138 @@ Efeitos:
   - "JUMP_BOOST, 1"
   - "SPEED, 2"
 
+#Mensagens de entrada e de saida
+
+MensagemDeEntrada: "&8[&a+&8] &f[PLAYER] entrou no servidor."
 MensagemDeSaida: "&8[&6-&8] &f[PLAYER] saiu do servidor."
+
+#############################################
+#LAUNCHPAD                                  #
+#############################################
+
+#Só vai funcionar nos mundos do lobby
+launchPad:
+  ativado: true
+
+  #Caso esteja "true" só será nescessário
+  #um bloco para ativar o lauchPad
+  #Caso esteja "false" o código vai pular
+  #para a parte de baixo onde terá que
+  #colocar o bloco de cima e o de baixo
+  #para funcionar
+  umbloco: true
+
+  #Define se o bloco do lauchpad é
+  #uma placa de pressão.
+  #(Blocos que você consegue pisar
+  #sem estar no chão)
+  placadepressao: true
+
+  # Bloco do launchPad
+  bloco: STONE_PRESSURE_PLATE
+
+  #Define se o launchPad vai ser definido
+  #por dois blocos
+  blocodecima: STONE_PRESSURE_PLATE
+  blocodebaixo: REDSTONE_BLOCK
+
+  #O jogador será lançado para onde
+  #ele estiver olhando
+  força: 2
+  pulo: 1
+
+  som: "ENTITY_BAT_TAKEOFF, 1.0, 2.0"
 
 #Feito por DaviXG7, inspiraddo em DeluxeHub,
 #nenhum código foi copiado, apenas inspirado!
+
+#############################################
+#MOTD                                       #
+#############################################
+
+#MOTD é a mensagem que aparece antes de
+#entrar no servidor!
+motd:
+  ativado: true
+
+  texto:
+    - "&9&lSeu Servidor"
+    - "&e&lSe divirta"
+
+#############################################
+#OPÇÕES DO JOGADOR                          #
+#############################################
+
+#Geral
+CancelarMortePeloVoid: true
+PerderPontosDeComida: false
+
+#Danos
+
+#Caso esteja "false", TODOS os tipos de dano
+#vão ser cancelados, se estiver "true", caso
+#algumas da de baixo estiver false somente
+#aquela opção vai ser cancelada!
+LevarDanos: false
+
+#Permite se a pessoa vai atacar,
+#Se "LevarDanoPorAtaque" estiver
+#falso, O jogador só poderá atacar
+#mobs
+Ataque: false
+
+LevarDanoPorAtaque: false
+LevarDanoPorSufocamento: false
+LevarDanoPorAfogamento: false
+LevarDanoPorQueda: false
+#Ejetores, tnts, etc, mas são todos.
+LevarDanoPorBlocos: false
+LevarDanoPorMagma: false
+LevarDanoPorLava: false
+LevarDanoPorFogo: false
+LevarDanoPorBlocoCaindo: false
+#Geralmente por Élitro
+LevarDanoPorColisão: false
+LevarDanoPorExplosão: false
+
+#Interação
+
+#Apenas jogadores que tiver a permissão
+#Vão quebrar blocos e colocar
+QuebrarBlocos: false
+ColocarBlocos: false
+InteragirComBlocos: false
+
+#Drop, pegar
+
+PegarItens: true
+JogarItens: false
+
+#############################################
+#OPÇÕES DE MUNDO                            #
+#############################################
+
+#Define se mobs vão spawnar no lobby
+MobSpawn: false
+
+#Define o ciclo do clima no lobby
+CicloDaChuva: false
+
+#SÓ VAI SER APLICADO QUANDO ALGUM JOGADOR ENTRAR!
+#Define o ciclo do dia e o tempo do mundo
+CicloDoDia: false
+
+#Nascer do Sol: 0
+#Meio-dia: 6000
+#Pôr do Sol: 13000
+#Meia-noite: 18000
+TempoDoDia: 6000
+
+#Define se as folhas vão cair no lobby
+FolhasCaindo: false
+
+#Define se os blocos vão queimar no lobby
+QueimaDeBlocos: false
+
+#Cancelar explosões
+CancelarExplosões: true

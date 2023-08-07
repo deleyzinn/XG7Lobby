@@ -1,5 +1,5 @@
 name: XG7Lobby
-version: 'BETA-0.1'
+version: 'BETA-0.2'
 main: br.com.xg7network.xg7lobby.XG7Lobby
 api-version: 1.13
 prefix: XG7 Lobby
@@ -8,21 +8,57 @@ softdepend: [PlaceholderAPI, Multiverse-Core]
 commands:
   xg7lobbyreloadconfig:
     description: Recarrega o as configs do plugin
-    aliases: [7lreloadconffig, xg7lreloadconfig, 7lrlcg, xg7lrlcg]
+    aliases: [7lreloadconfig, xg7lreloadconfig, 7lrlcg, xg7lrlcg]
     usage: "/<command>"
+
   xg7lobbyreload:
     description: Recarrega o plugin
-    aliases: [ 7lreload, xg7lreload, 7lrl, xg7lrl]
+    aliases: [7lreload, xg7lreload, 7lrl, xg7lrl]
+    usage: "/<command>"
+
+  xg7lobbysetlobby:
+    description: Coloca a localização do lobby
+    aliases: [7lsetlobby, 7lsetl, xg7lsetlobby, xg7lsetl, setlobby]
+    usage: "/<command>"
+
+  xg7lobbylobby:
+    description: Teletransporta para a localização do lobby
+    aliases: [lobby, 7llobby, xg7llobby, xg7llobby, 7l]
     usage: "/<command>"
 
 permissions:
   xg7lobby.admin:
     default: op
     description: Administradores do plugin
-
   xg7lobby.command.*:
     default: op
     description: Pode usar todos os comandos do plugin
   xg7lobby.command.reload:
     default: op
     description: Pode usar o comando de recarregar o plugin
+  xg7lobby.command.setlobby:
+    default: op
+    description: Coloca o lobby
+  xg7lobby.command.mute:
+    default: op
+    description: Silencia jogadores
+
+  xg7lobby.itens.jogar:
+    default: op
+    description: Pemissão para jogar itens
+  xg7lobby.itens.pegar:
+    default: op
+    description: Pemissão para pegar itens
+  xg7lobby.blocos.colocar:
+    default: op
+    description: Pemissão para colocar blocos
+  xg7lobby.blocos.quebrar:
+    default: op
+    description: Pemissão para quebrar blocos
+  xg7lobby.blocos.interagir:
+    default: op
+    description: Pemissão para interagir blocos
+
+  xg7lobby.atacar:
+    default: op
+    description: Permissão para atacar

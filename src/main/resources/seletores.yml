@@ -42,35 +42,170 @@ Seletores:
 
 
 
-
-Inventários:
-  Inventário1:
-    nome: "A"
+#Se você tiver na 1.8 não coloque acento
+#Não sei porque mas tá dando problema
+#Pré-visualização de slots de inventário normal:
+#[01, 02, 03, 04, 05, 06, 07, 08, 09]
+#[10, 11, 12, 13, 14, 15, 16, 17, 18]
+#[19, 20, 21, 22, 23, 24, 25, 26, 27]
+Inventarios:
+  Bem-Vindo:
+    nome: "&fBem vindo"
     linhas: 3
     id: 1
 
     Itens:
       #Default é o item que envolve o inventário
-      #Importante que você deixe ele em primeira na
       #ordem.
       default:
-        item: EMERALD
+        item: GRAY_STAINED_GLASS_PANE
 
-      item1:
-        item: DIAMOND
-        nome: "&aLegal"
-        glow: true
-        slot: 17
+      B:
+        item: PAPER
+        nome: "&cB"
+        glow: false
+        slot: 1
         lore:
-          - "&fmdsdoceu"
-        ações:
-          - "[MENSAGEM] &ba"
-      item2:
-        item: REDSTONE
-        nome: "&aLegal2"
+          - ""
+        acoes:
+          - ""
+      E:
+        item: PAPER
+        nome: "&6e"
+        glow: false
+        slot: 2
+        lore:
+          - ""
+        acoes:
+          - ""
+      M:
+        item: PAPER
+        nome: "&em"
+        glow: false
+        slot: 3
+        lore:
+          - ""
+        acoes:
+          - ""
+      Ifen:
+        item: PAPER
+        nome: "&f-"
+        glow: false
+        slot: 4
+        lore:
+          - ""
+        acoes:
+          - ""
+      V:
+        item: PAPER
+        nome: "&aV"
+        glow: false
+        slot: 5
+        lore:
+          - ""
+        acoes:
+          - ""
+      I:
+        item: PAPER
+        nome: "&bi"
+        glow: false
+        slot: 6
+        lore:
+          - ""
+        acoes:
+          - ""
+      N:
+        item: PAPER
+        nome: "&9n"
+        glow: false
+        slot: 7
+        lore:
+          - ""
+        acoes:
+          - ""
+      D:
+        item: PAPER
+        nome: "&5d"
+        glow: false
+        slot: 8
+        lore:
+          - ""
+        acoes:
+          - ""
+      O:
+        item: PAPER
+        nome: "&do"
+        glow: false
+        slot: 9
+        lore:
+          - ""
+        acoes:
+          - ""
+      Informações:
+        item: BOOK
+        nome: "&aInformações"
         glow: true
         slot: 11
         lore:
-          - "&cmdsdoceu"
-        ações:
-          - "[MENSAGEM] &cb"
+          - " &fSite: &9www.website.com"
+          - " &fYT: &4www.youtube.com"
+        acoes:
+          - ""
+      Games:
+        item: NETHER_STAR
+        nome: "&6Games"
+        glow: true
+        slot: 14
+        lore:
+          - "&a→ &8Clicle para ver os jogos"
+        acoes:
+          - "[ABRIR] 2"
+      Exemplo:
+        item: DIAMOND
+        nome: "&bExemplo"
+        glow: true
+        slot: 17
+        lore:
+          - "&5Exemplo"
+        acoes:
+          - ""
+  Games:
+    nome: "&aGames"
+    linhas: 3
+    id: 2
+
+    Itens:
+      default:
+        item: GRAY_STAINED_GLASS_PANE
+
+      jogo1:
+        item: DIAMOND
+        nome: "&bExemplo"
+        glow: true
+        slot: 12
+        lore:
+          - "&5Exemplo"
+        acoes:
+          - ""
+      jogo2:
+        item: REDSTONE
+        nome: "&bExemplo"
+        glow: true
+        slot: 16
+        lore:
+          - "&5Exemplo"
+        acoes:
+          - ""
+      Voltar:
+        item: BARRIER
+        nome: "&bVoltar"
+        glow: true
+        slot: 1
+        lore:
+          - ""
+        acoes:
+          - "[ABRIR] 1"
+
+
+
+

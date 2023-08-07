@@ -96,39 +96,6 @@ public class ConfigManager {
         }
     }
 
-    public void reloadScore() {
-        if (this.Scfile == null) {
-            this.Scfile = new File(pl.getDataFolder(), "scores.yml");
-        }
-        this.score = YamlConfiguration.loadConfiguration(this.Scfile);
-    }
-
-    public FileConfiguration getScore() {
-        if (score == null) {
-            reloadScore();
-        }
-        return this.score;
-    }
-
-    public void saveScore() {
-        if (this.score == null || this.Scfile == null)
-            return;
-        try {
-            this.getScore().save("scores.yml");
-        } catch (IOException e) {
-            pl.getLogger().log(Level.SEVERE, "Não foi possível carregar o arquivo: " + this.Scfile, e);
-        }
-    }
-
-    public void loadScore() {
-        if (Scfile == null) {
-            Scfile = new File(pl.getDataFolder(), "score.yml");
-        }
-        if (!Scfile.exists()) {
-            pl.saveResource("scores.yml", false);
-        }
-    }
-
     public void reloadSeletor() {
         if (this.Sefile == null) {
             this.Sefile = new File(pl.getDataFolder(), "seletores.yml");
@@ -199,7 +166,6 @@ public class ConfigManager {
         this.reloadConfig();
         this.reloadData();
         this.reloadMessage();
-        this.reloadScore();
         this.reloadSeletor();
     }
 
@@ -208,7 +174,6 @@ public class ConfigManager {
         this.loadData();
         this.loadMessage();
         this.loadSeletor();
-        this.loadScore();
     }
 
     public void saveAll() {
@@ -216,6 +181,5 @@ public class ConfigManager {
         this.saveData();
         this.saveMessage();
         this.saveSeletor();
-        this.saveScore();
     }
 }
