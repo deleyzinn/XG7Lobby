@@ -31,3 +31,6 @@ eventos:
   permissão-quebrar: "&cVocê não tem permissão para quebrar blocos!"
   permissão-atacar: "&cVocê não permissão para atacar!"
 
+  quando-mutado: "&cVocê foi silenciado! Por favor não quebre as regras"
+  no-mute: "&cVocê não consegue enviar mensagens. Você está silenciado!"
+

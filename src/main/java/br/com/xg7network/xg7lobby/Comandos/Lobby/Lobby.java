@@ -18,7 +18,7 @@ public class Lobby implements CommandExecutor {
         if (sender instanceof Player) {
             Player p = (Player) sender;
             if (cm.getData().getString("lobby.Mundo") == null) {
-                if (p.hasPermission(PermissionType.ADMIN.getPerm()) || p.hasPermission(PermissionType.SETLOBBY_COMMAND.getPerm()) || p.hasPermission(PermissionType.COMMAND.getPerm())) {
+                if (p.hasPermission(PermissionType.SETLOBBY_COMMAND.getPerm())) {
                     va.mandarMensagem(cm.getMessage().getString("comandos.aviso-lobby-adm"), p);
                 } else {
                     va.mandarMensagem(cm.getMessage().getString("comandos.aviso-lobby"), p);

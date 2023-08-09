@@ -23,8 +23,10 @@ public class Efeitos extends Module implements Listener {
                 String[] e = s.split(", ");
                 for (Player p: Bukkit.getOnlinePlayers()) {
                     if (cm.getConfig().getStringList("mundos-ativados").contains(p.getWorld().getName())) {
-                        PotionEffectType effect = PotionEffectType.getByName(e[0]);
-                        p.addPotionEffect(new PotionEffect(effect, 20, Integer.valueOf(e[1])));
+                        if (e[0] != null) {
+                            PotionEffectType effect = PotionEffectType.getByName(e[0]);
+                            p.addPotionEffect(new PotionEffect(effect, 20, Integer.valueOf(e[1]), false, false, false));
+                        }
                     }
                 }
             }

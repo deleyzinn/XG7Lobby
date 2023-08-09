@@ -10,7 +10,7 @@ public class VerifAction {
 
 
     public void mandarMensagem(String s, Player p) {
-        if (Bukkit.getServer().getVersion().contains("1.10")) {
+        if (s != null) {
             if (s.startsWith("[ACTION] ")) {
                 p.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(ChatColor.translateAlternateColorCodes('&', s.replace("[PLAYER]", p.getName()))));
             } else {

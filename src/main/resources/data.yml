@@ -5,3 +5,12 @@ lobby:
   z:
   yaw:
   pitch:
+
+mutados:
+
+
+#Deixe -1 para nenhum para kick
+qtd-warns-kick: 3
+qtd-warns-ban: 5
+
+warns:

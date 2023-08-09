@@ -25,7 +25,6 @@ public class Setlobby implements CommandExecutor {
 
     File lobbyF;
     public Setlobby (XG7Lobby pl) {
-        this.pl = pl;
         this.lobbyC = cm.getData();
         this.lobbyF = new File(pl.getDataFolder(), "data.yml");
     }
@@ -34,14 +33,15 @@ public class Setlobby implements CommandExecutor {
     public boolean onCommand(@NotNull CommandSender sender, Command command, @NotNull String label, @NotNull String[] args) {
             if (sender instanceof Player) {
                 Player p = (Player) sender;
-                if (p.hasPermission(PermissionType.ADMIN.getPerm()) || p.hasPermission(PermissionType.SETLOBBY_COMMAND.getPerm()) || p.hasPermission(PermissionType.COMMAND.getPerm())) {
+                if (p.hasPermission(PermissionType.SETLOBBY_COMMAND.getPerm())) {
                     if (cm.getConfig().getStringList("mundos-ativados").contains(p.getWorld().getName())) {
-                        lobbyC.set("lobby.Mundo", p.getWorld().getName());
-                        lobbyC.set("lobby.X", p.getLocation().getX());
-                        lobbyC.set("lobby.Y", p.getLocation().getY());
-                        lobbyC.set("lobby.Z", p.getLocation().getZ());
-                        lobbyC.set("lobby.Yaw", p.getLocation().getYaw());
-                        lobbyC.set("lobby.Pitch", p.getLocation().getPitch());
+                        lobbyC.set("lobby.mundo", p.getWorld().getName());
+                        lobbyC.set("lobby.x", p.getLocation().getX());
+                        lobbyC.set("lobby.y", p.getLocation().getY());
+                        lobbyC.set("lobby.z", p.getLocation().getZ());
+                        lobbyC.set("lobby.yaw", p.getLocation().getYaw());
+                        lobbyC.set("lobby.pitch", p.getLocation().getPitch());
+
 
                         try {
                             lobbyC.save(lobbyF);
@@ -50,18 +50,17 @@ public class Setlobby implements CommandExecutor {
                             throw new RuntimeException(e);
                         }
 
-
                         sender.sendMessage(ChatColor.GRAY + "O lobby de seu servidor foi configurado com sucesso na coordenada "
-                                + ChatColor.GREEN + cm.getData().getInt("lobby.X") + ", "
-                                + cm.getData().getInt("lobby.Y") + ", "
-                                + cm.getData().getInt("lobby.Z") + ", " + ChatColor.GRAY + "no mundo "
-                                + ChatColor.GREEN + cm.getData().get("lobby.Mundo") + ".");
+                                + ChatColor.GREEN + cm.getData().getInt("lobby.x") + ", "
+                                + cm.getData().getInt("lobby.y") + ", "
+                                + cm.getData().getInt("lobby.z") + ", " + ChatColor.GRAY + "no mundo "
+                                + ChatColor.GREEN + cm.getData().get("lobby.mundo") + ".");
 
                     } else {
-                        p.sendMessage(cm.getMessage().getString("comandos.permissão"));
+                        va.mandarMensagem(prefix + ChatColor.RED + "Você não pode executar este comando no mundo em que não está ativado pelo plugin!", p);
                     }
                 } else {
-                    va.mandarMensagem(prefix + ChatColor.RED + "Você não pode executar este comando no mundo em que não está ativado pelo plugin!", p);
+                    va.mandarMensagem(cm.getMessage().getString("comandos.permissão"), p);
                 }
             } else {
                 if (args.length == 4) {
