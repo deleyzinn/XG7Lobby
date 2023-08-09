@@ -63,7 +63,7 @@ EventosDeEntrada:
 #Efeitos que serão dados ao jogador o tempo
 #inteiro no servidor no mundo do lobby
 Efeitos:
-  - "JUMP_BOOST, 1"
+  - "JUMP, 1"
   - "SPEED, 2"
 
 #Mensagens de entrada e de saida
@@ -123,6 +123,20 @@ motd:
   texto:
     - "&9&lSeu Servidor"
     - "&e&lSe divirta"
+
+#############################################
+#DOUBLE JUMP                                #
+#############################################
+
+double-jump:
+  ativado: true
+
+  #O jogador será lançado para onde
+  #ele estiver olhando
+  força: 2
+  pulo: 1
+
+
 
 #############################################
 #OPÇÕES DO JOGADOR                          #

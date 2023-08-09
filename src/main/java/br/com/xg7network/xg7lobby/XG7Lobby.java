@@ -2,6 +2,7 @@ package br.com.xg7network.xg7lobby;
 
 import br.com.xg7network.xg7lobby.Comandos.Lobby.Lobby;
 import br.com.xg7network.xg7lobby.Comandos.Lobby.Setlobby;
+import br.com.xg7network.xg7lobby.Comandos.Moderação.*;
 import br.com.xg7network.xg7lobby.Comandos.Reload.ReloadCommand;
 import br.com.xg7network.xg7lobby.Comandos.Reload.ReloadConfigCommand;
 import br.com.xg7network.xg7lobby.Configs.ConfigManager;
@@ -26,7 +27,7 @@ public final class XG7Lobby extends JavaPlugin {
 
     public static Ações ac;
 
-    ModuleManager MM = new ModuleManager(this);
+    ModuleManager MM;
 
     public static VerifAction va;
 
@@ -58,6 +59,7 @@ public final class XG7Lobby extends JavaPlugin {
         cm.loadAll();
         ac = new Ações(this);
         va = new VerifAction();
+        MM = new ModuleManager(this);
         MM.loadModules();
 
 
@@ -66,6 +68,16 @@ public final class XG7Lobby extends JavaPlugin {
         this.getCommand("xg7lobbyreload").setExecutor(new ReloadCommand(this));
         this.getCommand("xg7lobbysetlobby").setExecutor(new Setlobby(this));
         this.getCommand("xg7lobbylobby").setExecutor(new Lobby());
+        this.getCommand("xg7lobbymute").setExecutor(new Mute(this));
+        this.getServer().getPluginManager().registerEvents(new Mute(this), this);
+        this.getCommand("xg7lobbyunmute").setExecutor(new Unmute());
+        this.getCommand("xg7lobbyban").setExecutor(new Ban());
+        this.getCommand("xg7lobbyunban").setExecutor(new Unban());
+        this.getCommand("xg7lobbykick").setExecutor(new Kick());
+        this.getCommand("xg7lobbytempban").setExecutor(new Tempban());
+        this.getCommand("xg7lobbywarn").setExecutor(new Warn(this));
+        this.getCommand("xg7lobbywarns").setExecutor(new Warn(this));
+        this.getServer().getPluginManager().registerEvents(new Warn(this), this);
 
         this.getServer().getConsoleSender().sendMessage(prefix + "Carregando eventos...");
         this.getServer().getPluginManager().registerEvents(new Inventário(), this);
@@ -77,6 +89,7 @@ public final class XG7Lobby extends JavaPlugin {
         this.getServer().getPluginManager().registerEvents(new PlayerDropPickupEvent(), this);
         this.getServer().getPluginManager().registerEvents(new PlayerAttackEvent(), this);
         this.getServer().getPluginManager().registerEvents(new PlayerDamageEvent(), this);
+        this.getServer().getPluginManager().registerEvents(new BlockEvents(), this);
 
         this.getServer().getPluginManager().registerEvents(new CancelBlockBurn(), this);
         this.getServer().getPluginManager().registerEvents(new CancelLeavesDecay(), this);

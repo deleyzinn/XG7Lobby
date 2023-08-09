@@ -22,7 +22,7 @@ public class ReloadCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player) {
             Player p = (Player) sender;
-            if (p.hasPermission(PermissionType.ADMIN.getPerm()) || p.hasPermission(PermissionType.RELOAD_COMMAND.getPerm()) || p.hasPermission(PermissionType.COMMAND.getPerm())) {
+            if (p.hasPermission(PermissionType.RELOAD_COMMAND.getPerm())) {
                 va.mandarMensagem(prefix + ChatColor.GRAY + "Recarregando o plugin...", p);
 
                 pl.getServer().getPluginManager().disablePlugin(pl);

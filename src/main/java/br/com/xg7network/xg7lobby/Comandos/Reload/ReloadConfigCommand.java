@@ -14,7 +14,7 @@ public class ReloadConfigCommand implements CommandExecutor {
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         if (commandSender instanceof Player) {
             Player p = (Player) commandSender;
-            if (p.hasPermission(PermissionType.ADMIN.getPerm()) || p.hasPermission(PermissionType.RELOAD_COMMAND.getPerm()) || p.hasPermission(PermissionType.COMMAND.getPerm())) {
+            if (p.hasPermission(PermissionType.RELOAD_COMMAND.getPerm())) {
                 va.mandarMensagem(prefix + ChatColor.GRAY + "Recarregando as configurações...", p);
                 cm.saveAll();
                 cm.reloadAll();

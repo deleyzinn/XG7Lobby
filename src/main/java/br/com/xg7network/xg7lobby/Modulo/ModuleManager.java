@@ -17,10 +17,10 @@ public class ModuleManager {
     }
 
     public void loadModules() {
-
-        for (Module module : modules) {
             modules.add(new Efeitos(plugin));
             modules.add(new CancelDayCycle(plugin));
+            modules.add(new Warns(plugin));
+        for (Module module : modules) {
             module.onEnable();
         }
     }

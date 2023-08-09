@@ -16,6 +16,46 @@ commands:
     aliases: [7lreload, xg7lreload, 7lrl, xg7lrl]
     usage: "/<command>"
 
+  xg7lobbymute:
+    description: Silencia jogadores
+    aliases: [7lmute, mute, xg7lmute]
+    usage: "/<command>"
+
+  xg7lobbyunmute:
+    description: Dessilencia jogadores
+    aliases: [7lunmute, unmute, xg7lunmute]
+    usage: "/<command>"
+
+  xg7lobbyban:
+    description: Bane jogadores
+    aliases: [ 7lban, ban, xg7lban ]
+    usage: "/<command>"
+
+  xg7lobbyunban:
+    description: Dessilencia jogadores
+    aliases: [7lunban, unban, xg7lunban, 7lpardon, pardon, xg7lpardon]
+    usage: "/<command>"
+
+  xg7lobbytempban:
+    description: Bane jogadores temporariamente
+    aliases: [ 7ltempban, tempban, xg7ltempban]
+    usage: "/<command>"
+
+  xg7lobbykick:
+    description: Dessilencia jogadores
+    aliases: [ 7lkick, kick, xg7lkick ]
+    usage: "/<command>"
+
+  xg7lobbywarn:
+    description: Avisa a jogadores
+    aliases: [7lwarn, warn, xg7lwarn]
+    usage: "/<command>"
+
+  xg7lobbywarns:
+    description: Ve seus avisos
+    aliases: [7lwarns, warns, xg7lwarns]
+    usage: "/<command>"
+
   xg7lobbysetlobby:
     description: Coloca a localização do lobby
     aliases: [7lsetlobby, 7lsetl, xg7lsetlobby, xg7lsetl, setlobby]
@@ -30,35 +70,37 @@ permissions:
   xg7lobby.admin:
     default: op
     description: Administradores do plugin
+    children:
+      xg7lobby.command.*: true
+      xg7lobby.itens.*: true
+      xg7lobby.blocos.*: true
+      xg7lobby.atacar: true
+
   xg7lobby.command.*:
     default: op
     description: Pode usar todos os comandos do plugin
-  xg7lobby.command.reload:
-    default: op
-    description: Pode usar o comando de recarregar o plugin
-  xg7lobby.command.setlobby:
-    default: op
-    description: Coloca o lobby
-  xg7lobby.command.mute:
-    default: op
-    description: Silencia jogadores
+    children:
+      xg7lobby.command.mute: true
+      xg7lobby.command.setlobby: true
+      xg7lobby.command.reload: true
+      xg7lobby.command.ban: true
+      xg7lobby.command.unban: true
+      xg7lobby.command.kick: true
+      xg7lobby.command.unmute: true
+      xg7lobby.command.tempban: true
+      xg7lobby.command.warn: true
 
-  xg7lobby.itens.jogar:
+  xg7lobby.itens.*:
     default: op
-    description: Pemissão para jogar itens
-  xg7lobby.itens.pegar:
-    default: op
-    description: Pemissão para pegar itens
-  xg7lobby.blocos.colocar:
-    default: op
-    description: Pemissão para colocar blocos
-  xg7lobby.blocos.quebrar:
-    default: op
-    description: Pemissão para quebrar blocos
-  xg7lobby.blocos.interagir:
-    default: op
-    description: Pemissão para interagir blocos
+    description: Pode fazer de tudo com itens
+    children:
+      xg7lobby.itens.pegar: true
+      xg7lobby.itens.jogar: true
 
-  xg7lobby.atacar:
+  xg7lobby.blocos.*:
     default: op
-    description: Permissão para atacar
+    description: Pode fazer de tudo com itens
+    children:
+      xg7lobby.blocos.colocar: true
+      xg7lobby.blocos.quebrar: true
+      xg7lobby.blocos.interagir: true
