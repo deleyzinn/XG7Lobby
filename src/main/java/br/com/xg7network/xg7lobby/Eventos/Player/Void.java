@@ -18,19 +18,19 @@ public class Void implements Listener {
         if (cm.getConfig().getStringList("mundos-ativados").contains(p.getWorld().getName())) {
             if(Bukkit.getServer().getVersion().contains("1.18") || Bukkit.getServer().getVersion().contains("1.19") || Bukkit.getServer().getVersion().contains("1.20")) {
                 if (p.getLocation().getBlockY() <= -66) {
-                    if (cm.getData().getString("lobby.Mundo") == null) {
+                    if (cm.getData().getString("lobby.mundo") == null) {
                         p.teleport(p.getWorld().getSpawnLocation());
                     } else {
-                        String lobbyWN = cm.getData().getString("lobby.Mundo");
+                        String lobbyWN = cm.getData().getString("lobby.mundo");
                         if (lobbyWN != null) {
                             World w = Bukkit.getWorld(lobbyWN);
                             p.teleport(new Location(
                                     w,
-                                    cm.getData().getDouble("lobby.X"),
-                                    cm.getData().getDouble("lobby.Y"),
-                                    cm.getData().getDouble("lobby.Z"),
-                                    (float) cm.getData().getDouble("lobby.Yaw"),
-                                    (float) cm.getData().getDouble("lobby.Pitch")));
+                                    cm.getData().getDouble("lobby.x"),
+                                    cm.getData().getDouble("lobby.y"),
+                                    cm.getData().getDouble("lobby.z"),
+                                    (float) cm.getData().getDouble("lobby.yaw"),
+                                    (float) cm.getData().getDouble("lobby.pitch")));
 
                         }
                     }
@@ -38,19 +38,19 @@ public class Void implements Listener {
             } else {
                 if (p.getLocation().getBlockY() <= -2) {
 
-                    if (cm.getData().getString("lobby.Mundo") == null) {
+                    if (cm.getData().getString("lobby.mundo") == null) {
                         p.teleport(p.getWorld().getSpawnLocation());
                     } else {
-                        String lobbyWN = cm.getData().getString("lobby.Mundo");
+                        String lobbyWN = cm.getData().getString("lobby.mundo");
                         if (lobbyWN != null) {
                             World w = Bukkit.getWorld(lobbyWN);
                             p.teleport(new Location(
                                     w,
-                                    cm.getData().getDouble("lobby.X"),
-                                    cm.getData().getDouble("lobby.Y"),
-                                    cm.getData().getDouble("lobby.Z"),
-                                    (float) cm.getData().getDouble("lobby.Yaw"),
-                                    (float) cm.getData().getDouble("lobby.Pitch")));
+                                    cm.getData().getDouble("lobby.x"),
+                                    cm.getData().getDouble("lobby.y"),
+                                    cm.getData().getDouble("lobby.z"),
+                                    (float) cm.getData().getDouble("lobby.yaw"),
+                                    (float) cm.getData().getDouble("lobby.pitch")));
 
                         }
                     }

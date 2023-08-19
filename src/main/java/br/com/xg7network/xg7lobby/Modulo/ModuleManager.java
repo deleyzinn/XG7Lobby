@@ -1,6 +1,10 @@
 package br.com.xg7network.xg7lobby.Modulo;
 
+import br.com.xg7network.xg7lobby.Eventos.Player.PlayerRespawnEvent;
 import br.com.xg7network.xg7lobby.Modulo.Mundo.CancelDayCycle;
+import br.com.xg7network.xg7lobby.Modulo.Scores.BossBar;
+import br.com.xg7network.xg7lobby.Modulo.Scores.ScoreBoard;
+import br.com.xg7network.xg7lobby.Modulo.Scores.Tablist;
 import br.com.xg7network.xg7lobby.XG7Lobby;
 
 import java.util.ArrayList;
@@ -19,7 +23,12 @@ public class ModuleManager {
     public void loadModules() {
             modules.add(new Efeitos(plugin));
             modules.add(new CancelDayCycle(plugin));
-            modules.add(new Warns(plugin));
+            modules.add(new Fly(plugin));
+
+            modules.add(new ScoreBoard(plugin));
+            modules.add(new Tablist(plugin));
+            modules.add(new BossBar(plugin));
+            modules.add(new Anuncios(plugin));
         for (Module module : modules) {
             module.onEnable();
         }

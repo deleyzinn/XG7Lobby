@@ -1,5 +1,5 @@
 name: XG7Lobby
-version: 'BETA-0.2'
+version: 'BETA-0.5'
 main: br.com.xg7network.xg7lobby.XG7Lobby
 api-version: 1.13
 prefix: XG7 Lobby

@@ -4,26 +4,49 @@
 #Precisa-se do PlaceHolderAPI para isso!
 
 #Cores:
-#&a - Verde      | &e - Amarelo               | &b - Ciano
-#&9 - Azul       | &1 - Azul escuro           | &f - Branco
-#&7 - Cinza      | &8 - Cinza-escuro          | &0 - Preto
-#&5 - Roxo       | &6 - Laranja               | &d - Rosa
-#&c - Vermelho   | &4 - Vermelho-escuro
+#&0 - Preto           | &9 - Azul
+#&1 - Azul escuro     | &b - Ciano
+#&2 - Verde escuro    | &9 - Azul
+#&3 - Ciano escuro    | &b - Ciano
+#&4 - Vermelho escuro | &c - Vermelho
+#&5 - Roxo            | &d - Rosa
+#&6 - Laranja         | &e - Amarelo
+#&7 - Cinza           | &f - Branco
 
 #Opções para as letras:
-#&l - Negrito    | &r - Reset para o original | &k - Aleatório
-#&n - Sublinhado | &o - Itálico               | &m - Riscado
-
-#Tudo isso vai funcionar somente no mundo do lobby!
+#&k - Aleatório | &n - Sublinhado
+#&l - Negrito   | &o - Itálico
+#&m - Traçado   | &r - Reset
 
 #ações
+#
 #[ACTIONBAR] Manda uma action bar
 #[MENSAGEM] Manda uma mensagem
 #[TITULO] Manda um título
-#[TIT&SUBTIT] Manda um título e um subtítulo (Use " // " para separar um do outro)
+#[TIT&SUBTIT] Manda um título e um subtítulo (3Use " // " para separar um do outro)
+#[BROADCAST] Anuncia para todos.
+
 #[SOM] Manda um som
+#"[SOM] ENTITY_EXPERIENCE_ORB_PICKUP, (Volume) 10.0, (Pitch) 10.0"
+
 #[SUMMON] Sumona uma entidade
-#[PLAYER] retorna ao player da ação
+
+#[FLY] Faz o jogador voar
+
+#Só funciona quando o jogador esta com inventário aberto
+#[ITEM] Troca o itens do inventário
+#ex.: [ITEM] (Slot), (Material), (Nome), (Brilho), (Lore usando " // " entre as linhas)
+
+#[PERMISSÃO] Só faz a ação se tiver permissão
+#ex2.: [ABRIR] 1 [PERMISSÃO] sua.permissão
+#ex2.: [ABRIR] 1 [!PERMISSÃO] sua.permissão (Caso não tiver a permissão)
+
+#[ABRIR] Abre um inventário
+#[FECHAR] Fecha um inventário
+#Lá no arquivo seletores.yml você pode criar um inventário
+#Modo de uso: [ABRIR] (id), [FECHAR]
+
+
 
 #[ABRIR] Abre um inventário
 #[FECHAR] Fecha um inventário
@@ -31,6 +54,9 @@
 #Lá no arquivo seletores.yml você pode criar um inventário
 #Modo de uso: [ABRIR] (id), [FECHAR]
 
+EsconderJogadores:
+
+  cooldown:
 
 
 
@@ -48,6 +74,9 @@ Seletores:
 #[01, 02, 03, 04, 05, 06, 07, 08, 09]
 #[10, 11, 12, 13, 14, 15, 16, 17, 18]
 #[19, 20, 21, 22, 23, 24, 25, 26, 27]
+#[28, 29, 30, 31, 32, 33, 34, 35, 36]
+#[37, 38, 39, 40, 41, 42, 43, 44, 45]
+#[46, 47, 48, 49, 50, 51, 52, 53, 54]
 Inventarios:
   Bem-Vindo:
     nome: "&fBem vindo"
@@ -59,88 +88,6 @@ Inventarios:
       #ordem.
       default:
         item: GRAY_STAINED_GLASS_PANE
-
-      B:
-        item: PAPER
-        nome: "&cB"
-        glow: false
-        slot: 1
-        lore:
-          - ""
-        acoes:
-          - ""
-      E:
-        item: PAPER
-        nome: "&6e"
-        glow: false
-        slot: 2
-        lore:
-          - ""
-        acoes:
-          - ""
-      M:
-        item: PAPER
-        nome: "&em"
-        glow: false
-        slot: 3
-        lore:
-          - ""
-        acoes:
-          - ""
-      Ifen:
-        item: PAPER
-        nome: "&f-"
-        glow: false
-        slot: 4
-        lore:
-          - ""
-        acoes:
-          - ""
-      V:
-        item: PAPER
-        nome: "&aV"
-        glow: false
-        slot: 5
-        lore:
-          - ""
-        acoes:
-          - ""
-      I:
-        item: PAPER
-        nome: "&bi"
-        glow: false
-        slot: 6
-        lore:
-          - ""
-        acoes:
-          - ""
-      N:
-        item: PAPER
-        nome: "&9n"
-        glow: false
-        slot: 7
-        lore:
-          - ""
-        acoes:
-          - ""
-      D:
-        item: PAPER
-        nome: "&5d"
-        glow: false
-        slot: 8
-        lore:
-          - ""
-        acoes:
-          - ""
-      O:
-        item: PAPER
-        nome: "&do"
-        glow: false
-        slot: 9
-        lore:
-          - ""
-        acoes:
-          - ""
       Informações:
         item: BOOK
         nome: "&aInformações"
@@ -205,6 +152,95 @@ Inventarios:
           - ""
         acoes:
           - "[ABRIR] 1"
+
+  Admin:
+    nome: "&9ADM"
+    linhas: 6
+    id: 3
+
+    Itens:
+      default:
+        item: GRAY_STAINED_GLASS_PANE
+
+      FLY:
+        item: FEATHER
+        nome: "&7Fly!"
+        glow: false
+        slot: 11
+        lore:
+          - "&7Clique para &eativar!"
+        acoes:
+          - "[FLY]"
+      Comandos:
+        item: COMMAND_BLOCK
+        nome: "&9Comandos!"
+        glow: true
+        slot: 17
+        lore:
+          - "&7Comandos do plugin!"
+        acoes:
+          - "[ABRIR] 4"
+      SETLOBBY:
+        item: COMPASS
+        nome: "&7Setlobby"
+        glow: true
+        slot: 40
+        lore:
+          - "&aClique para colocar o lobby"
+          - "&ana sua localização"
+        acoes:
+          - "[COMANDO] setlobby"
+
+      LOBBY:
+        item: COMPASS
+        nome: "&7Lobby"
+        glow: true
+        slot: 42
+        lore:
+          - "&aClique para teletransportar"
+          - "&apara o lobby"
+        acoes:
+          - "[COMANDO] lobby"
+
+
+  Comandos:
+    nome: "&bComandos"
+    linhas: 3
+    id: 4
+
+    #[01, 02, 03, 04, 05, 06, 07, 08, 09]
+    #[10, 11, 12, 13, 14, 15, 16, 17, 18]
+    #[19, 20, 21, 22, 23, 24, 25, 26, 27]
+    #[28, 29, 30, 31, 32, 33, 34, 35, 36]
+    #[37, 38, 39, 40, 41, 42, 43, 44, 45]
+    #[46, 47, 48, 49, 50, 51, 52, 53, 54]
+
+    Itens:
+      default:
+        item: GRAY_STAINED_GLASS_PANE
+
+      SETLOBBY:
+        item: COMPASS
+        nome: "&9SetLobby"
+        glow: true
+        slot: 11
+        lore:
+          - "&e/&asetlobby"
+          - "&fColoca o lobby"
+
+      WARN:
+        item: OAK_SIGN
+        nome: "&9Warn"
+        glow: true
+        slot: 17
+        lore:
+          - "&e/&awarn <Player> <Motivo>"
+          - "&fAvisa a jogadores"
+
+
+
+
+
 
 
 
