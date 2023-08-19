@@ -7,6 +7,28 @@
 #         /    /   /            /   / /____/ /   / /_____/ /   / /_____/ /       /   /
 #        /____/   /____________/   /________/   /_________/   /_________/       /___/
 
+#Definir Os itens que serão dados aos jogadores quando
+#entrar no lobby e criar.
+#Use %player_name% para recolocar o nome do jogador
+#Precisa-se do PlaceHolderAPI para isso!
+
+#Cores:
+#&0 - Preto           | &9 - Azul
+#&1 - Azul escuro     | &b - Ciano
+#&2 - Verde escuro    | &9 - Azul
+#&3 - Ciano escuro    | &b - Ciano
+#&4 - Vermelho escuro | &c - Vermelho
+#&5 - Roxo            | &d - Rosa
+#&6 - Laranja         | &e - Amarelo
+#&7 - Cinza           | &f - Branco
+
+#Opções para as letras:
+#&k - Aleatório | &n - Sublinhado
+#&l - Negrito   | &o - Itálico
+#&m - Traçado   | &r - Reset
+
+#Tudo isso vai funcionar somente no mundo do lobby!
+
 #ações
 #
 #[ACTIONBAR] Manda uma action bar
@@ -20,10 +42,26 @@
 
 #[SUMMON] Sumona uma entidade
 
-#[PLAYER] retorna ao player da ação (Funciona fora de ações)
+#[FLY] Faz o jogador voar
+
+#Só funciona quando o jogador esta com inventário aberto
+#[ITEM] Troca o itens do inventário
+#ex.: [ITEM] (Slot), (Material), (Nome), (Brilho), (Lore usando " // " entre as linhas)
+
+#[PERMISSÃO] Só faz a ação se tiver permissão
+#ex2.: [ABRIR] 1 [PERMISSÃO] sua.permissão
+#ex2.: [ABRIR] 1 [!PERMISSÃO] sua.permissão (Caso não tiver a permissão)
 
 #[ABRIR] Abre um inventário
 #[FECHAR] Fecha um inventário
+#Lá no arquivo seletores.yml você pode criar um inventário
+#Modo de uso: [ABRIR] (id), [FECHAR]
+
+
+
+#[ABRIR] Abre um inventário
+#[FECHAR] Fecha um inventário
+
 #Lá no arquivo seletores.yml você pode criar um inventário
 #Modo de uso: [ABRIR] (id), [FECHAR]
 
@@ -36,6 +74,7 @@ tp-quando-entrar: true
 
 #Quando morrer você dá tp pro lobby
 tp-quando-morrer: false
+
 aviso-imagem: true
 
 #Coloca tudo no padrão de acordo de sua versão, não mude!
@@ -50,15 +89,18 @@ ConfigDefaults: true
 EventosDeEntrada:
   acoes:
     - "[TIT&SUBTIT] &bBem-Vindo // &f[PLAYER]"
-    - "[MENSAGEM] &8--------------&7**&8-------------"
-    - "[MENSAGEM] &bBem-Vindo &f[PLAYER]"
+    - "[MENSAGEM] &8-------------------&7**&8------------------"
+    - "[MENSAGEM] &bBem-Vindo &f%player_name%"
     - "[MENSAGEM] "
     - "[MENSAGEM] &fSite: &9www.website.com"
     - "[MENSAGEM] &fYT: &4www.youtube.com"
-    - "[MENSAGEM] &8--------------&7**&8-------------"
+    - "[MENSAGEM] "
+    - "[MENSAGEM] &5&oFeito por DaviXG7"
+    - "[MENSAGEM] &8-------------------&7**&8------------------"
     - "[SOM] ENTITY_EXPERIENCE_ORB_PICKUP, 10.0, 0.0"
     - "[SUMMON] FIREWORK"
-    - "[ABRIR] 1"
+    - "[ABRIR] 1 [!PERMISSAO] xg7lobby.admin"
+    - "[ABRIR] 3 [PERMISSAO] xg7lobby.admin"
 
 #Efeitos que serão dados ao jogador o tempo
 #inteiro no servidor no mundo do lobby
@@ -68,8 +110,36 @@ Efeitos:
 
 #Mensagens de entrada e de saida
 
-MensagemDeEntrada: "&8[&a+&8] &f[PLAYER] entrou no servidor."
-MensagemDeSaida: "&8[&6-&8] &f[PLAYER] saiu do servidor."
+MensagemDeEntrada: "&8[&a+&8] &f%player_name% entrou no servidor."
+MensagemDeSaida: "&8[&6-&8] &f%player_name% saiu do servidor."
+
+#############################################
+#ANÚNCIOS                                   #
+#############################################
+
+anuncios:
+  #Cooldown dos anúncios em segundos
+  cooldown: 180
+
+  #Anunciar somente no lobby
+  ASNL: false
+
+  anuncios:
+    anuncio1:
+      - "&e&lANÚNCIO:"
+      - "&9Esse plugin foi feito por &bDaviXG7"
+    anuncio2:
+      - "&e&lANÚNCIO:"
+      - "&aAvalie o XG7Lobby em &e5 &bestrelas!"
+    anuncio3:
+      - "&e&lANÚNCIO:"
+      - "&fVisite nosso site: &bwww.exemplo.com"
+
+
+
+#############################################
+#CHAT                                       #
+#############################################
 
 #############################################
 #LAUNCHPAD                                  #
@@ -108,8 +178,21 @@ launchPad:
 
   som: "ENTITY_BAT_TAKEOFF, 1.0, 2.0"
 
-#Feito por DaviXG7, inspiraddo em DeluxeHub,
-#nenhum código foi copiado, apenas inspirado!
+#############################################
+#DOUBLE JUMP                                #
+#############################################
+
+doublejump:
+  ativado: true
+
+  #O jogador será lançado para onde
+  #ele estiver olhando
+  força: 2
+  pulo: 1
+
+  cooldown: 2
+
+  som: "ENTITY_BAT_TAKEOFF, 1.0, 2.0"
 
 #############################################
 #MOTD                                       #
@@ -121,22 +204,66 @@ motd:
   ativado: true
 
   texto:
-    - "&9&lSeu Servidor"
-    - "&e&lSe divirta"
+    - "&9XG7&3Lob&bby&r"
+    - "&5&oFeito por DaviXG7"
 
 #############################################
-#DOUBLE JUMP                                #
+#SCORES                                     #
 #############################################
 
-double-jump:
-  ativado: true
+scores:
+  #Ticks de atualização da score
 
-  #O jogador será lançado para onde
-  #ele estiver olhando
-  força: 2
-  pulo: 1
+  atualizacao: 5
+
+  tablist:
+
+    ativado: true
+
+    cabecalho:
+      - "&9X&3G7&bLobby"
+      - "&7Feito por DaviXG7"
+      - ""
+
+    rodape:
+      - ""
+      - "&9Visite nosso site: &bsite.com"
+
+  scoreboard:
+
+    ativado: true
+
+    titulo: "&9X&3G7&bLobby"
+
+    linhas:
+      - " "
+      - "&e&lJogador&f:"
+      - "&7Nome: &9%player_name%"
+      - "&7Rank: &r%luckperms_prefix%"
+      - "  "
+      - "&7Jogadores online: &a%server_online%"
+      - ""
+      - "&8www.exemplo.com"
 
 
+  #SÓ FUNCIONA +1.9
+  bossbar:
+
+    ativado: true
+
+    #Os placeholders não funcionam aqui
+    título: "&9&lBem-vindo ao servidor"
+
+    #Veja aqui todas as cores
+    #https://helpch.at/docs/1.16.5/org/bukkit/boss/BarColor.html
+    cor: BLUE
+
+    #Veja aqui todos os estilos
+    #https://helpch.at/docs/1.16.5/org/bukkit/boss/BarStyle.html
+    estilo: SOLID
+
+    #Vai de 0 a 1. Por exemplo: 0.5
+    progresso: 1
 
 #############################################
 #OPÇÕES DO JOGADOR                          #

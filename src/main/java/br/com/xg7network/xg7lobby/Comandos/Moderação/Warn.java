@@ -71,8 +71,8 @@ public class Warn implements CommandExecutor, Listener {
                         va.mandarMensagem(ChatColor.GOLD + "Você recebeu um aviso pelo motivo: " + ChatColor.RESET + str.trim(), p);
                         playerSection.set("warns", warns);
 
-                        if (warns.size() <= cm.getData().getInt("qtd-warns-kick") && warns.size() == cm.getData().getInt("qtd-warns-ban")) {
-                            p.kickPlayer(ChatColor.RED + "Você recebeu " + ChatColor.AQUA + warns.size() + ChatColor.RED + " kicks. Por favor não quebre as regras!");
+                        if (warns.size() >= cm.getData().getInt("qtd-warns-kick") && warns.size() < cm.getData().getInt("qtd-warns-ban")) {
+                            p.kickPlayer(ChatColor.RED + "Você recebeu " + ChatColor.AQUA + warns.size() + ChatColor.RED + " warns. Por favor não quebre as regras!");
                         } else if (warns.size() >= cm.getData().getInt("qtd-warns-ban")) {
                             p.kickPlayer(ChatColor.RED + "Você foi banido por receber muitos avisos para não quebrar as regras!");
                             Bukkit.getBanList(BanList.Type.NAME).addBan(p.getName(), ChatColor.RED + "Você foi banido por receber muitos avisos!", null, null);
@@ -80,9 +80,11 @@ public class Warn implements CommandExecutor, Listener {
                         try {
                             lobbyC.save(lobbyF);
                         } catch (IOException e) {
-                            p.sendMessage(ChatColor.RED + "Não foi possível salvar o warn");
+                            p.sendMessage(ChatColor.RED + "Não foi possível salvar o warn!");
                             throw new RuntimeException(e);
                         }
+
+                        commandSender.sendMessage(ChatColor.GOLD + "Você avisou " + ChatColor.AQUA + p.getName() + ChatColor.GOLD + " por: " + ChatColor.RESET + str.trim());
 
                     } else {
                         commandSender.sendMessage(ChatColor.RED + "Este jogador não existe!");
@@ -99,15 +101,19 @@ public class Warn implements CommandExecutor, Listener {
         } else if (command.getName().equals("xg7lobbywarns")) {
             if (commandSender instanceof Player) {
                 Player p = (Player) commandSender;
-                for (String sc : cm.getData().getConfigurationSection("warns").getKeys(false)) {
-                    if (sc.equals(p.getName())) {
-                        commandSender.sendMessage(ChatColor.YELLOW + "Você tem " + ChatColor.GREEN +
-                                cm.getData().getStringList("warns." + sc + ".warns").size() + ChatColor.YELLOW + " warns");
-                        commandSender.sendMessage(ChatColor.YELLOW + "Seus warns:");
-                        for (String w : cm.getData().getStringList("warns." + sc + ".warns")) {
-                            commandSender.sendMessage(w);
+                if (cm.getData().getConfigurationSection("warns").getKeys(false) != null) {
+                    for (String sc : cm.getData().getConfigurationSection("warns").getKeys(false)) {
+                        if (sc.equals(p.getName())) {
+                            commandSender.sendMessage(ChatColor.YELLOW + "Você tem " + ChatColor.GREEN +
+                                    cm.getData().getStringList("warns." + sc + ".warns").size() + ChatColor.YELLOW + " warns");
+                            commandSender.sendMessage(ChatColor.YELLOW + "Seus warns:");
+                            for (String w : cm.getData().getStringList("warns." + sc + ".warns")) {
+                                commandSender.sendMessage(w);
+                            }
                         }
                     }
+                } else {
+                    commandSender.sendMessage(ChatColor.GOLD + "Você não tem nenhum warn.");
                 }
             }
         }

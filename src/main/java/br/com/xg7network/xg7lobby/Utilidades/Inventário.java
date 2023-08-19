@@ -1,6 +1,7 @@
 package br.com.xg7network.xg7lobby.Utilidades;
 
 import br.com.xg7network.xg7lobby.Configs.PermissionType;
+import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -34,6 +35,9 @@ public class Inventário implements Listener {
                             meta.setDisplayName(cm.getSeletor().getString("Inventarios." + Sinv + ".Itens." + itens + ".nome").replace("&", "§"));
                             List<String> lore = new ArrayList<>();
                             for (String l : cm.getSeletor().getStringList("Inventarios." + Sinv + ".Itens." + itens + ".lore")) {
+                                if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
+                                    l = PlaceholderAPI.setPlaceholders(p, l);
+                                }
                                 l = l.replace("&", "§");
                                 lore.add(l);
                             }

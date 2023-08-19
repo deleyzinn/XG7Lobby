@@ -1,5 +1,7 @@
 package br.com.xg7network.xg7lobby;
 
+import br.com.xg7network.xg7lobby.Comandos.Abrir;
+import br.com.xg7network.xg7lobby.Comandos.Lobby.Fly;
 import br.com.xg7network.xg7lobby.Comandos.Lobby.Lobby;
 import br.com.xg7network.xg7lobby.Comandos.Lobby.Setlobby;
 import br.com.xg7network.xg7lobby.Comandos.Moderação.*;
@@ -8,13 +10,13 @@ import br.com.xg7network.xg7lobby.Comandos.Reload.ReloadConfigCommand;
 import br.com.xg7network.xg7lobby.Configs.ConfigManager;
 import br.com.xg7network.xg7lobby.Eventos.Lauchpad;
 import br.com.xg7network.xg7lobby.Eventos.EntradaESaida;
+import br.com.xg7network.xg7lobby.Eventos.PingEvent;
 import br.com.xg7network.xg7lobby.Eventos.Player.*;
 import br.com.xg7network.xg7lobby.Eventos.Player.Void;
 import br.com.xg7network.xg7lobby.Modulo.ModuleManager;
-import br.com.xg7network.xg7lobby.Modulo.Mundo.CancelBlockBurn;
-import br.com.xg7network.xg7lobby.Modulo.Mundo.CancelLeavesDecay;
-import br.com.xg7network.xg7lobby.Modulo.Mundo.Explosions;
-import br.com.xg7network.xg7lobby.Modulo.Mundo.SpawnMobs;
+import br.com.xg7network.xg7lobby.Modulo.Mundo.*;
+import br.com.xg7network.xg7lobby.Modulo.Scores.ScoreBoard;
+import br.com.xg7network.xg7lobby.Modulo.Scores.Tablist;
 import br.com.xg7network.xg7lobby.Utilidades.Ações;
 import br.com.xg7network.xg7lobby.Utilidades.Inventário;
 import br.com.xg7network.xg7lobby.Utilidades.VerifAction;
@@ -59,8 +61,6 @@ public final class XG7Lobby extends JavaPlugin {
         cm.loadAll();
         ac = new Ações(this);
         va = new VerifAction();
-        MM = new ModuleManager(this);
-        MM.loadModules();
 
 
         this.getServer().getConsoleSender().sendMessage(prefix + "Carregando comandos...");
@@ -78,11 +78,15 @@ public final class XG7Lobby extends JavaPlugin {
         this.getCommand("xg7lobbywarn").setExecutor(new Warn(this));
         this.getCommand("xg7lobbywarns").setExecutor(new Warn(this));
         this.getServer().getPluginManager().registerEvents(new Warn(this), this);
+        this.getCommand("xg7lobbyfly").setExecutor(new Fly());
+        this.getCommand("xg7lobbygui").setExecutor(new Abrir());
 
         this.getServer().getConsoleSender().sendMessage(prefix + "Carregando eventos...");
         this.getServer().getPluginManager().registerEvents(new Inventário(), this);
         this.getServer().getPluginManager().registerEvents(new EntradaESaida(), this);
         this.getServer().getPluginManager().registerEvents(new Lauchpad(), this);
+        this.getServer().getPluginManager().registerEvents(new DoubleJump(), this);
+        this.getServer().getPluginManager().registerEvents(new PingEvent(), this);
 
         this.getServer().getPluginManager().registerEvents(new Void(), this);
         this.getServer().getPluginManager().registerEvents(new PlayerHungerEvent(), this);
@@ -90,12 +94,21 @@ public final class XG7Lobby extends JavaPlugin {
         this.getServer().getPluginManager().registerEvents(new PlayerAttackEvent(), this);
         this.getServer().getPluginManager().registerEvents(new PlayerDamageEvent(), this);
         this.getServer().getPluginManager().registerEvents(new BlockEvents(), this);
+        this.getServer().getPluginManager().registerEvents(new PlayerRespawnEvent(this), this);
 
         this.getServer().getPluginManager().registerEvents(new CancelBlockBurn(), this);
         this.getServer().getPluginManager().registerEvents(new CancelLeavesDecay(), this);
         this.getServer().getPluginManager().registerEvents(new Explosions(), this);
         this.getServer().getPluginManager().registerEvents(new SpawnMobs(), this);
         this.getServer().getPluginManager().registerEvents(new CancelBlockBurn(), this);
+        this.getServer().getPluginManager().registerEvents(new WeatherEvent(), this);
+
+        this.getServer().getConsoleSender().sendMessage(prefix + "Carregando Módulo...");
+        MM = new ModuleManager(this);
+        MM.loadModules();
+
+        this.getServer().getPluginManager().registerEvents(new ScoreBoard(this), this);
+        this.getServer().getPluginManager().registerEvents(new Tablist(this), this);
 
 
 
