@@ -63,30 +63,30 @@ EsconderJogadores:
   cooldown: 5
 
   Item:
-    item-ativado: RED_DYE
-    item-desativado: LIME_DYE
+    item-ativado: LIME_DYE
+    item-desativado: RED_DYE
 
     qtd-ativado: 1
     qtd-desativado: 1
 
-    nome-ativado: "&7Esconder jogadores &6- &cOFF!"
-    nome-desativado: "&7Esconder jogadores &6- &aON!"
+    nome-ativado: "&7Esconder jogadores &6- &aON!"
+    nome-desativado: "&7Esconder jogadores &6- &cOFF!"
 
     lore-ativado:
-      - "&aClique para ativar!"
+      - "&aClique para desativar!"
     lore-desativado:
-      - "&cClique para desativar!"
+      - "&cClique para ativar!"
 
     glow: true
     slot: 1
 
   #Ações ativado
   acoesA:
-    - "[MENSAGEM] a"
+    - ""
 
   #Ações desativado
   acoesD:
-    - "[MENSAGEM] b"
+    - ""
 
 
 
@@ -106,11 +106,19 @@ Seletores:
         - " &fSite: &9www.site.com"
         - " &fYT: &4www.youtube.com"
       acoes:
-        - "[ABRIR] 1"
+      - "[MENSAGEM] &8-------------------&7**&8------------------"
+      - "[MENSAGEM] "
+      - "[MENSAGEM] &aSite: &fwww.website.com"
+      - "[MENSAGEM] &bTwiter&f/&8X: &fwww.twitter.com"
+      - "[MENSAGEM] &4YT: &fwww.youtube.com"
+      - "[MENSAGEM] "
+      - "[MENSAGEM] &5&oPlugin feito por DaviXG7"
+      - "[MENSAGEM] &8-------------------&7**&8------------------"
+      - "[SOM] UI_BUTTON_CLICK, 10.0, 0.0"
     Games:
       item: NETHER_STAR
       nome: "&aServer selector"
-      quantidade: 2
+      quantidade: 1
       glow: true
       slot: 5
       lore:
@@ -203,7 +211,7 @@ Inventarios:
 
   Admin:
     nome: "&9ADM"
-    linhas: 6
+    linhas: 5
     id: 3
 
     Itens:
@@ -229,13 +237,14 @@ Inventarios:
         lore:
           - "&7Comandos do plugin!"
         acoes:
-          - "[ABRIR] 4"
+          - "[FECHAR]"
+          - "[COMANDO] ajuda"
       SETLOBBY:
         item: COMPASS
         quantidade: 1
         nome: "&7Setlobby"
         glow: true
-        slot: 38
+        slot: 40
         lore:
           - "&aClique para colocar o lobby"
           - "&ana sua localização"
@@ -247,7 +256,7 @@ Inventarios:
         quantidade: 1
         nome: "&bPessoas online"
         glow: false
-        slot: 41
+        slot: 14
         lore:
           - "&aHá &b%server_online% &apessoas on-line no servidor!"
         acoes:
@@ -258,7 +267,7 @@ Inventarios:
         quantidade: 1
         nome: "&7Lobby"
         glow: true
-        slot: 44
+        slot: 42
         lore:
           - "&aClique para teletransportar"
           - "&apara o lobby"

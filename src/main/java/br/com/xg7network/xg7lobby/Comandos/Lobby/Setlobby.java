@@ -35,12 +35,12 @@ public class Setlobby implements CommandExecutor {
                 Player p = (Player) sender;
                 if (p.hasPermission(PermissionType.SETLOBBY_COMMAND.getPerm())) {
                     if (cm.getConfig().getStringList("mundos-ativados").contains(p.getWorld().getName())) {
-                        lobbyC.set("lobby.mundo", p.getWorld().getName());
-                        lobbyC.set("lobby.x", p.getLocation().getX());
-                        lobbyC.set("lobby.y", p.getLocation().getY());
-                        lobbyC.set("lobby.z", p.getLocation().getZ());
-                        lobbyC.set("lobby.yaw", p.getLocation().getYaw());
-                        lobbyC.set("lobby.pitch", p.getLocation().getPitch());
+                        lobbyC.set("lobby.Mundo", p.getWorld().getName());
+                        lobbyC.set("lobby.X", p.getLocation().getX());
+                        lobbyC.set("lobby.Y", p.getLocation().getY());
+                        lobbyC.set("lobby.Z", p.getLocation().getZ());
+                        lobbyC.set("lobby.Yaw", p.getLocation().getYaw());
+                        lobbyC.set("lobby.Pitch", p.getLocation().getPitch());
 
 
                         try {

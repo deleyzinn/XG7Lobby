@@ -5,6 +5,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerChangedWorldEvent;
+import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.event.Listener;
@@ -35,9 +36,9 @@ public class Efeitos extends Module implements Listener {
     }
 
     @EventHandler
-    public void onWorldChange(PlayerChangedWorldEvent e) {
+    public void onTeleport(PlayerTeleportEvent e) {
         Player p = e.getPlayer();
-        if (cm.getConfig().getStringList("mundos-ativados").contains(e.getFrom().getName())) {
+        if (cm.getConfig().getStringList("mundos-ativados").contains(e.getTo().getWorld().getName())) {
             for (String s : cm.getConfig().getStringList("Efeitos")) {
                 String[] ef = s.split(", ");
                 PotionEffectType effect = PotionEffectType.getByName(ef[0]);

@@ -117,6 +117,7 @@ public class HotbarManager extends Module implements Listener {
             verf = false;
             HbItens.colocarItens(p);
             HbItens.colocarEJ(p);
+            vanished.remove(p.getUniqueId());
         } else {
             HbItens.removerItens(p);
             HbItens.removerEJ(p);
@@ -166,7 +167,7 @@ public class HotbarManager extends Module implements Listener {
                             if (!vanished.contains(p.getUniqueId()) && e.getItem().isSimilar(HbItens.getEJ(p).get(0))) {
                                 vanished.add(p.getUniqueId());
                                 for (Player target : Bukkit.getOnlinePlayers()) {
-                                    p.hidePlayer(target);
+                                    p.showPlayer(target);
                                 }
                                 HbItens.trocarItem(p, e.getItem());
                                 va.mandarMensagem(cm.getMessage().getString("eventos.EJ-esconder"), p);
@@ -174,7 +175,7 @@ public class HotbarManager extends Module implements Listener {
                             } else if (vanished.contains(p.getUniqueId()) && e.getItem().isSimilar(HbItens.getEJ(p).get(1))) {
                                 vanished.remove(p.getUniqueId());
                                 for (Player target : Bukkit.getOnlinePlayers()) {
-                                    p.showPlayer(target);
+                                    p.hidePlayer(target);
                                 }
                                 HbItens.trocarItem(p, e.getItem());
                                 va.mandarMensagem(cm.getMessage().getString("eventos.EJ-mostrar"), p);

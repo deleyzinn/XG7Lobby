@@ -9,7 +9,7 @@ lobby:
 mutados:
 
 
-#Deixe -1 para nenhum para kick
+#Deixe -1 para nenhum kick
 qtd-warns-kick: 3
 qtd-warns-ban: 5
 

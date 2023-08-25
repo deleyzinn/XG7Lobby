@@ -34,8 +34,10 @@ public class ScoreBoard extends Module implements Listener {
 
         for (Player p : Bukkit.getOnlinePlayers()) {
             if (cm.getConfig().getBoolean("scores.scoreboard.ativado")) {
-                this.colocarScore(p);
-                Bukkit.getScheduler().runTaskTimer(this.getPlugin(), () -> this.updateScore(p), 0L, cm.getConfig().getInt("scores.atualizacao"));
+                if (cm.getConfig().getStringList("mundos-ativados").contains(p.getWorld().getName())) {
+                    this.colocarScore(p);
+                    Bukkit.getScheduler().runTaskTimer(this.getPlugin(), () -> this.updateScore(p), 0L, cm.getConfig().getInt("scores.atualizacao"));
+                }
             }
         }
 

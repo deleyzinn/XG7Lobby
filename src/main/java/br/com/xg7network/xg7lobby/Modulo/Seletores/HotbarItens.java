@@ -88,13 +88,12 @@ public class HotbarItens {
         if (cm.getSeletor().getBoolean("EsconderJogadores.Item.glow")) {
             metaD.addEnchant(Enchantment.DURABILITY, 0, true);
         }
+        itemD.setItemMeta(metaD);
 
         itemA.setItemMeta(metaA);
 
-        itemD.setItemMeta(metaD);
-
-        itens.add(itemA);
         itens.add(itemD);
+        itens.add(itemA);
         return itens;
     }
 

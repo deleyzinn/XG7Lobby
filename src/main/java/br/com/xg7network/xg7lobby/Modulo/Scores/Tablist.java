@@ -104,7 +104,9 @@ public class Tablist extends Module implements Listener {
 
         for (Player p : Bukkit.getOnlinePlayers()) {
             if (cm.getConfig().getBoolean("scores.tablist.ativado")) {
-                colocarTablist(p);
+                if (cm.getConfig().getStringList("mundos-ativados").contains(p.getWorld().getName())) {
+                    colocarTablist(p);
+                }
             }
             Bukkit.getScheduler().runTaskTimer(getPlugin(), () -> {
                 updateTablist(p);
