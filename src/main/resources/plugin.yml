@@ -1,5 +1,5 @@
 name: XG7Lobby
-version: 'BETA-0.5'
+version: 'BETA-0.6'
 main: br.com.xg7network.xg7lobby.XG7Lobby
 api-version: 1.13
 prefix: XG7 Lobby
@@ -11,45 +11,40 @@ commands:
     aliases: [7lreloadconfig, xg7lreloadconfig, 7lrlcg, xg7lrlcg]
     usage: "/<command>"
 
-  xg7lobbyreload:
-    description: Recarrega o plugin
-    aliases: [7lreload, xg7lreload, 7lrl, xg7lrl]
-    usage: "/<command>"
-
   xg7lobbymute:
     description: Silencia jogadores
     aliases: [7lmute, mute, xg7lmute]
-    usage: "/<command>"
+    usage: "/<command> <Jogador>"
 
   xg7lobbyunmute:
     description: Dessilencia jogadores
     aliases: [7lunmute, unmute, xg7lunmute]
-    usage: "/<command>"
+    usage: "/<command> <Jogador>"
 
   xg7lobbyban:
     description: Bane jogadores
-    aliases: [ 7lban, ban, xg7lban ]
-    usage: "/<command>"
+    aliases: [7lban, ban, xg7lban]
+    usage: "/<command> <Jogador> [Motivo]"
 
   xg7lobbyunban:
     description: Dessilencia jogadores
     aliases: [7lunban, unban, xg7lunban, 7lpardon, pardon, xg7lpardon]
-    usage: "/<command>"
+    usage: "/<command> <Jogador>"
 
   xg7lobbytempban:
     description: Bane jogadores temporariamente
-    aliases: [ 7ltempban, tempban, xg7ltempban]
-    usage: "/<command>"
+    aliases: [7ltempban, tempban, xg7ltempban]
+    usage: "/<command> <Jogador> [Motivo]"
 
   xg7lobbykick:
     description: Dessilencia jogadores
-    aliases: [ 7lkick, kick, xg7lkick ]
-    usage: "/<command>"
+    aliases: [7lkick, kick, xg7lkick]
+    usage: "/<command> <Jogador> [Motivo]"
 
   xg7lobbywarn:
     description: Avisa a jogadores
     aliases: [7lwarn, warn, xg7lwarn]
-    usage: "/<command>"
+    usage: "/<command> <Jogador> <Motivo>"
 
   xg7lobbywarns:
     description: Ve seus avisos
@@ -63,7 +58,22 @@ commands:
 
   xg7lobbylobby:
     description: Teletransporta para a localização do lobby
-    aliases: [lobby, 7llobby, xg7llobby, xg7llobby, 7l]
+    aliases: [lobby, 7llobby, xg7llobby, l 7l]
+    usage: "/<command>"
+
+  xg7lobbyfly:
+    description: Faz voar
+    aliases: [fly, 7lfly, xg7lfly]
+    usage: "/<command> [Jogador]"
+
+  xg7lobbygui:
+    description: abre uma gui
+    aliases: [7lgui, gui, xg7lgui]
+    usage: "/<command> <id>"
+
+  xg7lobbyvanish:
+    description: esconde jogadores
+    aliases: [7lvanish, vanish, xg7lvanish]
     usage: "/<command>"
 
 permissions:
@@ -75,6 +85,7 @@ permissions:
       xg7lobby.itens.*: true
       xg7lobby.blocos.*: true
       xg7lobby.atacar: true
+      xg7lobby.doublejump: true
 
   xg7lobby.command.*:
     default: op
@@ -89,6 +100,10 @@ permissions:
       xg7lobby.command.unmute: true
       xg7lobby.command.tempban: true
       xg7lobby.command.warn: true
+      xg7lobby.command.fly: true
+      xg7lobby.command.flyother: true
+      xg7lobby.command.gui: true
+      xg7lobby.command.vanish: true
 
   xg7lobby.itens.*:
     default: op

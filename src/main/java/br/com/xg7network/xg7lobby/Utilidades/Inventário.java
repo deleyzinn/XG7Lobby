@@ -25,12 +25,12 @@ public class Inventário implements Listener {
     @EventHandler
     public void onInventory(InventoryClickEvent e) {
         Player p = (Player) e.getWhoClicked();
-        if (cm.getConfig().getStringList("mundos-ativados").contains(p.getWorld().getName())) {
-            for (String Sinv : cm.getSeletor().getConfigurationSection("Inventarios").getKeys(false)) {
-                if (cm.getSeletor().getConfigurationSection("Inventarios." + Sinv + ".Itens") != null) {
-                    for (String itens : cm.getSeletor().getConfigurationSection("Inventarios." + Sinv + ".Itens").getKeys(false)) {
+        for (String Sinv : cm.getSeletor().getConfigurationSection("Inventarios").getKeys(false)) {
+            if (cm.getSeletor().getConfigurationSection("Inventarios." + Sinv + ".Itens") != null) {
+                for (String itens : cm.getSeletor().getConfigurationSection("Inventarios." + Sinv + ".Itens").getKeys(false)) {
+                    if (e.getCurrentItem() != null) {
                         if (!itens.equals("default")) {
-                            ItemStack item = new ItemStack(Material.valueOf(cm.getSeletor().getString("Inventarios." + Sinv + ".Itens." + itens + ".item")));
+                            ItemStack item = new ItemStack(Material.valueOf(cm.getSeletor().getString("Inventarios." + Sinv + ".Itens." + itens + ".item")), cm.getSeletor().getInt("Inventarios." + Sinv + ".Itens." + itens + ".quantidade"));
                             ItemMeta meta = item.getItemMeta();
                             meta.setDisplayName(cm.getSeletor().getString("Inventarios." + Sinv + ".Itens." + itens + ".nome").replace("&", "§"));
                             List<String> lore = new ArrayList<>();
@@ -48,18 +48,33 @@ public class Inventário implements Listener {
 
                             item.setItemMeta(meta);
                             if (e.getCurrentItem().isSimilar(item)) {
-                                e.setCancelled(true);
                                 List<String> ações = cm.getSeletor().getStringList("Inventarios." + Sinv + ".Itens." + itens + ".acoes");
                                 ac.executar(ações, p);
+                                e.setCancelled(true);
+                                return;
+                            }
+                        } else {
+                            ItemStack item = new ItemStack(Material.valueOf(cm.getSeletor().getString("Inventarios." + Sinv + ".Itens.default.item")));
+                            ItemMeta meta = item.getItemMeta();
+                            meta.setDisplayName(" ");
+                            item.setItemMeta(meta);
+                            if (e.getCurrentItem().isSimilar(item)) {
+                                e.setCancelled(true);
+                                return;
                             }
                         }
                     }
                 }
             }
+
+        }
+
+        if (cm.getConfig().getStringList("mundos-ativados").contains(p.getWorld().getName()))  {
             if (p.hasPermission(PermissionType.ADMIN.getPerm())) {
                 e.setCancelled(!p.hasPermission(PermissionType.ADMIN.getPerm()));
             }
         }
+
     }
 
 }

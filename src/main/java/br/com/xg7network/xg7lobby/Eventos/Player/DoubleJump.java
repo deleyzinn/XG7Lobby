@@ -31,7 +31,7 @@ public class DoubleJump implements Listener {
                         voar.put(p.getUniqueId(), false);
                     }
                     if (e.isFlying() && !voar.get(p.getUniqueId())) {
-                        if (this.cooldown.asMap().containsKey(p.getUniqueId()) && (Long) this.cooldown.asMap().get(p.getUniqueId()) > System.currentTimeMillis()) {
+                        if (this.cooldown.asMap().containsKey(p.getUniqueId()) && this.cooldown.asMap().get(p.getUniqueId()) > System.currentTimeMillis()) {
                             long distancia = this.cooldown.asMap().get(p.getUniqueId()) - System.currentTimeMillis();
                             va.mandarMensagem(cm.getMessage().getString("eventos.no-cooldown").replace("[SEGUNDOS]", String.valueOf(TimeUnit.MILLISECONDS.toSeconds(distancia))), p);
                         } else {

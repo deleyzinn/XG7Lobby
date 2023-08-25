@@ -7,8 +7,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
-import java.util.Objects;
-
 public class VerifAction {
 
 
@@ -18,6 +16,7 @@ public class VerifAction {
                 s = PlaceholderAPI.setPlaceholders(p, s);
             }
             if (s.startsWith("[ACTION] ")) {
+                s = s.replace("[ACTION] ", "");
                 p.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(ChatColor.translateAlternateColorCodes('&', s)));
             } else {
                 p.sendMessage(ChatColor.translateAlternateColorCodes('&', s.replace("[PLAYER]", p.getName())));

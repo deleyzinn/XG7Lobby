@@ -252,7 +252,7 @@ public class Ações {
                                                     inv.setItem(i, item);
                                                 }
                                             } else {
-                                                ItemStack item = new ItemStack(Material.valueOf(cm.getSeletor().getString("Inventarios." + Sinv + ".Itens." + itens + ".item")));
+                                                ItemStack item = new ItemStack(Material.valueOf(cm.getSeletor().getString("Inventarios." + Sinv + ".Itens." + itens + ".item")), cm.getSeletor().getInt("Inventarios." + Sinv + ".Itens." + itens + ".quantidade"));
                                                 ItemMeta meta = item.getItemMeta();
                                                 meta.setDisplayName(cm.getSeletor().getString("Inventarios." + Sinv + ".Itens." + itens + ".nome").replace("&", "§"));
                                                 int slot = cm.getSeletor().getInt("Inventarios." + Sinv + ".Itens." + itens + ".slot") - 1;
@@ -304,7 +304,7 @@ public class Ações {
                                                     inv.setItem(i, item);
                                                 }
                                             } else {
-                                                ItemStack item = new ItemStack(Material.valueOf(cm.getSeletor().getString("Inventarios." + Sinv + ".Itens." + itens + ".item")));
+                                                ItemStack item = new ItemStack(Material.valueOf(cm.getSeletor().getString("Inventarios." + Sinv + ".Itens." + itens + ".item")), cm.getSeletor().getInt("Inventarios." + Sinv + ".Itens." + itens + ".quantidade"));
                                                 ItemMeta meta = item.getItemMeta();
                                                 meta.setDisplayName(cm.getSeletor().getString("Inventarios." + Sinv + ".Itens." + itens + ".nome").replace("&", "§"));
                                                 int slot = cm.getSeletor().getInt("Inventarios." + Sinv + ".Itens." + itens + ".slot") - 1;
@@ -352,7 +352,7 @@ public class Ações {
                                                 inv.setItem(i, item);
                                             }
                                         } else {
-                                            ItemStack item = new ItemStack(Material.valueOf(cm.getSeletor().getString("Inventarios." + Sinv + ".Itens." + itens + ".item")));
+                                            ItemStack item = new ItemStack(Material.valueOf(cm.getSeletor().getString("Inventarios." + Sinv + ".Itens." + itens + ".item")), cm.getSeletor().getInt("Inventarios." + Sinv + ".Itens." + itens + ".quantidade"));
                                             ItemMeta meta = item.getItemMeta();
                                             meta.setDisplayName(cm.getSeletor().getString("Inventarios." + Sinv + ".Itens." + itens + ".nome").replace("&", "§"));
                                             int slot = cm.getSeletor().getInt("Inventarios." + Sinv + ".Itens." + itens + ".slot") - 1;

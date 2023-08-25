@@ -4,8 +4,8 @@ import br.com.xg7network.xg7lobby.Comandos.Abrir;
 import br.com.xg7network.xg7lobby.Comandos.Lobby.Fly;
 import br.com.xg7network.xg7lobby.Comandos.Lobby.Lobby;
 import br.com.xg7network.xg7lobby.Comandos.Lobby.Setlobby;
+import br.com.xg7network.xg7lobby.Comandos.Lobby.Vanish;
 import br.com.xg7network.xg7lobby.Comandos.Moderação.*;
-import br.com.xg7network.xg7lobby.Comandos.Reload.ReloadCommand;
 import br.com.xg7network.xg7lobby.Comandos.Reload.ReloadConfigCommand;
 import br.com.xg7network.xg7lobby.Configs.ConfigManager;
 import br.com.xg7network.xg7lobby.Eventos.Lauchpad;
@@ -17,6 +17,7 @@ import br.com.xg7network.xg7lobby.Modulo.ModuleManager;
 import br.com.xg7network.xg7lobby.Modulo.Mundo.*;
 import br.com.xg7network.xg7lobby.Modulo.Scores.ScoreBoard;
 import br.com.xg7network.xg7lobby.Modulo.Scores.Tablist;
+import br.com.xg7network.xg7lobby.Modulo.Seletores.HotbarManager;
 import br.com.xg7network.xg7lobby.Utilidades.Ações;
 import br.com.xg7network.xg7lobby.Utilidades.Inventário;
 import br.com.xg7network.xg7lobby.Utilidades.VerifAction;
@@ -65,7 +66,6 @@ public final class XG7Lobby extends JavaPlugin {
 
         this.getServer().getConsoleSender().sendMessage(prefix + "Carregando comandos...");
         this.getCommand("xg7lobbyreloadconfig").setExecutor(new ReloadConfigCommand());
-        this.getCommand("xg7lobbyreload").setExecutor(new ReloadCommand(this));
         this.getCommand("xg7lobbysetlobby").setExecutor(new Setlobby(this));
         this.getCommand("xg7lobbylobby").setExecutor(new Lobby());
         this.getCommand("xg7lobbymute").setExecutor(new Mute(this));
@@ -80,6 +80,7 @@ public final class XG7Lobby extends JavaPlugin {
         this.getServer().getPluginManager().registerEvents(new Warn(this), this);
         this.getCommand("xg7lobbyfly").setExecutor(new Fly());
         this.getCommand("xg7lobbygui").setExecutor(new Abrir());
+        this.getCommand("xg7lobbyvanish").setExecutor(new Vanish(this));
 
         this.getServer().getConsoleSender().sendMessage(prefix + "Carregando eventos...");
         this.getServer().getPluginManager().registerEvents(new Inventário(), this);
@@ -106,6 +107,7 @@ public final class XG7Lobby extends JavaPlugin {
         this.getServer().getConsoleSender().sendMessage(prefix + "Carregando Módulo...");
         MM = new ModuleManager(this);
         MM.loadModules();
+        this.getServer().getPluginManager().registerEvents(new HotbarManager(this), this);
 
         this.getServer().getPluginManager().registerEvents(new ScoreBoard(this), this);
         this.getServer().getPluginManager().registerEvents(new Tablist(this), this);

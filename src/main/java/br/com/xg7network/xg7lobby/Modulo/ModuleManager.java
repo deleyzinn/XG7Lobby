@@ -5,6 +5,7 @@ import br.com.xg7network.xg7lobby.Modulo.Mundo.CancelDayCycle;
 import br.com.xg7network.xg7lobby.Modulo.Scores.BossBar;
 import br.com.xg7network.xg7lobby.Modulo.Scores.ScoreBoard;
 import br.com.xg7network.xg7lobby.Modulo.Scores.Tablist;
+import br.com.xg7network.xg7lobby.Modulo.Seletores.HotbarManager;
 import br.com.xg7network.xg7lobby.XG7Lobby;
 
 import java.util.ArrayList;
@@ -29,6 +30,8 @@ public class ModuleManager {
             modules.add(new Tablist(plugin));
             modules.add(new BossBar(plugin));
             modules.add(new Anuncios(plugin));
+
+            modules.add(new HotbarManager(plugin));
         for (Module module : modules) {
             module.onEnable();
         }

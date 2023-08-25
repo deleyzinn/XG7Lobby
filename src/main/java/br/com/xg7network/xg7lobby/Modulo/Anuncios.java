@@ -49,7 +49,7 @@ public class Anuncios extends Module {
 
                     posicao++;
 
-                    if (posicao > anuncio.size()) {
+                    if (posicao > anuncio.size() - 1) {
                         posicao = 0;
                     }
                 }

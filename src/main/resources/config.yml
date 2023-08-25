@@ -57,7 +57,7 @@
 #Lá no arquivo seletores.yml você pode criar um inventário
 #Modo de uso: [ABRIR] (id), [FECHAR]
 
-
+#[PLAYER] retorna ao player (caso você não estiver usando o PLACEHOLDERAPI)
 
 #[ABRIR] Abre um inventário
 #[FECHAR] Fecha um inventário
@@ -95,7 +95,7 @@ EventosDeEntrada:
     - "[MENSAGEM] &fSite: &9www.website.com"
     - "[MENSAGEM] &fYT: &4www.youtube.com"
     - "[MENSAGEM] "
-    - "[MENSAGEM] &5&oFeito por DaviXG7"
+    - "[MENSAGEM] &5&oPlugin feito por DaviXG7"
     - "[MENSAGEM] &8-------------------&7**&8------------------"
     - "[SOM] ENTITY_EXPERIENCE_ORB_PICKUP, 10.0, 0.0"
     - "[SUMMON] FIREWORK"
@@ -126,14 +126,20 @@ anuncios:
 
   anuncios:
     anuncio1:
-      - "&e&lANÚNCIO:"
+      - "&8------------------------------"
+      - "             &e&lANÚNCIO:"
       - "&9Esse plugin foi feito por &bDaviXG7"
+      - "&8------------------------------"
     anuncio2:
-      - "&e&lANÚNCIO:"
+      - "&8------------------------------"
+      - "             &e&lANÚNCIO:"
       - "&aAvalie o XG7Lobby em &e5 &bestrelas!"
+      - "&8------------------------------"
     anuncio3:
-      - "&e&lANÚNCIO:"
+      - "&8------------------------------"
+      - "             &e&lANÚNCIO:"
       - "&fVisite nosso site: &bwww.exemplo.com"
+      - "&8------------------------------"
 
 
 
@@ -222,12 +228,13 @@ scores:
 
     cabecalho:
       - "&9X&3G7&bLobby"
-      - "&7Feito por DaviXG7"
+      - "&7Seu rank: &r%luckperms_prefix%"
       - ""
 
     rodape:
       - ""
-      - "&9Visite nosso site: &bsite.com"
+      - "&9Visite nosso site: &bwww.site.com"
+      - "&5&oPlugin feito por DaviXG7"
 
   scoreboard:
 
@@ -238,10 +245,10 @@ scores:
     linhas:
       - " "
       - "&e&lJogador&f:"
-      - "&7Nome: &9%player_name%"
-      - "&7Rank: &r%luckperms_prefix%"
+      - "&fNome: &9%player_name%"
+      - "&fRank: &r[%luckperms_prefix%]"
       - "  "
-      - "&7Jogadores online: &a%server_online%"
+      - "&fJogadores online: &a%server_online%"
       - ""
       - "&8www.exemplo.com"
 

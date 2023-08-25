@@ -3,15 +3,23 @@
 #Precisa-se do PlaceHolderAPI para isso!
 
 #Cores:
-#&a - Verde      | &e - Amarelo               | &b - Ciano
-#&9 - Azul       | &1 - Azul escuro           | &f - Branco
-#&7 - Cinza      | &8 - Cinza-escuro          | &0 - Preto
-#&5 - Roxo       | &6 - Laranja               | &d - Rosa
-#&c - Vermelho   | &4 - Vermelho-escuro
+#&0 - Preto           | &9 - Azul
+#&1 - Azul escuro     | &b - Ciano
+#&2 - Verde escuro    | &9 - Azul
+#&3 - Ciano escuro    | &b - Ciano
+#&4 - Vermelho escuro | &c - Vermelho
+#&5 - Roxo            | &d - Rosa
+#&6 - Laranja         | &e - Amarelo
+#&7 - Cinza           | &f - Branco
 
 #Opções para as letras:
-#&l - Negrito    | &r - Reset para o original | &k - Aleatório
-#&n - Sublinhado | &o - Itálico               | &m - Riscado
+#&k - Aleatório | &n - Sublinhado
+#&l - Negrito   | &o - Itálico
+#&m - Traçado   | &r - Reset
+
+#Tudo isso vai funcionar somente no mundo do lobby!
+
+#[PLAYER] retorna ao player (caso você não estiver usando o PLACEHOLDERAPI)
 
 #Coloque [ACTION] no começo para mandar as mensagens em action bar!
 #Só funciona em +1.10
@@ -19,8 +27,11 @@
 comandos:
   permissão: "&cVocê não tem permissão para usar esse comando!"
 
-  aviso-lobby: "&cO lobby não foi colocado! Espere para um adm para colocar."
-  aviso-lobby-adm: "&cO lobby não foi colocado! Digite &7/&esetlobby &c para colocar!"
+  aviso-lobby: "&cO lobby ainda ão está disponível! Espere para um adm para colocar."
+  aviso-lobby-adm: "&cO lobby não foi posicionado! Digite &7/&esetlobby &c para posicionar!"
+
+  fly-ativado: "&aSeu fly foi ativado!"
+  fly-desativado: "&cSey fly foi desativado!"
 
 eventos:
 
@@ -31,6 +42,10 @@ eventos:
   permissão-quebrar: "&cVocê não tem permissão para quebrar blocos!"
   permissão-atacar: "&cVocê não permissão para atacar!"
 
-  quando-mutado: "&cVocê foi silenciado! Por favor não quebre as regras"
+  quando-mutado: "&cVocê foi silenciado por um administrador! Por favor não quebre as regras!"
   no-mute: "&cVocê não consegue enviar mensagens. Você está silenciado!"
 
+  no-cooldown: "&cVocê precisa esperar &a[SEGUNDOS] &csegundos para usar isso de novo!"
+
+  EJ-esconder: "&aVocê escondeu os jogadores!"
+  EJ-mostrar: "&cVocê mostrou os jogadoes novamente!"
