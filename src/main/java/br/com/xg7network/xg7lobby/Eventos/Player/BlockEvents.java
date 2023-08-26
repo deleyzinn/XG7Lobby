@@ -20,9 +20,9 @@ public class BlockEvents implements Listener {
     @EventHandler
     public void onPlace(BlockPlaceEvent e) {
         Player p = e.getPlayer();
-        if (cm.getConfig().getStringList("mundos-ativados").contains(p.getWorld().getName())) {
+        if (cm.getConfig().getStringList("enabled-worlds").contains(p.getWorld().getName())) {
             if (!(p.hasPermission(PermissionType.BLOCOS_COLOCAR.getPerm()))) {
-                va.mandarMensagem(cm.getMessage().getString("eventos.permissão-colocar"), p);
+                va.mandarMensagem(cm.getMessage().getString("events.permission-place"), p);
                 e.setCancelled(true);
             }
         }
@@ -31,9 +31,9 @@ public class BlockEvents implements Listener {
     @EventHandler
     public void onBreak(BlockBreakEvent e) {
         Player p = e.getPlayer();
-        if (cm.getConfig().getStringList("mundos-ativados").contains(p.getWorld().getName())) {
+        if (cm.getConfig().getStringList("enabled-worlds").contains(p.getWorld().getName())) {
             if (!(p.hasPermission(PermissionType.BLOCOS_QUEBRAR.getPerm()))) {
-                va.mandarMensagem(cm.getMessage().getString("eventos.permissão-quebrar"), p);
+                va.mandarMensagem(cm.getMessage().getString("events.permission-break"), p);
                 e.setCancelled(true);
             }
         }
@@ -49,11 +49,11 @@ public class BlockEvents implements Listener {
                 Material blockType = clickedBlock.getType();
                 World world = clickedBlock.getWorld();
 
-                if (cm.getConfig().getStringList("mundos-ativados").contains(world.getName())) {
+                if (cm.getConfig().getStringList("enabled-worlds").contains(world.getName())) {
                     if (!(player.hasPermission(PermissionType.BLOCOS_INTERAGIR.getPerm()))
                             && blockType == Material.ANVIL || blockType == Material.HOPPER
                             || blockType == Material.DISPENSER || blockType == Material.DROPPER || blockType == Material.CHEST || blockType == Material.FURNACE) {
-                        va.mandarMensagem(cm.getMessage().getString("eventos.permissão-interagir"), player);
+                        va.mandarMensagem(cm.getMessage().getString("events.permission-interact"), player);
                         event.setCancelled(true);
                     }
                 }

@@ -16,9 +16,9 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
+import static br.com.xg7network.xg7lobby.XG7Lobby.ac;
+
 public class Abrir implements CommandExecutor {
-    public Abrir() {
-    }
 
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
 
@@ -26,10 +26,10 @@ public class Abrir implements CommandExecutor {
             Player p = (Player)commandSender;
             if (strings.length == 1) {
                 if (p.hasPermission(PermissionType.GUI_COMMAND.getPerm())) {
-                    String comando = "[ABRIR] " + strings[0];
-                    List<String> lista = new ArrayList();
+                    String comando = "[OPEN] " + strings[0];
+                    List<String> lista = new ArrayList<>();
                     lista.add(comando);
-                    XG7Lobby.ac.executar(lista, p);
+                    ac.executar(lista, p);
                 }
             } else {
                 commandSender.sendMessage(ChatColor.RED + "O jeito certo de usar o comando é " + ChatColor.YELLOW + "/" + ChatColor.GREEN + "gui <ID do inventário>");

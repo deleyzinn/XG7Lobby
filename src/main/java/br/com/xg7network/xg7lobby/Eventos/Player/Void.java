@@ -15,13 +15,13 @@ public class Void implements Listener {
     @EventHandler
     public void onMove(PlayerMoveEvent e) {
         Player p = e.getPlayer();
-        if (cm.getConfig().getStringList("mundos-ativados").contains(p.getWorld().getName())) {
+        if (cm.getConfig().getStringList("enabled-worlds").contains(p.getWorld().getName())) {
             if(Bukkit.getServer().getVersion().contains("1.18") || Bukkit.getServer().getVersion().contains("1.19") || Bukkit.getServer().getVersion().contains("1.20")) {
                 if (p.getLocation().getBlockY() <= -66) {
-                    if (cm.getData().getString("lobby.mundo") == null) {
+                    if (cm.getData().getString("lobby.world") == null) {
                         p.teleport(p.getWorld().getSpawnLocation());
                     } else {
-                        String lobbyWN = cm.getData().getString("lobby.mundo");
+                        String lobbyWN = cm.getData().getString("lobby.world");
                         if (lobbyWN != null) {
                             World w = Bukkit.getWorld(lobbyWN);
                             p.teleport(new Location(
@@ -38,10 +38,10 @@ public class Void implements Listener {
             } else {
                 if (p.getLocation().getBlockY() <= -2) {
 
-                    if (cm.getData().getString("lobby.mundo") == null) {
+                    if (cm.getData().getString("lobby.world") == null) {
                         p.teleport(p.getWorld().getSpawnLocation());
                     } else {
-                        String lobbyWN = cm.getData().getString("lobby.mundo");
+                        String lobbyWN = cm.getData().getString("lobby.world");
                         if (lobbyWN != null) {
                             World w = Bukkit.getWorld(lobbyWN);
                             p.teleport(new Location(

@@ -22,20 +22,20 @@ public class BossBar extends Module {
 
     @Override
     public void onEnable() {
-        String bossTitulo = ChatColor.translateAlternateColorCodes('&', cm.getConfig().getString("scores.bossbar.título"));
+        String bossTitulo = ChatColor.translateAlternateColorCodes('&', cm.getConfig().getString("scores.bossbar.title"));
         boss = Bukkit.createBossBar(bossTitulo,
-                BarColor.valueOf(cm.getConfig().getString("scores.bossbar.cor")),
-                BarStyle.valueOf(cm.getConfig().getString("scores.bossbar.estilo")));
+                BarColor.valueOf(cm.getConfig().getString("scores.bossbar.color")),
+                BarStyle.valueOf(cm.getConfig().getString("scores.bossbar.style")));
 
-        boss.setProgress(cm.getConfig().getDouble("scores.bossbar.progresso"));
+        boss.setProgress(cm.getConfig().getDouble("scores.bossbar.progress"));
 
 
 
         bossbar = Bukkit.getScheduler().runTaskTimer(this.getPlugin(), () -> {
             for (Player p : Bukkit.getOnlinePlayers()) {
 
-                if (cm.getConfig().getBoolean("scores.bossbar.ativado")) {
-                        if (cm.getConfig().getStringList("mundos-ativados").contains(p.getWorld().getName())) {
+                if (cm.getConfig().getBoolean("scores.bossbar.enabled")) {
+                        if (cm.getConfig().getStringList("enabled-worlds").contains(p.getWorld().getName())) {
                             boss.addPlayer(p);
                         } else {
                             boss.removePlayer(p);

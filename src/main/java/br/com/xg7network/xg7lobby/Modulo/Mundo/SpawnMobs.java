@@ -11,12 +11,12 @@ public class SpawnMobs implements Listener {
 
     @EventHandler
     public void onMobSpawn(CreatureSpawnEvent e) {
-        if  (cm.getConfig().getBoolean("MobSpawn")) {
-            if (cm.getConfig().getStringList("mundos-ativados").contains(e.getLocation().getWorld().getName())) {
+        if  (cm.getConfig().getBoolean("spawn-mobs")) {
+            if (cm.getConfig().getStringList("enabled-worlds").contains(e.getLocation().getWorld().getName())) {
                 e.setCancelled(false);
             }
-        } else if (!cm.getConfig().getBoolean("MobSpawn")) {
-            if (cm.getConfig().getStringList("mundos-ativados").contains(e.getLocation().getWorld().getName())) {
+        } else if (!cm.getConfig().getBoolean("spawn-mobs")) {
+            if (cm.getConfig().getStringList("enabled-worlds").contains(e.getLocation().getWorld().getName())) {
                 e.setCancelled(true);
             }
         }

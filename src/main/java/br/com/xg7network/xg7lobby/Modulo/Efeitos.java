@@ -20,10 +20,10 @@ public class Efeitos extends Module implements Listener {
     @Override
     public void onEnable() {
         Bukkit.getScheduler().runTaskTimer(getPlugin(), () -> {
-            for (String s : cm.getConfig().getStringList("Efeitos")) {
+            for (String s : cm.getConfig().getStringList("effects")) {
                 String[] e = s.split(", ");
                 for (Player p: Bukkit.getOnlinePlayers()) {
-                    if (cm.getConfig().getStringList("mundos-ativados").contains(p.getWorld().getName())) {
+                    if (cm.getConfig().getStringList("enabled-worlds").contains(p.getWorld().getName())) {
                         if (e[0] != null) {
                             PotionEffectType effect = PotionEffectType.getByName(e[0]);
                             p.addPotionEffect(new PotionEffect(effect, 20, Integer.valueOf(e[1]), false, false, false));
@@ -38,8 +38,8 @@ public class Efeitos extends Module implements Listener {
     @EventHandler
     public void onTeleport(PlayerTeleportEvent e) {
         Player p = e.getPlayer();
-        if (cm.getConfig().getStringList("mundos-ativados").contains(e.getTo().getWorld().getName())) {
-            for (String s : cm.getConfig().getStringList("Efeitos")) {
+        if (cm.getConfig().getStringList("enabled-worlds").contains(e.getTo().getWorld().getName())) {
+            for (String s : cm.getConfig().getStringList("effects")) {
                 String[] ef = s.split(", ");
                 PotionEffectType effect = PotionEffectType.getByName(ef[0]);
                 if (p.hasPotionEffect(effect)) {

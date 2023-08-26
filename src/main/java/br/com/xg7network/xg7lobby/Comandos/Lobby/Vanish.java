@@ -42,7 +42,7 @@ public class Vanish implements CommandExecutor {
                     for (Player target : Bukkit.getOnlinePlayers()) {
                         p.hidePlayer(target);
                     }
-                    va.mandarMensagem(cm.getMessage().getString("eventos.EJ-esconder"), p);
+                    va.mandarMensagem(cm.getMessage().getString("events.HD-hide"), p);
                     if (p.getInventory().contains(HbItens.getEJ(p).get(0))) {
                         for (ItemStack item : p.getInventory().getContents()) {
                             if (item != null) {
@@ -57,7 +57,7 @@ public class Vanish implements CommandExecutor {
                     for (Player target : Bukkit.getOnlinePlayers()) {
                         p.showPlayer(target);
                     }
-                    va.mandarMensagem(cm.getMessage().getString("eventos.EJ-mostrar"), p);
+                    va.mandarMensagem(cm.getMessage().getString("events.HD-show"), p);
                     if (p.getInventory().contains(HbItens.getEJ(p).get(1))) {
                         for (ItemStack item : p.getInventory().getContents()) {
                             if (item != null) {

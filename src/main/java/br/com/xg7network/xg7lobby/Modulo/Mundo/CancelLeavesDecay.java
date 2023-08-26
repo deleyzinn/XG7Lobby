@@ -11,8 +11,8 @@ public class CancelLeavesDecay implements Listener {
 
     @EventHandler
     public void onLeavesDecay(LeavesDecayEvent e) {
-        if (cm.getConfig().getStringList("mundos-ativados").contains(e.getBlock().getWorld().getName())) {
-            if (!cm.getConfig().getBoolean("FolhasCaindo")) {
+        if (cm.getConfig().getStringList("enabled-worlds").contains(e.getBlock().getWorld().getName())) {
+            if (!cm.getConfig().getBoolean("leaves-decay")) {
                 e.setCancelled(true);
             }
         }

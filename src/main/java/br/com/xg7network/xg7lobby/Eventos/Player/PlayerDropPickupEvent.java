@@ -17,11 +17,11 @@ public class PlayerDropPickupEvent implements Listener {
     @EventHandler
     public void PlayerDropEvent(PlayerDropItemEvent e) {
         Player p = e.getPlayer();
-        if (cm.getConfig().getStringList("mundos-ativados").contains(p.getWorld().getName())) {
-            if (!cm.getConfig().getBoolean("JogarItens")) {
+        if (cm.getConfig().getStringList("enabled-worlds").contains(p.getWorld().getName())) {
+            if (!cm.getConfig().getBoolean("drop-items")) {
                 if (!(p.hasPermission(PermissionType.ITENS_JOGAR.getPerm()))) {
                     e.setCancelled(true);
-                    va.mandarMensagem(cm.getMessage().getString("eventos.permissão-jogar"), p);
+                    va.mandarMensagem(cm.getMessage().getString("events.permission-drop"), p);
                 }
             }
         }
@@ -31,11 +31,11 @@ public class PlayerDropPickupEvent implements Listener {
     public void PlayerPickupEvent (EntityPickupItemEvent e) {
         if (e.getEntity() instanceof Player) {
             Player p = (Player) e.getEntity();
-            if (cm.getConfig().getStringList("mundos-ativados").contains(p.getWorld().getName())) {
-                if (cm.getConfig().getBoolean("PegarItens")) {
+            if (cm.getConfig().getStringList("enabled-worlds").contains(p.getWorld().getName())) {
+                if (cm.getConfig().getBoolean("pickup-items")) {
                     if (!(p.hasPermission(PermissionType.ITENS_PEGAR.getPerm()))) {
                         e.setCancelled(true);
-                        va.mandarMensagem(cm.getMessage().getString("eventos.permissão-pegar"), p);
+                        va.mandarMensagem(cm.getMessage().getString("events.permission-pickup"), p);
                     }
                 }
             }

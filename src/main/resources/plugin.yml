@@ -1,5 +1,5 @@
 name: XG7Lobby
-version: 'BETA-0.6'
+version: 'BETA-0.7'
 main: br.com.xg7network.xg7lobby.XG7Lobby
 api-version: 1.13
 prefix: XG7 Lobby
@@ -76,16 +76,39 @@ commands:
     aliases: [7lvanish, vanish, xg7lvanish]
     usage: "/<command>"
 
+  xg7lobbygmc:
+    description: Muda o moodo do jogo para criativo
+    aliases: [7lgmc, gmc, xg7lgmc]
+    usage: "/<command> [Player]"
+
+  xg7lobbygms:
+    description: Muda o moodo do jogo para sobrevivência
+    aliases: [7lgms, gms, xg7lgms]
+    usage: "/<command> [Player]"
+
+  xg7lobbygma:
+    description: Muda o moodo do jogo para aventura
+    aliases: [7lgma, gma, xg7lgma]
+    usage: "/<command> [Player]"
+
+  xg7lobbygmsp:
+    description: Muda o moodo do jogo para espectador
+    aliases: [7lgmsp, gmsp, xg7lgmsp]
+    usage: "/<command> [Player]"
+
+
 permissions:
   xg7lobby.admin:
     default: op
     description: Administradores do plugin
     children:
       xg7lobby.command.*: true
-      xg7lobby.itens.*: true
-      xg7lobby.blocos.*: true
-      xg7lobby.atacar: true
+      xg7lobby.items.*: true
+      xg7lobby.blocks.*: true
+      xg7lobby.attack: true
       xg7lobby.doublejump: true
+      xg7lobby.chat.*: true
+      xg7lobby.gamemode.*: true
 
   xg7lobby.command.*:
     default: op
@@ -105,17 +128,34 @@ permissions:
       xg7lobby.command.gui: true
       xg7lobby.command.vanish: true
 
-  xg7lobby.itens.*:
+  xg7lobby.items.*:
     default: op
     description: Pode fazer de tudo com itens
     children:
-      xg7lobby.itens.pegar: true
-      xg7lobby.itens.jogar: true
+      xg7lobby.items.pickup: true
+      xg7lobby.items.drop: true
 
-  xg7lobby.blocos.*:
+  xg7lobby.blocks.*:
     default: op
     description: Pode fazer de tudo com itens
     children:
       xg7lobby.blocos.colocar: true
       xg7lobby.blocos.quebrar: true
       xg7lobby.blocos.interagir: true
+
+  xg7lobby.chat.*:
+    default: op
+    description: Permissões de chat
+    children:
+      xg7lobby.chat.badwords: true
+      xg7lobby.chat.commands: true
+
+  xg7lobby.gamemode.*:
+    default: op
+    description: Altera o modo de jogo
+    children:
+      xg7lobby.gamemode.creative: true
+      xg7lobby.gamemode.survival: true
+      xg7lobby.gamemode.adventure: true
+      xg7lobby.gamemode.spectator: true
+      xg7lobby.gamemode.others: true

@@ -7,7 +7,7 @@ public enum PermissionType {
     RELOAD_COMMAND("xg7lobby.command.reload"),
     FLY_COMMAND("xg7lobby.command.fly"),
     FLY_OTHER("xg7.command.flyother"),
-    GUI_COMMAND("xg7lobbycommand.GUI"),
+    GUI_COMMAND("xg7lobbycommand.gui"),
     MUTE_COMMAND("xg7lobby.command.mute"),
     UNMUTE_COMMAND("xg7lobby.command.unmute"),
     BAN_COMMAND("xg7lobby.command.ban"),
@@ -17,13 +17,22 @@ public enum PermissionType {
     WARN_COMMAND("xg7lobby.command.warn"),
 
     VANISH_COMMAND("xg7lobby.command.vanish"),
-    ITENS_JOGAR("xg7lobby.itens.jogar"),
-    ITENS_PEGAR("xg7lobby.itens.pegar"),
-    BLOCOS_INTERAGIR("xg7lobby.blocos.interagir"),
-    BLOCOS_QUEBRAR("xg7lobby.blocos.quebrar"),
-    BLOCOS_COLOCAR("xg7lobby.blocos.colocar"),
-    ATACAR("xg7lobby.atacar"),
-    DOUBLE_JUMP("xg7lobby.doublejump");
+    ITENS_JOGAR("xg7lobby.items.drop"),
+    ITENS_PEGAR("xg7lobby.items.pickup"),
+    BLOCOS_INTERAGIR("xg7lobby.blocks.interact"),
+    BLOCOS_QUEBRAR("xg7lobby.blocks.break"),
+    BLOCOS_COLOCAR("xg7lobby.blocks.place"),
+    ATACAR("xg7lobby.attack"),
+    DOUBLE_JUMP("xg7lobby.doublejump"),
+
+    CHAT_PALAVRAS("xg7lobby.chat.badwords"),
+    CHAT_COMANDOS("xg7lobby.chat.commands"),
+
+    GAMEMODE_CREATIVE("xg7lobby.gamemode.creative"),
+    GAMEMODE_SURVIVAL("xg7lobby.gamemode.survival"),
+    GAMEMODE_ADVENTURE("xg7lobby.gamemode.adventure"),
+    GAMEMODE_SPECTATOR("xg7lobby.gamemode.spectator"),
+    GAMEMODE_OTHERS("xg7lobby.gamemode.others");
 
 
 

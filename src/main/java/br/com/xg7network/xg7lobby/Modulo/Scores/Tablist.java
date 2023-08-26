@@ -31,8 +31,8 @@ public class Tablist extends Module implements Listener {
 
     List<String> getTablist(Player p) {
         List<String> s = new ArrayList<>();
-        String rodape = String.join("\n", cm.getConfig().getStringList("scores.tablist.rodape"));
-        String cabecalho = String.join("\n", cm.getConfig().getStringList("scores.tablist.cabecalho"));
+        String rodape = String.join("\n", cm.getConfig().getStringList("scores.tablist.footer"));
+        String cabecalho = String.join("\n", cm.getConfig().getStringList("scores.tablist.header"));
         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
             rodape = PlaceholderAPI.setPlaceholders(p, rodape);
             cabecalho = PlaceholderAPI.setPlaceholders(p, cabecalho);
@@ -56,8 +56,8 @@ public class Tablist extends Module implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
         Player p = e.getPlayer();
-        if (cm.getConfig().getBoolean("scores.tablist.ativado")) {
-            if (cm.getConfig().getStringList("mundos-ativados").contains(p.getWorld().getName())) {
+        if (cm.getConfig().getBoolean("scores.tablist.enabled")) {
+            if (cm.getConfig().getStringList("enabled-worlds").contains(p.getWorld().getName())) {
                 Bukkit.getScheduler().runTaskLater(getPlugin(), () -> colocarTablist(p), 5);
             }
         }
@@ -78,7 +78,7 @@ public class Tablist extends Module implements Listener {
 
 
         Bukkit.getScheduler().runTaskLater(this.getPlugin(), () -> {
-            if (cm.getConfig().getStringList("mundos-ativados").contains(to.getName())) {
+            if (cm.getConfig().getStringList("enabled-worlds").contains(to.getName())) {
                 this.colocarTablist(p);
             } else {
                 this.removerTablist(p);
@@ -89,7 +89,7 @@ public class Tablist extends Module implements Listener {
 
     void updateTablist(Player p) {
 
-        if (cm.getConfig().getStringList("mundos-ativados").contains(p.getWorld().getName())) {
+        if (cm.getConfig().getStringList("enabled-worlds").contains(p.getWorld().getName())) {
 
 
             List<String> tablist = this.getTablist(p);
@@ -103,14 +103,14 @@ public class Tablist extends Module implements Listener {
     public void onEnable() {
 
         for (Player p : Bukkit.getOnlinePlayers()) {
-            if (cm.getConfig().getBoolean("scores.tablist.ativado")) {
-                if (cm.getConfig().getStringList("mundos-ativados").contains(p.getWorld().getName())) {
+            if (cm.getConfig().getBoolean("scores.tablist.enabled")) {
+                if (cm.getConfig().getStringList("enabled-worlds").contains(p.getWorld().getName())) {
                     colocarTablist(p);
                 }
             }
             Bukkit.getScheduler().runTaskTimer(getPlugin(), () -> {
                 updateTablist(p);
-            }, 0, cm.getConfig().getInt("scores.atualizacao"));
+            }, 0, cm.getConfig().getInt("scores.update"));
         }
     }
 

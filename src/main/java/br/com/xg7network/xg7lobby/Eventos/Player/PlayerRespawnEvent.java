@@ -13,6 +13,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
+import static br.com.xg7network.xg7lobby.XG7Lobby.cm;
+
 public class PlayerRespawnEvent implements Listener {
     private XG7Lobby pl;
 
@@ -23,12 +25,12 @@ public class PlayerRespawnEvent implements Listener {
     @EventHandler
     public void onRespawn(org.bukkit.event.player.PlayerRespawnEvent e) {
         Player p = e.getPlayer();
-        if (XG7Lobby.cm.getConfig().getBoolean("tp-quando-morrer")) {
-            String s = XG7Lobby.cm.getData().getString("lobby.mundo");
+        if (cm.getConfig().getBoolean("tp-when-die")) {
+            String s = cm.getData().getString("lobby.world");
             Bukkit.getScheduler().runTaskLater(this.pl, () -> {
                 if (s != null) {
                     World w = Bukkit.getWorld(s);
-                    p.teleport(new Location(w, XG7Lobby.cm.getData().getDouble("lobby.x"), XG7Lobby.cm.getData().getDouble("lobby.y"), XG7Lobby.cm.getData().getDouble("lobby.z"), (float)XG7Lobby.cm.getData().getDouble("lobby.yaw"), (float)XG7Lobby.cm.getData().getDouble("lobby.pitch")));
+                    p.teleport(new Location(w, cm.getData().getDouble("lobby.x"), cm.getData().getDouble("lobby.y"), cm.getData().getDouble("lobby.z"), (float) cm.getData().getDouble("lobby.yaw"), (float) cm.getData().getDouble("lobby.pitch")));
                 } else {
                     p.teleport(p.getWorld().getSpawnLocation());
                 }

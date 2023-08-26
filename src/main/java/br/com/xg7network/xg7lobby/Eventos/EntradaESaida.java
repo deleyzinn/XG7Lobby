@@ -24,17 +24,17 @@ public class EntradaESaida implements Listener {
         Player p = e.getPlayer();
         e.setJoinMessage(null);
         p.setAllowFlight(true);
-        String mensagem = cm.getConfig().getString("MensagemDeEntrada").replace("[PLAYER]", e.getPlayer().getName());
+        String mensagem = cm.getConfig().getString("join-message").replace("[PLAYER]", e.getPlayer().getName());
         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
             mensagem = PlaceholderAPI.setPlaceholders(p, mensagem);
         }
         Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&', mensagem));
-        ac.executar(cm.getConfig().getStringList("EventosDeEntrada.acoes"), p);
-        if (cm.getConfig().getBoolean("tp-quando-entrar")) {
-            if (cm.getData().getString("lobby.mundo") == null) {
+        ac.executar(cm.getConfig().getStringList("join-events.actions"), p);
+        if (cm.getConfig().getBoolean("join-when-join")) {
+            if (cm.getData().getString("lobby.world") == null) {
                 p.teleport(p.getWorld().getSpawnLocation());
             } else {
-                String lobbyWN = cm.getData().getString("lobby.mundo");
+                String lobbyWN = cm.getData().getString("lobby.world");
                 if (lobbyWN != null) {
                     World w = Bukkit.getWorld(lobbyWN);
                     p.teleport(new Location(
@@ -54,7 +54,7 @@ public class EntradaESaida implements Listener {
     public void onLeave(PlayerQuitEvent e) {
         e.setQuitMessage(null);
         Player p = e.getPlayer();
-        String mensagem = cm.getConfig().getString("MensagemDeSaida").replace("[PLAYER]", e.getPlayer().getName());
+        String mensagem = cm.getConfig().getString("leave-message").replace("[PLAYER]", e.getPlayer().getName());
         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
             mensagem = PlaceholderAPI.setPlaceholders(p, mensagem);
         }

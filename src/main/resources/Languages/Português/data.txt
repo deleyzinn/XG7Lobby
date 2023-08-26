@@ -9,7 +9,7 @@ lobby:
 muteds:
 
 
-#Leave -1 for no kick or no ban
+#Deixe -1 para nenhum kick ou ban
 warns-to-kick: 3
 warns-to-ban: 5
 

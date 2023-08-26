@@ -12,8 +12,8 @@ public class PlayerHungerEvent implements Listener {
     @EventHandler
     public void onHunger(FoodLevelChangeEvent e) {
         Player p = (Player) e.getEntity();
-        if (cm.getConfig().getStringList("mundos-ativados").contains(p.getWorld().getName())) {
-            if (cm.getConfig().getBoolean("PerderPontosDeComida")) {
+        if (cm.getConfig().getStringList("enabled-worlds").contains(p.getWorld().getName())) {
+            if (cm.getConfig().getBoolean("hunger-loss")) {
                 ((Player) e.getEntity()).setFoodLevel(20);
             }
         }

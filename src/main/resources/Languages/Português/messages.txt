@@ -1,0 +1,71 @@
+#Usar %player_name% para substituir o nome do jogador
+#Você precisa da PlaceHolderAPI para isso!
+
+#Colors:
+#&0 - Preto           | &8 - Cinza escuro
+#&1 - Azul escuro     | &9 - Azul
+#&2 - Verde escuro    | &a - Verde
+#&3 - Ciano escuro    | &b - Ciano
+#&4 - Vermelho escuro | &c - Vermelho
+#&5 - Roxo            | &d - Rosa
+#&6 - Laranja         | &e - Amarelo
+#&7 - Cinza           | &f - Branco
+
+#Opções de letras:
+#&k - Aleatório    | &n - UnderLine
+#&l - Negrito      | &o - Itálico
+#&m - Traçado      | &r - Reset
+
+#Tudo isso só funcionará no mundo do lobby!
+
+#[PLAYER] retorna ao player (se você não estiver usando o PlaceHolder API)
+
+#Coloque [ACTION] no começo das mensagens para mandar uma actionbar
+#Só funciona em +1.10.
+
+commands:
+
+  #Todos as mensagens de SEM permissão
+  permission: "&cVocê não tem permissão para usar esse comando!"
+
+  #Aviso de lobby
+  lobby-warn: "&cO lobby ainda ão está disponível! Espere para um adm para colocar."
+  adm-lobby-warn: "&cO lobby não foi posicionado! Digite &7/&esetlobby &c para posicionar!"
+
+  #Mensagens de fly
+  fly-enabled: "&aSeu fly foi ativado!"
+  fly-disabled: "&cSey fly foi desativado!"
+
+  #Mensagens de modo de jogo
+  gamemode-player: "&7Seu modo de jogo foi alterado para &b[MODODEJOGO]"
+  gamemode-target: "&7Você mudou o modo de jogo de &b[PLAYERG] &7para &b[MODODEJOGO]"
+
+  #Use [WARNS] para retornar a quantidade de warns
+  warn-kick: "&cVocê recebeu &b[WARNS] &c warns. Por favor não quebre as regras!"
+  warn-ban: "&cVocê foi banido por receber muitos avisos para não quebrar as regras!"
+
+events:
+
+  #Mensagens de SEM permissão
+  permission-drop: "&cVocê não tem permissão para jogar itens!"
+  permission-pickup: "&cVocê não tem permissão para pegar itens!"
+  permission-interact: "&cVocê não tem permissão para interagir com blocos!"
+  permission-place: "&cVocê não tem permissão para colocar blocos!"
+  permission-break: "&cVocê não tem permissão para quebrar blocos!"
+  permission-attack: "&cVocê não permissão para atacar!"
+
+  #Mensagens de mute
+  when-muted: "&cVocê foi silenciado por um administrador! Por favor não quebre as regras!"
+  on-mute: "&cVocê não consegue enviar mensagens. Você está silenciado!"
+
+  #Mensagens de cooldown
+  #Use [SECONDS] para retornar o cooldown
+  on-cooldown: "&cVocê precisa esperar &a[SECONDS] &csegundos para usar isso de novo!"
+
+  #Mensagens de item de esconder jogadores
+  HD-hide: "&aVocê escondeu os jogadores!"
+  HD-show: "&cVocê mostrou os jogadoes novamente!"
+
+  #Mensagens de chat
+  badword: "&cVocê não pode digitar essa palavra no chat!"
+  command-blocked: "&cVocê não pode digitar esse comando!"

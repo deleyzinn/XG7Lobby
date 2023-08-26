@@ -1,6 +1,10 @@
 package br.com.xg7network.xg7lobby;
 
 import br.com.xg7network.xg7lobby.Comandos.Abrir;
+import br.com.xg7network.xg7lobby.Comandos.Gamemode.Adventure;
+import br.com.xg7network.xg7lobby.Comandos.Gamemode.Creative;
+import br.com.xg7network.xg7lobby.Comandos.Gamemode.Spectator;
+import br.com.xg7network.xg7lobby.Comandos.Gamemode.Survival;
 import br.com.xg7network.xg7lobby.Comandos.Lobby.Fly;
 import br.com.xg7network.xg7lobby.Comandos.Lobby.Lobby;
 import br.com.xg7network.xg7lobby.Comandos.Lobby.Setlobby;
@@ -8,6 +12,7 @@ import br.com.xg7network.xg7lobby.Comandos.Lobby.Vanish;
 import br.com.xg7network.xg7lobby.Comandos.Moderação.*;
 import br.com.xg7network.xg7lobby.Comandos.Reload.ReloadConfigCommand;
 import br.com.xg7network.xg7lobby.Configs.ConfigManager;
+import br.com.xg7network.xg7lobby.Eventos.Chat;
 import br.com.xg7network.xg7lobby.Eventos.Lauchpad;
 import br.com.xg7network.xg7lobby.Eventos.EntradaESaida;
 import br.com.xg7network.xg7lobby.Eventos.PingEvent;
@@ -39,7 +44,7 @@ public final class XG7Lobby extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        this.getServer().getConsoleSender().sendMessage(prefix + "Carregando...");
+        this.getServer().getConsoleSender().sendMessage(prefix + "Loading...");
         this.getServer().getConsoleSender().sendMessage(ChatColor.BLUE + "__   __  ___   ______     " + ChatColor.DARK_AQUA + "_       ____    ____ " + ChatColor.AQUA + "  ____ __   __");
         this.getServer().getConsoleSender().sendMessage(ChatColor.BLUE + "\\ \\ / / / __| |___   /   " + ChatColor.DARK_AQUA + "| |     / __ \\  | __ ) " + ChatColor.AQUA + "| __ )\\ \\ / /");
         this.getServer().getConsoleSender().sendMessage(ChatColor.BLUE + " \\ v / | |  _     / /    " + ChatColor.DARK_AQUA + "| |    | | | |  | \\ \\\\" + ChatColor.AQUA + " | \\ \\\\ \\ V /");
@@ -49,22 +54,22 @@ public final class XG7Lobby extends JavaPlugin {
         try {
             Class.forName("org.spigotmc.SpigotConfig");
         } catch (ClassNotFoundException var4) {
-            this.getServer().getConsoleSender().sendMessage("                       SPIGOT NÃO DETECTADO                    ");
-            this.getServer().getConsoleSender().sendMessage("ESTE PLUGIN PRECISA DO SPIGOT PARA FUNCIONAR!                  ");
-            this.getServer().getConsoleSender().sendMessage("BAIXE AQUI: https://www.spigotmc.org/wiki/spigot-installation/.");
-            this.getServer().getConsoleSender().sendMessage("O PLUGIN IRÁ DESLIGAR!                                         ");
+            this.getServer().getConsoleSender().sendMessage("                       SPIGOT NOT DETECTED                     ");
+            this.getServer().getConsoleSender().sendMessage("THIS PLUGIN NEEDS SPIGOT TO WORK!                              ");
+            this.getServer().getConsoleSender().sendMessage("DOWNLOAD HERE: https://www.spigotmc.org/wiki/spigot-installation/.");
+            this.getServer().getConsoleSender().sendMessage("THE PLUGIN WILL DISABLE!                                         ");
             this.getPluginLoader().disablePlugin(this);
             return;
         }
 
-        this.getServer().getConsoleSender().sendMessage(prefix + "Carregando arquivos de configuração...");
+        this.getServer().getConsoleSender().sendMessage(prefix + "Loading config file...");
         cm = new ConfigManager(this);
         cm.loadAll();
         ac = new Ações(this);
         va = new VerifAction();
 
 
-        this.getServer().getConsoleSender().sendMessage(prefix + "Carregando comandos...");
+        this.getServer().getConsoleSender().sendMessage(prefix + "Loading commands...");
         this.getCommand("xg7lobbyreloadconfig").setExecutor(new ReloadConfigCommand());
         this.getCommand("xg7lobbysetlobby").setExecutor(new Setlobby(this));
         this.getCommand("xg7lobbylobby").setExecutor(new Lobby());
@@ -81,8 +86,12 @@ public final class XG7Lobby extends JavaPlugin {
         this.getCommand("xg7lobbyfly").setExecutor(new Fly());
         this.getCommand("xg7lobbygui").setExecutor(new Abrir());
         this.getCommand("xg7lobbyvanish").setExecutor(new Vanish(this));
+        this.getCommand("xg7lobbygmc").setExecutor(new Creative());
+        this.getCommand("xg7lobbygms").setExecutor(new Survival());
+        this.getCommand("xg7lobbygma").setExecutor(new Adventure());
+        this.getCommand("xg7lobbygmsp").setExecutor(new Spectator());
 
-        this.getServer().getConsoleSender().sendMessage(prefix + "Carregando eventos...");
+        this.getServer().getConsoleSender().sendMessage(prefix + "Loading Events...");
         this.getServer().getPluginManager().registerEvents(new Inventário(), this);
         this.getServer().getPluginManager().registerEvents(new EntradaESaida(), this);
         this.getServer().getPluginManager().registerEvents(new Lauchpad(), this);
@@ -104,7 +113,9 @@ public final class XG7Lobby extends JavaPlugin {
         this.getServer().getPluginManager().registerEvents(new CancelBlockBurn(), this);
         this.getServer().getPluginManager().registerEvents(new WeatherEvent(), this);
 
-        this.getServer().getConsoleSender().sendMessage(prefix + "Carregando Módulo...");
+        this.getServer().getPluginManager().registerEvents(new Chat(), this);
+
+        this.getServer().getConsoleSender().sendMessage(prefix + "Loading Module...");
         MM = new ModuleManager(this);
         MM.loadModules();
         this.getServer().getPluginManager().registerEvents(new HotbarManager(this), this);
@@ -114,14 +125,14 @@ public final class XG7Lobby extends JavaPlugin {
 
 
 
-        this.getServer().getConsoleSender().sendMessage(prefix + "Carregado!");
+        this.getServer().getConsoleSender().sendMessage(prefix + "Loaded!");
 
 
     }
 
     @Override
     public void onDisable() {
-        this.getServer().getConsoleSender().sendMessage(prefix + "Desligando...");
+        this.getServer().getConsoleSender().sendMessage(prefix + "Disabling...");
         cm.saveAll();
         MM.unloadModules();
 

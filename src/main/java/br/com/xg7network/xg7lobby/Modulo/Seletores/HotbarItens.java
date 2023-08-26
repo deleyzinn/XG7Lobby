@@ -20,12 +20,12 @@ import static br.com.xg7network.xg7lobby.XG7Lobby.cm;
 public class HotbarItens {
     public List<ItemStack> getItens(Player p) {
         List<ItemStack> itens = new ArrayList<>();
-        for (String s : cm.getSeletor().getConfigurationSection("Seletores.Seletores").getKeys(false)) {
-            ItemStack item = new ItemStack(Material.valueOf(cm.getSeletor().getString("Seletores.Seletores." + s + ".item")), cm.getSeletor().getInt("Seletores.Seletores." + s + ".quantidade"));
+        for (String s : cm.getSeletor().getConfigurationSection("selectors.selectors").getKeys(false)) {
+            ItemStack item = new ItemStack(Material.valueOf(cm.getSeletor().getString("selectors.selectors." + s + ".item")), cm.getSeletor().getInt("selectors.selectors." + s + ".amount"));
             ItemMeta meta = item.getItemMeta();
-            meta.setDisplayName(cm.getSeletor().getString("Seletores.Seletores." + s + ".nome").replace("&", "§"));
+            meta.setDisplayName(cm.getSeletor().getString("selectors.selectors." + s + ".name").replace("&", "§"));
             List<String> lore = new ArrayList<>();
-            for (String l : cm.getSeletor().getStringList("Seletores.Seletores." + s + ".lore")) {
+            for (String l : cm.getSeletor().getStringList("selectors.selectors." + s + ".lore")) {
                 if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
                     l = PlaceholderAPI.setPlaceholders(p, l);
                 }
@@ -33,7 +33,7 @@ public class HotbarItens {
                 lore.add(l);
             }
             meta.setLore(lore);
-            if (cm.getSeletor().getBoolean("Seletores.Seletores." + s + ".glow")) {
+            if (cm.getSeletor().getBoolean("selectors.selectors." + s + ".glow")) {
                 meta.addEnchant(Enchantment.DURABILITY, 0, true);
             }
 
@@ -45,23 +45,23 @@ public class HotbarItens {
 
     public List<List<String>> getAcoes() {
         List<List<String>> acoes = new ArrayList<>();
-        for (String s : cm.getSeletor().getConfigurationSection("Seletores.Seletores").getKeys(false)) {
-            acoes.add(cm.getSeletor().getStringList("Seletores.Seletores." + s + ".acoes"));
+        for (String s : cm.getSeletor().getConfigurationSection("selectors.selectors.").getKeys(false)) {
+            acoes.add(cm.getSeletor().getStringList("selectors.selectors." + s + ".actions"));
         }
         return acoes;
     }
 
     public List<ItemStack> getEJ(Player p) {
         List<ItemStack> itens = new ArrayList<>();
-        ItemStack itemA = new ItemStack(Material.valueOf(cm.getSeletor().getString("EsconderJogadores.Item.item-ativado")));
-        ItemStack itemD = new ItemStack(Material.valueOf(cm.getSeletor().getString("EsconderJogadores.Item.item-desativado")));
+        ItemStack itemA = new ItemStack(Material.valueOf(cm.getSeletor().getString("hide-players.Item.item-on")), cm.getSeletor().getInt("hide-players.Item.amount-on"));
+        ItemStack itemD = new ItemStack(Material.valueOf(cm.getSeletor().getString("hide-players.Item.item-off")), cm.getSeletor().getInt("hide-players.Item.amount-on"));
 
         ItemMeta metaA = itemA.getItemMeta();
         ItemMeta metaD = itemD.getItemMeta();
 
-        metaA.setDisplayName(cm.getSeletor().getString("EsconderJogadores.Item.nome-ativado").replace("&", "§"));
+        metaA.setDisplayName(cm.getSeletor().getString("hide-players.Item.name-on").replace("&", "§"));
         List<String> loreA = new ArrayList<>();
-        for (String l : cm.getSeletor().getStringList("EsconderJogadores.Item.lore-ativado")) {
+        for (String l : cm.getSeletor().getStringList("hide-players.Item.lore-on")) {
             if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
                 l = PlaceholderAPI.setPlaceholders(p, l);
             }
@@ -69,15 +69,15 @@ public class HotbarItens {
             loreA.add(l);
         }
         metaA.setLore(loreA);
-        if (cm.getSeletor().getBoolean("EsconderJogadores.Item.glow")) {
+        if (cm.getSeletor().getBoolean("hide-players.Item.glow")) {
             metaA.addEnchant(Enchantment.DURABILITY, 0, true);
         }
 
         itemA.setItemMeta(metaA);
 
-        metaD.setDisplayName(cm.getSeletor().getString("EsconderJogadores.Item.nome-desativado").replace("&", "§"));
+        metaD.setDisplayName(cm.getSeletor().getString("hide-players.Item.name-off").replace("&", "§"));
         List<String> loreB = new ArrayList<>();
-        for (String l : cm.getSeletor().getStringList("EsconderJogadores.Item.lore-desativado")) {
+        for (String l : cm.getSeletor().getStringList("hide-players.Item.lore-off")) {
             if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
                 l = PlaceholderAPI.setPlaceholders(p, l);
             }
@@ -85,7 +85,7 @@ public class HotbarItens {
             loreB.add(l);
         }
         metaD.setLore(loreB);
-        if (cm.getSeletor().getBoolean("EsconderJogadores.Item.glow")) {
+        if (cm.getSeletor().getBoolean("hide-players.Item.glow")) {
             metaD.addEnchant(Enchantment.DURABILITY, 0, true);
         }
         itemD.setItemMeta(metaD);
@@ -105,12 +105,12 @@ public class HotbarItens {
 
     }
     int getSlot(ItemStack item, Player p) {
-        for (String s : cm.getSeletor().getConfigurationSection("Seletores.Seletores").getKeys(false)) {
-            ItemStack Item = new ItemStack(Material.valueOf(cm.getSeletor().getString("Seletores.Seletores." + s + ".item")), cm.getSeletor().getInt("Seletores.Seletores." + s + ".quantidade"));
+        for (String s : cm.getSeletor().getConfigurationSection("selectors.selectors").getKeys(false)) {
+            ItemStack Item = new ItemStack(Material.valueOf(cm.getSeletor().getString("selectors.selectors." + s + ".item")), cm.getSeletor().getInt("selectors.selectors." + s + ".amount"));
             ItemMeta meta = Item.getItemMeta();
-            meta.setDisplayName(cm.getSeletor().getString("Seletores.Seletores." + s + ".nome").replace("&", "§"));
+            meta.setDisplayName(cm.getSeletor().getString("selectors.selectors." + s + ".name").replace("&", "§"));
             List<String> lore = new ArrayList<>();
-            for (String l : cm.getSeletor().getStringList("Seletores.Seletores." + s + ".lore")) {
+            for (String l : cm.getSeletor().getStringList("selectors.selectors." + s + ".lore")) {
                 if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
                     l = PlaceholderAPI.setPlaceholders(p, l);
                 }
@@ -118,14 +118,14 @@ public class HotbarItens {
                 lore.add(l);
             }
             meta.setLore(lore);
-            if (cm.getSeletor().getBoolean("Seletores.Seletores." + s + ".glow")) {
+            if (cm.getSeletor().getBoolean("selectors.selectors." + s + ".glow")) {
                 meta.addEnchant(Enchantment.DURABILITY, 0, true);
             }
 
             Item.setItemMeta(meta);
 
             if (Item.isSimilar(item)) {
-                return cm.getSeletor().getInt("Seletores.Seletores." + s + ".slot") - 1;
+                return cm.getSeletor().getInt("selectors.selectors." + s + ".slot") - 1;
             }
 
         }
@@ -143,8 +143,8 @@ public class HotbarItens {
     }
 
     public void colocarEJ(Player p) {
-        if (cm.getSeletor().getBoolean("EsconderJogadores.ativado")) {
-            p.getInventory().setItem(cm.getSeletor().getInt("EsconderJogadores.Item.slot") - 1, this.getEJ(p).get(0));
+        if (cm.getSeletor().getBoolean("hide-players.enabled")) {
+            p.getInventory().setItem(cm.getSeletor().getInt("hide-players.Item.slot") - 1, this.getEJ(p).get(0));
         }
     }
 

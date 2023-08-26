@@ -18,13 +18,11 @@ public class ConfigManager {
 
     public static FileConfiguration config = null;
     public static  FileConfiguration seletor = null;
-    public static  FileConfiguration score = null;
     public static FileConfiguration data = null;
     public static  FileConfiguration mensagem = null;
 
     public  static File Cfile = null;
     public  static File Dfile = null;
-    public  static File Scfile = null;
     public static  File Sefile = null;
     public static  File Mfile = null;
 
@@ -65,7 +63,7 @@ public class ConfigManager {
 
     public void reloadMessage() {
         if (this.Mfile == null) {
-            this.Mfile = new File(pl.getDataFolder(), "mensagens.yml");
+            this.Mfile = new File(pl.getDataFolder(), "messages.yml");
         }
         this.mensagem = YamlConfiguration.loadConfiguration(this.Mfile);
     }
@@ -81,7 +79,7 @@ public class ConfigManager {
         if (this.mensagem == null || this.Mfile == null)
             return;
         try {
-            this.getMessage().save("mensagens.yml");
+            this.getMessage().save("messages.yml");
         } catch (IOException e) {
             pl.getLogger().log(Level.SEVERE, "Não foi possível carregar o arquivo: " + this.Mfile, e);
         }
@@ -89,16 +87,16 @@ public class ConfigManager {
 
     public void loadMessage() {
         if (Mfile == null) {
-            Mfile = new File(pl.getDataFolder(), "mensagens.yml");
+            Mfile = new File(pl.getDataFolder(), "messages.yml");
         }
         if (!Mfile.exists()) {
-            pl.saveResource("mensagens.yml", false);
+            pl.saveResource("messages.yml", false);
         }
     }
 
     public void reloadSeletor() {
         if (this.Sefile == null) {
-            this.Sefile = new File(pl.getDataFolder(), "seletores.yml");
+            this.Sefile = new File(pl.getDataFolder(), "selectors.yml");
         }
         this.seletor = YamlConfiguration.loadConfiguration(this.Sefile);
     }
@@ -114,7 +112,7 @@ public class ConfigManager {
         if (this.seletor == null || this.Sefile == null)
             return;
         try {
-            this.getSeletor().save("seletores.yml");
+            this.getSeletor().save("selectors.yml");
         } catch (IOException e) {
             pl.getLogger().log(Level.SEVERE, "Não foi possível carregar o arquivo: " + this.Sefile, e);
         }
@@ -122,10 +120,10 @@ public class ConfigManager {
 
     public void loadSeletor() {
         if (Sefile == null) {
-            Sefile = new File(pl.getDataFolder(), "seletores.yml");
+            Sefile = new File(pl.getDataFolder(), "selectors.yml");
         }
         if (!Sefile.exists()) {
-            pl.saveResource("seletores.yml", false);
+            pl.saveResource("selectors.yml", false);
         }
     }
 

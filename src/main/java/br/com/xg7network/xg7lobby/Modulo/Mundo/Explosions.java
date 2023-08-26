@@ -12,7 +12,7 @@ public class Explosions implements Listener {
 
     @EventHandler
     public void onExplosion(EntityExplodeEvent e) {
-        if (cm.getConfig().getBoolean("CancelarExplosões") && cm.getConfig().getStringList("mundos-ativados").contains(e.getEntity().getWorld().getName())) {
+        if (cm.getConfig().getBoolean("cancel-explosions") && cm.getConfig().getStringList("enabled-worlds").contains(e.getEntity().getWorld().getName())) {
             e.setCancelled(true);
         }
 

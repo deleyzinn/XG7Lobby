@@ -33,218 +33,221 @@ public class Ações {
 
 
         for (String s : ação) {
-            if (s.startsWith("[MENSAGEM] ")) {
-                if (s.contains("[PERMISSAO] ")) {
-                    String[] s2 = s.split("\\[PERMISSAO\\] ");
+            if (s.startsWith("[MESSAGE] ")) {
+                if (s.contains("[PERMISSION] ")) {
+                    String[] s2 = s.split("\\[PERMISSION\\] ");
                     if (p.hasPermission(s2[1])) {
 
                         s = s.replace(s2[1], "");
-                        s = s.replace("[MENSAGEM] ", "");
-                        s = s.replace(" [PERMISSÃO] ", "");
+                        s = s.replace("[MESSAGE] ", "");
+                        s = s.replace(" [PERMISSION] ", "");
                         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
                             s = PlaceholderAPI.setPlaceholders(p, s);
                         }
                         p.sendMessage(ChatColor.translateAlternateColorCodes('&', s.replace("[PLAYER]", p.getName())));
                     }
-                } else if (s.contains("[!PERMISSÃO] ")) {
-                    String[] s2 = s.split("\\[!PERMISSAO\\] ");
+                } else if (s.contains("[!PERMISSION] ")) {
+                    String[] s2 = s.split("\\[!PERMISSION\\] ");
                     if (!p.hasPermission(s2[1])) {
                         s = s.replace(s2[1], "");
-                        s = s.replace("[MENSAGEM] ", "");
-                        s = s.replace(" [!PERMISSÃO] ", "");
+                        s = s.replace("[MESSAGE] ", "");
+                        s = s.replace(" [!PERMISSION] ", "");
                         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
                             s = PlaceholderAPI.setPlaceholders(p, s);
                         }
                         p.sendMessage(ChatColor.translateAlternateColorCodes('&', s.replace("[PLAYER]", p.getName())));
                     }
                 } else {
-                    s = s.replace("[MENSAGEM] ", "");
+                    s = s.replace("[MESSAGE] ", "");
                     if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
                         s = PlaceholderAPI.setPlaceholders(p, s);
                     }
                     p.sendMessage(ChatColor.translateAlternateColorCodes('&', s.replace("[PLAYER]", p.getName())));
                 }
-            } else if (s.startsWith("[COMANDO] ")) {
-                if (s.contains("[PERMISSAO] ")) {
-                    String[] s2 = s.split("\\[PERMISSAO\\] ");
+            } else if (s.startsWith("[COMMAND] ")) {
+                if (s.contains("[PERMISSION] ")) {
+                    String[] s2 = s.split("\\[PERMISSION\\] ");
                     if (p.hasPermission(s2[1])) {
                         s = s.replace(s2[1], "");
-                        s = s.replace("[MENSAGEM] ", "");
-                        s = s.replace(" [!PERMISSÃO] ", "");
+                        s = s.replace("[COMMAND] ", "");
+                        s = s.replace(" [PERMISSION] ", "");
                         p.performCommand(s);
                     }
-                } else if (s.contains("[!PERMISSÃO] ")) {
-                    String[] s2 = s.split("\\[!PERMISSAO\\] ");
+                } else if (s.contains("[!PERMISSION] ")) {
+                    String[] s2 = s.split("\\[!PERMISSION\\] ");
                     if (!p.hasPermission(s2[1])) {
                         s = s.replace(s2[1], "");
                         s = s.replace("[MENSAGEM] ", "");
-                        s = s.replace(" [!PERMISSÃO] ", "");
+                        s = s.replace(" [!PERMISSION] ", "");
                         p.performCommand(s);
                     }
                 } else {
-                    s = s.replace("[COMANDO] ", "");
+                    s = s.replace("[COMMAND] ", "");
                     p.performCommand(s);
                 }
             } else if (s.startsWith("[CONSOLE] ")) {
-                if (s.contains("[PERMISSAO] ")) {
-                    String[] s2 = s.split("\\[PERMISSAO\\] ");
+                if (s.contains("[PERMISSION] ")) {
+                    String[] s2 = s.split("\\[PERMISSION\\] ");
                     if (p.hasPermission(s2[1])) {
                         s = s.replace(s2[1], "");
                         s = s.replace("[CONSOLE] ", "");
-                        s = s.replace(" [!PERMISSÃO] ", "");
+                        s = s.replace(" [PERMISSION] ", "");
                         Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), s.replace("[PLAYER]", p.getName()));
                     }
-                } else if (s.contains("[!PERMISSÃO] ")) {
-                    String[] s2 = s.split("\\[!PERMISSAO\\] ");
+                } else if (s.contains("[!PERMISSION] ")) {
+                    String[] s2 = s.split("\\[!PERMISSION\\] ");
                     if (!p.hasPermission(s2[1])) {
                         s = s.replace(s2[1], "");
                         s = s.replace("[CONSOLE] ", "");
-                        s = s.replace(" [!PERMISSÃO] ", "");
+                        s = s.replace(" [!PERMISSION] ", "");
                         Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), s.replace("[PLAYER]", p.getName()));
                     }
                 } else {
                     s = s.replace("[CONSOLE] ", "");
                     Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), s.replace("[PLAYER]", p.getName()));
                 }
-            } else if (s.startsWith("[TITULO] ")) {
-                if (s.contains("[PERMISSAO] ")) {
-                    String[] s2 = s.split("\\[PERMISSAO\\] ");
+            } else if (s.startsWith("[TITLE] ")) {
+                if (s.contains("[PERMISSION] ")) {
+                    String[] s2 = s.split("\\[PERMISSION\\] ");
                     if (p.hasPermission(s2[1])) {
                         s = s.replace(s2[1], "");
-                        s = s.replace("[TITULO] ", "");
-                        s = s.replace(" [!PERMISSÃO] ", "");
+                        s = s.replace("[TITLE] ", "");
+                        s = s.replace(" [PERMISSION] ", "");
                         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
                             s = PlaceholderAPI.setPlaceholders(p, s);
                         }
                         p.sendTitle(ChatColor.translateAlternateColorCodes('&', s.replace("[PLAYER]", p.getName())), null);
                     }
-                } else if (s.contains("[!PERMISSÃO] ")) {
-                    String[] s2 = s.split("\\[!PERMISSAO\\] ");
+                } else if (s.contains("[!PERMISSION] ")) {
+                    String[] s2 = s.split("\\[!PERMISSION\\] ");
                     if (!p.hasPermission(s2[1])) {
                         s = s.replace(s2[1], "");
-                        s = s.replace("[TITULO] ", "");
-                        s = s.replace(" [!PERMISSÃO] ", "");
+                        s = s.replace("[TITLE] ", "");
+                        s = s.replace(" [!PERMISSION] ", "");
                         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
                             s = PlaceholderAPI.setPlaceholders(p, s);
                         }
                         p.sendTitle(ChatColor.translateAlternateColorCodes('&', s.replace("[PLAYER]", p.getName())), null);
                     }
                 } else {
-                    s = s.replace("[TITULO] ", "");
+                    s = s.replace("[TITLE] ", "");
                     if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
                         s = PlaceholderAPI.setPlaceholders(p, s);
                     }
                     p.sendTitle(ChatColor.translateAlternateColorCodes('&', s.replace("[PLAYER]", p.getName())), null);
                 }
             } else if (s.startsWith("[TIT&SUBTIT] ")) {
-                if (s.contains("[PERMISSAO] ")) {
-                    String[] s2 = s.split("\\[PERMISSAO\\] ");
+                if (s.contains("[PERMISSION] ")) {
+                    String[] s2 = s.split("\\[PERMISSION\\] ");
                     if (p.hasPermission(s2[1])) {
                         s = s.replace(s2[1], "");
                         s = s.replace("[TIT&SUBTIT] ", "");
-                        s = s.replace(" [!PERMISSÃO] ", "");
+                        s = s.replace(" [PERMISSION] ", "");
                         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
                             s = PlaceholderAPI.setPlaceholders(p, s);
                         }
                         String[] ac = s.split(" // ");
                         p.sendTitle(ChatColor.translateAlternateColorCodes('&', ac[0].replace("[PLAYER]", p.getName())), ChatColor.translateAlternateColorCodes('&', ac[1].replace("[PLAYER]", p.getName())));
                     }
-                } else if (s.contains("[!PERMISSÃO] ")) {
-                    String[] s2 = s.split("\\[!PERMISSAO\\] ");
+                } else if (s.contains("[!PERMISSION] ")) {
+                    String[] s2 = s.split("\\[!PERMISSION\\] ");
                     if (!p.hasPermission(s2[1])) {
                         s = s.replace(s2[1], "");
                         s = s.replace("[TIT&SUBTIT] ", "");
-                        s = s.replace(" [!PERMISSÃO] ", "");
+                        s = s.replace(" [!PERMISSION] ", "");
                         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
                             s = PlaceholderAPI.setPlaceholders(p, s);
                         }
                         String[] ac = s.split(" // ");
                         p.sendTitle(ChatColor.translateAlternateColorCodes('&', ac[0].replace("[PLAYER]", p.getName())), ChatColor.translateAlternateColorCodes('&', ac[1].replace("[PLAYER]", p.getName())));
                     }
+                } else {
+                    s = s.replace("[TIT&SUBTIT] ", "");
+                    if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
+                        s = PlaceholderAPI.setPlaceholders(p, s);
+                    }
+                    String[] ac = s.split(" // ");
+                    p.sendTitle(ChatColor.translateAlternateColorCodes('&', ac[0].replace("[PLAYER]", p.getName())), ChatColor.translateAlternateColorCodes('&', ac[1].replace("[PLAYER]", p.getName())));
                 }
-                s = s.replace("[TIT&SUBTIT] ", "");
-                String[] ac = s.split(" // ");
-                if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
-                    s = PlaceholderAPI.setPlaceholders(p, s);
-                }
-                p.sendTitle(ChatColor.translateAlternateColorCodes('&', ac[0].replace("[PLAYER]", p.getName())), ChatColor.translateAlternateColorCodes('&', ac[1].replace("[PLAYER]", p.getName())));
             } else if (s.startsWith("[BROADCAST] ")) {
-                if (s.contains("[PERMISSAO] ")) {
-                    String[] s2 = s.split("\\[PERMISSAO\\] ");
+                if (s.contains("[PERMISSION] ")) {
+                    String[] s2 = s.split("\\[PERMISSION\\] ");
                     if (p.hasPermission(s2[1])) {
                         s = s.replace(s2[1], "");
-                        s = s.replace(" [!PERMISSÃO] ", "");
+                        s = s.replace(" [PERMISSION] ", "");
                         s = s.replace("[BROADCAST] ", "");
                         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
                             s = PlaceholderAPI.setPlaceholders(p, s);
                         }
                         Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&', s.replace("[PLAYER]", p.getName())));
                     }
-                } else if (s.contains("[!PERMISSÃO] ")) {
-                    String[] s2 = s.split("\\[!PERMISSAO\\] ");
+                } else if (s.contains("[!PERMISSION] ")) {
+                    String[] s2 = s.split("\\[!PERMISSION\\] ");
                     if (!p.hasPermission(s2[1])) {
                         s = s.replace(s2[1], "");
-                        s = s.replace(" [!PERMISSÃO] ", "");
+                        s = s.replace(" [!PERMISSION] ", "");
                         s = s.replace("[BROADCAST] ", "");
                         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
                             s = PlaceholderAPI.setPlaceholders(p, s);
                         }
                         Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&', s.replace("[PLAYER]", p.getName())));
                     }
+                } else {
+                    s = s.replace("[BROADCAST] ", "");
+                    if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
+                        s = PlaceholderAPI.setPlaceholders(p, s);
+                    }
+                    Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&', s.replace("[PLAYER]", p.getName())));
                 }
-                s = s.replace("[BROADCAST] ", "");
-                if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
-                    s = PlaceholderAPI.setPlaceholders(p, s);
-                }
-                Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&', s.replace("[PLAYER]", p.getName())));
             } else if (s.startsWith("[SUMMON] ")) {
                 s = s.replace("[SUMMON] ", "");
                 p.getLocation().getWorld().spawnEntity(p.getLocation(), EntityType.valueOf(s));
 
-            } else if (s.startsWith("[SOM] ")) {
+            } else if (s.startsWith("[SOUND] ")) {
 
-                if (s.contains("[PERMISSAO] ")) {
-                    String[] s2 = s.split("\\[PERMISSAO\\] ");
+                if (s.contains("[PERMISSION] ")) {
+                    String[] s2 = s.split("\\[PERMISSION\\] ");
                     if (p.hasPermission(s2[1])) {
                         s = s.replace(s2[1], "");
-                        s = s.replace(" [!PERMISSÃO] ", "");
-                        s = s.replace("[SOM] ", "");
+                        s = s.replace(" [PERMISSION] ", "");
+                        s = s.replace("[SOUND] ", "");
                         String[] ac = s.split(", ");
                         p.getLocation().getWorld().playSound(p.getLocation(), Sound.valueOf(ac[0]), Float.parseFloat(ac[1]), Float.parseFloat(ac[2]));
                     }
-                } else if (s.contains("[!PERMISSÃO] ")) {
-                    String[] s2 = s.split("\\[!PERMISSAO\\] ");
+                } else if (s.contains("[!PERMISSION] ")) {
+                    String[] s2 = s.split("\\[!PERMISSION\\] ");
                     if (!p.hasPermission(s2[1])) {
                         s = s.replace(s2[1], "");
-                        s = s.replace(" [!PERMISSÃO] ", "");
-                        s = s.replace("[SOM] ", "");
+                        s = s.replace(" [!PERMISSION] ", "");
+                        s = s.replace("[SOUND] ", "");
                         String[] ac = s.split(", ");
                         p.getLocation().getWorld().playSound(p.getLocation(), Sound.valueOf(ac[0]), Float.parseFloat(ac[1]), Float.parseFloat(ac[2]));
                     }
+                } else {
+
+                    s = s.replace("[SOUND] ", "");
+                    String[] ac = s.split(", ");
+                    p.getLocation().getWorld().playSound(p.getLocation(), Sound.valueOf(ac[0]), Float.parseFloat(ac[1]), Float.parseFloat(ac[2]));
+
                 }
-
-                s = s.replace("[SOM] ", "");
-                String[] ac = s.split(", ");
-                p.getLocation().getWorld().playSound(p.getLocation(), Sound.valueOf(ac[0]), Float.parseFloat(ac[1]), Float.parseFloat(ac[2]));
-
-            } else if (s.startsWith("[ABRIR] ")) {
+            } else if (s.startsWith("[OPEN] ")) {
 
                 p.closeInventory();
-                if (s.contains("[PERMISSAO] ")) {
-                    String[] s2 = s.split("\\[PERMISSAO\\] ");
+                if (s.contains("[PERMISSION] ")) {
+                    String[] s2 = s.split("\\[PERMISSION\\] ");
                     if (p.hasPermission(s2[1])) {
                         s = s.replace(s2[1], "");
-                        s = s.replace("[ABRIR] ", "");
-                        s = s.replace(" [PERMISSAO] ", "");
-                        if (cm.getSeletor().getConfigurationSection("Inventarios") != null) {
-                            for (String Sinv : cm.getSeletor().getConfigurationSection("Inventarios").getKeys(false)) {
-                                if (Integer.parseInt(s) == cm.getSeletor().getInt("Inventarios." + Sinv + ".id")) {
-                                    Inventory inv = Bukkit.createInventory(p, cm.getSeletor().getInt("Inventarios." + Sinv + ".linhas") * 9, cm.getSeletor().getString("Inventarios." + Sinv + ".nome").replace("&", "§"));
+                        s = s.replace("[OPEN] ", "");
+                        s = s.replace(" [PERMISSION] ", "");
+                        if (cm.getSeletor().getConfigurationSection("inventories") != null) {
+                            for (String Sinv : cm.getSeletor().getConfigurationSection("inventories").getKeys(false)) {
+                                if (Integer.parseInt(s) == cm.getSeletor().getInt("inventories." + Sinv + ".id")) {
+                                    Inventory inv = Bukkit.createInventory(p, cm.getSeletor().getInt("inventories." + Sinv + ".lines") * 9, cm.getSeletor().getString("inventories." + Sinv + ".name").replace("&", "§"));
 
-                                    if (cm.getSeletor().getConfigurationSection("Inventarios." + Sinv + ".Itens") != null) {
-                                        for (String itens : cm.getSeletor().getConfigurationSection("Inventarios." + Sinv + ".Itens").getKeys(false)) {
+                                    if (cm.getSeletor().getConfigurationSection("inventories." + Sinv + ".items") != null) {
+                                        for (String itens : cm.getSeletor().getConfigurationSection("inventories." + Sinv + ".items").getKeys(false)) {
                                             if (itens.equals("default")) {
-                                                ItemStack item = new ItemStack(Material.valueOf(cm.getSeletor().getString("Inventarios." + Sinv + ".Itens.default.item")));
+                                                ItemStack item = new ItemStack(Material.valueOf(cm.getSeletor().getString("inventories." + Sinv + ".items.default.item")));
                                                 ItemMeta meta = item.getItemMeta();
                                                 meta.setDisplayName(" ");
                                                 item.setItemMeta(meta);
@@ -252,12 +255,11 @@ public class Ações {
                                                     inv.setItem(i, item);
                                                 }
                                             } else {
-                                                ItemStack item = new ItemStack(Material.valueOf(cm.getSeletor().getString("Inventarios." + Sinv + ".Itens." + itens + ".item")), cm.getSeletor().getInt("Inventarios." + Sinv + ".Itens." + itens + ".quantidade"));
+                                                ItemStack item = new ItemStack(Material.valueOf(cm.getSeletor().getString("inventories." + Sinv + ".items." + itens + ".item")), cm.getSeletor().getInt("inventories." + Sinv + ".items." + itens + ".amount"));
                                                 ItemMeta meta = item.getItemMeta();
-                                                meta.setDisplayName(cm.getSeletor().getString("Inventarios." + Sinv + ".Itens." + itens + ".nome").replace("&", "§"));
-                                                int slot = cm.getSeletor().getInt("Inventarios." + Sinv + ".Itens." + itens + ".slot") - 1;
+                                                meta.setDisplayName(cm.getSeletor().getString("inventories." + Sinv + ".items." + itens + ".name").replace("&", "§"));
                                                 List<String> lore = new ArrayList<>();
-                                                for (String l : cm.getSeletor().getStringList("Inventarios." + Sinv + ".Itens." + itens + ".lore")) {
+                                                for (String l : cm.getSeletor().getStringList("inventories." + Sinv + ".items." + itens + ".lore")) {
                                                     if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
                                                         l = PlaceholderAPI.setPlaceholders(p, l);
                                                     }
@@ -265,11 +267,13 @@ public class Ações {
                                                     lore.add(l);
                                                 }
                                                 meta.setLore(lore);
-                                                if (cm.getSeletor().getBoolean("Inventarios." + Sinv + ".Itens." + itens + ".glow")) {
+                                                if (cm.getSeletor().getBoolean("inventories." + Sinv + ".items." + itens + ".glow")) {
                                                     meta.addEnchant(Enchantment.DURABILITY, 0, true);
                                                 }
 
                                                 item.setItemMeta(meta);
+
+                                                int slot = cm.getSeletor().getInt("inventories." + Sinv + ".items." + itens + ".slot") - 1;
 
                                                 inv.setItem(slot, item);
                                             }
@@ -282,21 +286,21 @@ public class Ações {
                             }
                         }
                     }
-                } else if (s.contains("[!PERMISSAO] ")) {
-                    String[] s2 = s.split("\\[!PERMISSAO\\] ");
+                } else if (s.contains("[!PERMISSION] ")) {
+                    String[] s2 = s.split("\\[!PERMISSION\\] ");
                     if (!p.hasPermission(s2[1])) {
                         s = s.replace(s2[1], "");
-                        s = s.replace("[ABRIR] ", "");
-                        s = s.replace(" [!PERMISSAO] ", "");
-                        if (cm.getSeletor().getConfigurationSection("Inventarios") != null) {
-                            for (String Sinv : cm.getSeletor().getConfigurationSection("Inventarios").getKeys(false)) {
-                                if (Integer.parseInt(s) == cm.getSeletor().getInt("Inventarios." + Sinv + ".id")) {
-                                    Inventory inv = Bukkit.createInventory(p, cm.getSeletor().getInt("Inventarios." + Sinv + ".linhas") * 9, cm.getSeletor().getString("Inventarios." + Sinv + ".nome").replace("&", "§"));
+                        s = s.replace("[OPEN] ", "");
+                        s = s.replace(" [!PERMISSION] ", "");
+                        if (cm.getSeletor().getConfigurationSection("inventories") != null) {
+                            for (String Sinv : cm.getSeletor().getConfigurationSection("inventories").getKeys(false)) {
+                                if (Integer.parseInt(s) == cm.getSeletor().getInt("inventories." + Sinv + ".id")) {
+                                    Inventory inv = Bukkit.createInventory(p, cm.getSeletor().getInt("inventories." + Sinv + ".lines") * 9, cm.getSeletor().getString("inventories." + Sinv + ".name").replace("&", "§"));
 
-                                    if (cm.getSeletor().getConfigurationSection("Inventarios." + Sinv + ".Itens") != null) {
-                                        for (String itens : cm.getSeletor().getConfigurationSection("Inventarios." + Sinv + ".Itens").getKeys(false)) {
+                                    if (cm.getSeletor().getConfigurationSection("inventories." + Sinv + ".items") != null) {
+                                        for (String itens : cm.getSeletor().getConfigurationSection("inventories." + Sinv + ".items").getKeys(false)) {
                                             if (itens.equals("default")) {
-                                                ItemStack item = new ItemStack(Material.valueOf(cm.getSeletor().getString("Inventarios." + Sinv + ".Itens.default.item")));
+                                                ItemStack item = new ItemStack(Material.valueOf(cm.getSeletor().getString("inventories." + Sinv + ".items.default.item")));
                                                 ItemMeta meta = item.getItemMeta();
                                                 meta.setDisplayName(" ");
                                                 item.setItemMeta(meta);
@@ -304,12 +308,11 @@ public class Ações {
                                                     inv.setItem(i, item);
                                                 }
                                             } else {
-                                                ItemStack item = new ItemStack(Material.valueOf(cm.getSeletor().getString("Inventarios." + Sinv + ".Itens." + itens + ".item")), cm.getSeletor().getInt("Inventarios." + Sinv + ".Itens." + itens + ".quantidade"));
+                                                ItemStack item = new ItemStack(Material.valueOf(cm.getSeletor().getString("inventories." + Sinv + ".items." + itens + ".item")), cm.getSeletor().getInt("inventories." + Sinv + ".items." + itens + ".amount"));
                                                 ItemMeta meta = item.getItemMeta();
-                                                meta.setDisplayName(cm.getSeletor().getString("Inventarios." + Sinv + ".Itens." + itens + ".nome").replace("&", "§"));
-                                                int slot = cm.getSeletor().getInt("Inventarios." + Sinv + ".Itens." + itens + ".slot") - 1;
+                                                meta.setDisplayName(cm.getSeletor().getString("inventories." + Sinv + ".items." + itens + ".name").replace("&", "§"));
                                                 List<String> lore = new ArrayList<>();
-                                                for (String l : cm.getSeletor().getStringList("Inventarios." + Sinv + ".Itens." + itens + ".lore")) {
+                                                for (String l : cm.getSeletor().getStringList("inventories." + Sinv + ".items." + itens + ".lore")) {
                                                     if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
                                                         l = PlaceholderAPI.setPlaceholders(p, l);
                                                     }
@@ -317,11 +320,13 @@ public class Ações {
                                                     lore.add(l);
                                                 }
                                                 meta.setLore(lore);
-                                                if (cm.getSeletor().getBoolean("Inventarios." + Sinv + ".Itens." + itens + ".glow")) {
+                                                if (cm.getSeletor().getBoolean("inventories." + Sinv + ".items." + itens + ".glow")) {
                                                     meta.addEnchant(Enchantment.DURABILITY, 0, true);
                                                 }
 
                                                 item.setItemMeta(meta);
+
+                                                int slot = cm.getSeletor().getInt("inventories." + Sinv + ".items." + itens + ".slot") - 1;
 
                                                 inv.setItem(slot, item);
                                             }
@@ -335,16 +340,16 @@ public class Ações {
                         }
                     }
                 } else {
-                    s = s.replace("[ABRIR] ", "");
-                    if (cm.getSeletor().getConfigurationSection("Inventarios") != null) {
-                        for (String Sinv : cm.getSeletor().getConfigurationSection("Inventarios").getKeys(false)) {
-                            if (Integer.parseInt(s) == cm.getSeletor().getInt("Inventarios." + Sinv + ".id")) {
-                                Inventory inv = Bukkit.createInventory(p, cm.getSeletor().getInt("Inventarios." + Sinv + ".linhas") * 9, cm.getSeletor().getString("Inventarios." + Sinv + ".nome").replace("&", "§"));
+                    s = s.replace("[OPEN] ", "");
+                    if (cm.getSeletor().getConfigurationSection("inventories") != null) {
+                        for (String Sinv : cm.getSeletor().getConfigurationSection("inventories").getKeys(false)) {
+                            if (Integer.parseInt(s) == cm.getSeletor().getInt("inventories." + Sinv + ".id")) {
+                                Inventory inv = Bukkit.createInventory(p, cm.getSeletor().getInt("inventories." + Sinv + ".lines") * 9, cm.getSeletor().getString("inventories." + Sinv + ".name").replace("&", "§"));
 
-                                if (cm.getSeletor().getConfigurationSection("Inventarios." + Sinv + ".Itens") != null) {
-                                    for (String itens : cm.getSeletor().getConfigurationSection("Inventarios." + Sinv + ".Itens").getKeys(false)) {
+                                if (cm.getSeletor().getConfigurationSection("inventories." + Sinv + ".items") != null) {
+                                    for (String itens : cm.getSeletor().getConfigurationSection("inventories." + Sinv + ".items").getKeys(false)) {
                                         if (itens.equals("default")) {
-                                            ItemStack item = new ItemStack(Material.valueOf(cm.getSeletor().getString("Inventarios." + Sinv + ".Itens.default.item")));
+                                            ItemStack item = new ItemStack(Material.valueOf(cm.getSeletor().getString("inventories." + Sinv + ".items.default.item")));
                                             ItemMeta meta = item.getItemMeta();
                                             meta.setDisplayName(" ");
                                             item.setItemMeta(meta);
@@ -352,12 +357,11 @@ public class Ações {
                                                 inv.setItem(i, item);
                                             }
                                         } else {
-                                            ItemStack item = new ItemStack(Material.valueOf(cm.getSeletor().getString("Inventarios." + Sinv + ".Itens." + itens + ".item")), cm.getSeletor().getInt("Inventarios." + Sinv + ".Itens." + itens + ".quantidade"));
+                                            ItemStack item = new ItemStack(Material.valueOf(cm.getSeletor().getString("inventories." + Sinv + ".items." + itens + ".item")), cm.getSeletor().getInt("inventories." + Sinv + ".items." + itens + ".amount"));
                                             ItemMeta meta = item.getItemMeta();
-                                            meta.setDisplayName(cm.getSeletor().getString("Inventarios." + Sinv + ".Itens." + itens + ".nome").replace("&", "§"));
-                                            int slot = cm.getSeletor().getInt("Inventarios." + Sinv + ".Itens." + itens + ".slot") - 1;
+                                            meta.setDisplayName(cm.getSeletor().getString("inventories." + Sinv + ".items." + itens + ".name").replace("&", "§"));
                                             List<String> lore = new ArrayList<>();
-                                            for (String l : cm.getSeletor().getStringList("Inventarios." + Sinv + ".Itens." + itens + ".lore")) {
+                                            for (String l : cm.getSeletor().getStringList("inventories." + Sinv + ".items." + itens + ".lore")) {
                                                 if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
                                                     l = PlaceholderAPI.setPlaceholders(p, l);
                                                 }
@@ -365,11 +369,13 @@ public class Ações {
                                                 lore.add(l);
                                             }
                                             meta.setLore(lore);
-                                            if (cm.getSeletor().getBoolean("Inventarios." + Sinv + ".Itens." + itens + ".glow")) {
+                                            if (cm.getSeletor().getBoolean("inventories." + Sinv + ".items." + itens + ".glow")) {
                                                 meta.addEnchant(Enchantment.DURABILITY, 0, true);
                                             }
 
                                             item.setItemMeta(meta);
+
+                                            int slot = cm.getSeletor().getInt("inventories." + Sinv + ".items." + itens + ".slot") - 1;
 
                                             inv.setItem(slot, item);
                                         }
@@ -378,46 +384,44 @@ public class Ações {
                                 Bukkit.getScheduler().runTaskLater(pl, () -> p.openInventory(inv), 5);
 
                             }
+
                         }
                     }
                 }
-            } else if (s.startsWith("[FECHAR]")) {
-
+            } else if (s.startsWith("[CLOSE]")) {
                 p.closeInventory();
             } else if (s.startsWith("[FLY]")) {
-                if (s.contains("[PERMISSAO] ")) {
-                    String[] s2 = s.split("\\[PERMISSAO\\] ");
+                if (s.contains("[PERMISSION] ")) {
+                    String[] s2 = s.split("\\[PERMISSION\\] ");
                     if (p.hasPermission(s2[0])) {
                         if (!voar.containsKey(p.getUniqueId())) {
                             voar.put(p.getUniqueId(), false);
                         }
-                            if (voar.get(p.getUniqueId())) {
-                                voar.put(p.getUniqueId(), false);
-                                p.setFlying(false);
-                                va.mandarMensagem(cm.getMessage().getString("comandos.fly-desativado"), p);
-                            } else {
-                                voar.put(p.getUniqueId(), true);
-                                p.setFlying(true);
-                                va.mandarMensagem(cm.getMessage().getString("comandos.fly-ativado"), p);
-                            }
+                        if (voar.get(p.getUniqueId())) {
+                            voar.put(p.getUniqueId(), false);
+                            p.setFlying(false);
+                            va.mandarMensagem(cm.getMessage().getString("comandos.fly-disabled"), p);
+                        } else {
+                            voar.put(p.getUniqueId(), true);
+                            p.setFlying(true);
+                            va.mandarMensagem(cm.getMessage().getString("commands.fly-enabled"), p);
+                        }
                     }
-                } else if (s.contains("[!PERMISSAO] ")) {
-                    String[] s2 = s.split("\\[!PERMISSAO\\] ");
+                } else if (s.contains("[!PERMISSION] ")) {
+                    String[] s2 = s.split("\\[!PERMISSION\\] ");
                     if (p.hasPermission(s2[0])) {
                         if (!voar.containsKey(p.getUniqueId())) {
                             voar.put(p.getUniqueId(), false);
                         }
-                            if (voar.get(p.getUniqueId())) {
-                                voar.put(p.getUniqueId(), false);
-                                p.setFlying(false);
-                                va.mandarMensagem(cm.getMessage().getString("comandos.fly-desativado"), p);
-                            } else {
-                                voar.put(p.getUniqueId(), true);
-                                p.setFlying(true);
-                                va.mandarMensagem(cm.getMessage().getString("comandos.fly-ativado"), p);
-
-
-                            }
+                        if (voar.get(p.getUniqueId())) {
+                            voar.put(p.getUniqueId(), false);
+                            p.setFlying(false);
+                            va.mandarMensagem(cm.getMessage().getString("comandos.fly-disabled"), p);
+                        } else {
+                            voar.put(p.getUniqueId(), true);
+                            p.setFlying(true);
+                            va.mandarMensagem(cm.getMessage().getString("commands.fly-enabled"), p);
+                        }
                         }
                 } else {
                     if (!voar.containsKey(p.getUniqueId())) {
@@ -426,12 +430,68 @@ public class Ações {
                         if (voar.get(p.getUniqueId())) {
                             voar.put(p.getUniqueId(), false);
                             p.setFlying(false);
-                            va.mandarMensagem(cm.getMessage().getString("comandos.fly-desativado"), p);
+                            va.mandarMensagem(cm.getMessage().getString("comandos.fly-disabled"), p);
                         } else {
                             voar.put(p.getUniqueId(), true);
                             p.setFlying(true);
-                            va.mandarMensagem(cm.getMessage().getString("comandos.fly-ativado"), p);
+                            va.mandarMensagem(cm.getMessage().getString("commands.fly-enabled"), p);
                         }
+                }
+            } else if (s.startsWith("[TP] ")) {
+                if (s.contains("[PERMISSION] ")) {
+                    String[] s2 = s.split("\\[PERMISSION\\] ");
+                    if (p.hasPermission(s2[0])) {
+                        s = s.replace("[TP] ", "");
+                        s = s.replace(" [PERMISSION] ", "");
+
+                        String[] local = s.split(", ");
+                        World w = Bukkit.getWorld(local[0]);
+                        if (w != null) {
+                            if (local.length >= 5) {
+                                Location loc = new Location(w, Double.parseDouble(local[1]), Double.parseDouble(local[2]), Double.parseDouble(local[3]), Float.parseFloat(local[4]), Float.parseFloat(local[5]));
+                                p.teleport(loc);
+
+                            } else {
+                                Location loc = new Location(w, Double.parseDouble(local[1]), Double.parseDouble(local[2]), Double.parseDouble(local[3]));
+                                p.teleport(loc);
+                            }
+                        }
+                    }
+
+                } else if (s.contains("[!PERMISSION] ")) {
+                    String[] s2 = s.split("\\[!PERMISSION\\] ");
+                    if (!p.hasPermission(s2[0])) {
+                        s = s.replace("[TP] ", "");
+                        s = s.replace("[!PERMISSION] ", "");
+
+                        String[] local = s.split(", ");
+                        World w = Bukkit.getWorld(local[0]);
+                        if (w != null) {
+                            if (local.length >= 5) {
+                                Location loc = new Location(w, Double.parseDouble(local[1]), Double.parseDouble(local[2]), Double.parseDouble(local[3]), Float.parseFloat(local[4]), Float.parseFloat(local[5]));
+                                p.teleport(loc);
+
+                            } else {
+                                Location loc = new Location(w, Double.parseDouble(local[1]), Double.parseDouble(local[2]), Double.parseDouble(local[3]));
+                                p.teleport(loc);
+                            }
+                        }
+
+                    }
+                } else {
+                    s = s.replace("[TP] ", "");
+                    String[] local = s.split(", ");
+                    World w = Bukkit.getWorld(local[0]);
+                    if (w != null) {
+                        if (local.length >= 5) {
+                            Location loc = new Location(w, Double.parseDouble(local[1]), Double.parseDouble(local[2]), Double.parseDouble(local[3]), Float.parseFloat(local[4]), Float.parseFloat(local[5]));
+                            p.teleport(loc);
+
+                        } else {
+                            Location loc = new Location(w, Double.parseDouble(local[1]), Double.parseDouble(local[2]), Double.parseDouble(local[3]));
+                            p.teleport(loc);
+                        }
+                    }
                 }
             }
         }

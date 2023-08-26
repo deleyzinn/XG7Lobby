@@ -26,10 +26,10 @@ public class Anuncios extends Module {
         Bukkit.getScheduler().runTaskTimer(getPlugin(), () -> {
             for (Player p : Bukkit.getOnlinePlayers()) {
                 List<List<String>> anuncios = new ArrayList<>();
-                for (String anuncio : cm.getConfig().getConfigurationSection("anuncios.anuncios").getKeys(false)) {
-                    anuncios.add(cm.getConfig().getStringList("anuncios.anuncios." + anuncio));
+                for (String anuncio : cm.getConfig().getConfigurationSection("announcements.announcements").getKeys(false)) {
+                    anuncios.add(cm.getConfig().getStringList("announcements.announcements." + anuncio));
                 }
-                if (cm.getConfig().getConfigurationSection("anuncios") != null) {
+                if (cm.getConfig().getConfigurationSection("announcements") != null) {
                     List<String> anuncio = anuncios.get(posicao);
 
 
@@ -37,8 +37,8 @@ public class Anuncios extends Module {
                         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
                             linhas = PlaceholderAPI.setPlaceholders(p, linhas);
                         }
-                        if (cm.getConfig().getBoolean("anuncios.ASNL")) {
-                            if (cm.getConfig().getStringList("mundos-ativados").contains(p.getWorld().getName())) {
+                        if (cm.getConfig().getBoolean("announcements.ASNL")) {
+                            if (cm.getConfig().getStringList("enabled-worlds").contains(p.getWorld().getName())) {
                                 p.sendMessage(ChatColor.translateAlternateColorCodes('&', linhas));
                             }
                         } else {
@@ -49,13 +49,13 @@ public class Anuncios extends Module {
 
                     posicao++;
 
-                    if (posicao == anuncio.size()) {
+                    if (posicao == anuncios.size()) {
                         posicao = 0;
                     }
                 }
             }
 
-        }, 0, cm.getConfig().getInt("anuncios.cooldown") * 20);
+        }, 0, cm.getConfig().getInt("announcements.cooldown") * 20);
 
     }
 

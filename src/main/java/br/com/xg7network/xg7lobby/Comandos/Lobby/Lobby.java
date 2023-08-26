@@ -17,23 +17,23 @@ public class Lobby implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player) {
             Player p = (Player) sender;
-            if (cm.getData().getString("lobby.Mundo") == null) {
+            if (cm.getData().getString("lobby.world") == null) {
                 if (p.hasPermission(PermissionType.SETLOBBY_COMMAND.getPerm())) {
-                    va.mandarMensagem(cm.getMessage().getString("comandos.aviso-lobby-adm"), p);
+                    va.mandarMensagem(cm.getMessage().getString("commands.adm-lobby-warn"), p);
                 } else {
-                    va.mandarMensagem(cm.getMessage().getString("comandos.aviso-lobby"), p);
+                    va.mandarMensagem(cm.getMessage().getString("commands.lobby-warn"), p);
                 }
             } else {
-                String lobbyWN = cm.getData().getString("lobby.Mundo");
+                String lobbyWN = cm.getData().getString("lobby.world");
                 if (lobbyWN != null) {
                     World w = Bukkit.getWorld(lobbyWN);
                     p.teleport(new Location(
                             w,
-                            cm.getData().getDouble("lobby.X"),
-                            cm.getData().getDouble("lobby.Y"),
-                            cm.getData().getDouble("lobby.Z"),
-                            (float) cm.getData().getDouble("lobby.Yaw"),
-                            (float) cm.getData().getDouble("lobby.Pitch")));
+                            cm.getData().getDouble("lobby.x"),
+                            cm.getData().getDouble("lobby.y"),
+                            cm.getData().getDouble("lobby.z"),
+                            (float) cm.getData().getDouble("lobby.yaw"),
+                            (float) cm.getData().getDouble("lobby.pitch")));
 
                 }
             }

@@ -34,13 +34,13 @@ public class Setlobby implements CommandExecutor {
             if (sender instanceof Player) {
                 Player p = (Player) sender;
                 if (p.hasPermission(PermissionType.SETLOBBY_COMMAND.getPerm())) {
-                    if (cm.getConfig().getStringList("mundos-ativados").contains(p.getWorld().getName())) {
-                        lobbyC.set("lobby.Mundo", p.getWorld().getName());
-                        lobbyC.set("lobby.X", p.getLocation().getX());
-                        lobbyC.set("lobby.Y", p.getLocation().getY());
-                        lobbyC.set("lobby.Z", p.getLocation().getZ());
-                        lobbyC.set("lobby.Yaw", p.getLocation().getYaw());
-                        lobbyC.set("lobby.Pitch", p.getLocation().getPitch());
+                    if (cm.getConfig().getStringList("enabled-worlds").contains(p.getWorld().getName())) {
+                        lobbyC.set("lobby.world", p.getWorld().getName());
+                        lobbyC.set("lobby.x", p.getLocation().getX());
+                        lobbyC.set("lobby.y", p.getLocation().getY());
+                        lobbyC.set("lobby.z", p.getLocation().getZ());
+                        lobbyC.set("lobby.yaw", p.getLocation().getYaw());
+                        lobbyC.set("lobby.pitch", p.getLocation().getPitch());
 
 
                         try {
@@ -54,28 +54,28 @@ public class Setlobby implements CommandExecutor {
                                 + ChatColor.GREEN + cm.getData().getInt("lobby.x") + ", "
                                 + cm.getData().getInt("lobby.y") + ", "
                                 + cm.getData().getInt("lobby.z") + ", " + ChatColor.GRAY + "no mundo "
-                                + ChatColor.GREEN + cm.getData().get("lobby.mundo") + ".");
+                                + ChatColor.GREEN + cm.getData().get("lobby.world") + ".");
 
                     } else {
                         va.mandarMensagem(prefix + ChatColor.RED + "Você não pode executar este comando no mundo em que não está ativado pelo plugin!", p);
                     }
                 } else {
-                    va.mandarMensagem(cm.getMessage().getString("comandos.permissão"), p);
+                    va.mandarMensagem(cm.getMessage().getString("commands.permission"), p);
                 }
             } else {
                 if (args.length == 4) {
                     System.out.println(args[0]);
-                    if (cm.getConfig().getStringList("mundos-ativados").contains(args[0])) {
+                    if (cm.getConfig().getStringList("enabled-worlds").contains(args[0])) {
 
                         World w = Bukkit.getWorld(args[0]);
                         float x = Float.parseFloat(args[1]);
                         float y = Float.parseFloat(args[2]);
                         float z = Float.parseFloat(args[3]);
 
-                        lobbyC.set("lobby.Mundo", w.getName());
-                        lobbyC.set("lobby.X", x);
-                        lobbyC.set("lobby.Y", y);
-                        lobbyC.set("lobby.Z", z);
+                        lobbyC.set("lobby.world", w.getName());
+                        lobbyC.set("lobby.x", x);
+                        lobbyC.set("lobby.y", y);
+                        lobbyC.set("lobby.z", z);
 
                         try {
                             lobbyC.save(lobbyF);
@@ -86,15 +86,15 @@ public class Setlobby implements CommandExecutor {
 
 
                         sender.sendMessage(prefix + ChatColor.GRAY + "O lobby de seu servidor foi configurado com sucesso na coordenada "
-                                + ChatColor.GREEN + cm.getData().getInt("lobby.X") + ", "
-                                + cm.getData().getInt("lobby.Y") + ", "
-                                + cm.getData().getInt("lobby.Z") + ", " + ChatColor.GRAY + "no mundo "
-                                + ChatColor.GREEN + cm.getData().get("lobby.Mundo") + ".");
+                                + ChatColor.GREEN + cm.getData().getInt("lobby.x") + ", "
+                                + cm.getData().getInt("lobby.y") + ", "
+                                + cm.getData().getInt("lobby.z") + ", " + ChatColor.GRAY + "no mundo "
+                                + ChatColor.GREEN + cm.getData().get("lobby.world") + ".");
 
                     }
                 } else if (args.length == 6) {
                     System.out.println(args[0]);
-                    if (cm.getConfig().getStringList("mundos-ativados").contains(args[0])) {
+                    if (cm.getConfig().getStringList("enabled-worlds").contains(args[0])) {
 
                         World w = Bukkit.getWorld(args[0]);
                         float x = Float.parseFloat(args[1]);
@@ -103,12 +103,12 @@ public class Setlobby implements CommandExecutor {
                         double yaw = Double.parseDouble(args[4]);
                         double pitch = Double.parseDouble(args[5]);
 
-                        lobbyC.set("lobby.Mundo", w.getName());
-                        lobbyC.set("lobby.X", x);
-                        lobbyC.set("lobby.Y", y);
-                        lobbyC.set("lobby.Z", z);
-                        lobbyC.set("lobby.Yaw", yaw);
-                        lobbyC.set("lobby.Pitch", pitch);
+                        lobbyC.set("lobby.world", w.getName());
+                        lobbyC.set("lobby.x", x);
+                        lobbyC.set("lobby.y", y);
+                        lobbyC.set("lobby.z", z);
+                        lobbyC.set("lobby.yaw", yaw);
+                        lobbyC.set("lobby.pitch", pitch);
 
                         try {
                             lobbyC.save(lobbyF);
@@ -118,10 +118,10 @@ public class Setlobby implements CommandExecutor {
                         }
 
                         sender.sendMessage(prefix + ChatColor.GRAY + "O lobby de seu servidor foi configurado com sucesso na coordenada "
-                                + ChatColor.GREEN + cm.getData().getInt("lobby.X") + ", "
-                                + cm.getData().getInt("lobby.Y") + ", "
-                                + cm.getData().getInt("lobby.Z") + ", " + ChatColor.GRAY + "no mundo "
-                                + ChatColor.GREEN + cm.getData().get("lobby.Mundo") + ".");
+                                + ChatColor.GREEN + cm.getData().getInt("lobby.x") + ", "
+                                + cm.getData().getInt("lobby.y") + ", "
+                                + cm.getData().getInt("lobby.z") + ", " + ChatColor.GRAY + "no mundo "
+                                + ChatColor.GREEN + cm.getData().get("lobby.world") + ".");
 
                     } else {
                         sender.sendMessage(prefix + ChatColor.RED + "Como você é um console, o jeito de usar é " + ChatColor.GRAY + "/" + ChatColor.YELLOW + "setlobby " + ChatColor.GREEN + "<mundo> <x> <y> <z> (yaw), (pitch)");

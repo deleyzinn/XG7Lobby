@@ -33,8 +33,8 @@ public class ScoreBoard extends Module implements Listener {
     public void onEnable() {
 
         for (Player p : Bukkit.getOnlinePlayers()) {
-            if (cm.getConfig().getBoolean("scores.scoreboard.ativado")) {
-                if (cm.getConfig().getStringList("mundos-ativados").contains(p.getWorld().getName())) {
+            if (cm.getConfig().getBoolean("scores.scoreboard.enabled")) {
+                if (cm.getConfig().getStringList("enabled-worlds").contains(p.getWorld().getName())) {
                     this.colocarScore(p);
                     Bukkit.getScheduler().runTaskTimer(this.getPlugin(), () -> this.updateScore(p), 0L, cm.getConfig().getInt("scores.atualizacao"));
                 }
@@ -60,8 +60,8 @@ public class ScoreBoard extends Module implements Listener {
         Scoreboard board = Bukkit.getScoreboardManager().getNewScoreboard();
         Objective obj = board.registerNewObjective("dummy", "dummy");
         obj.setDisplaySlot(DisplaySlot.SIDEBAR);
-        obj.setDisplayName(cm.getConfig().getString("scores.scoreboard.titulo").replace("&", "§"));
-        List<String> linhas = cm.getConfig().getStringList("scores.scoreboard.linhas");
+        obj.setDisplayName(cm.getConfig().getString("scores.scoreboard.title").replace("&", "§"));
+        List<String> linhas = cm.getConfig().getStringList("scores.scoreboard.lines");
         int size = linhas.size() + 1;
 
         for (String s : linhas) {
@@ -91,7 +91,7 @@ public class ScoreBoard extends Module implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
         Player p = e.getPlayer();
-        if (cm.getConfig().getStringList("mundos-ativados").contains(p.getWorld().getName())) {
+        if (cm.getConfig().getStringList("enabled-worlds").contains(p.getWorld().getName())) {
             Bukkit.getScheduler().runTaskLater(this.getPlugin(), () -> {
                 this.colocarScore(p);
             }, 5L);
@@ -110,7 +110,7 @@ public class ScoreBoard extends Module implements Listener {
         World to = e.getTo().getWorld();
         Player p = e.getPlayer();
         Bukkit.getScheduler().runTaskLater(this.getPlugin(), () -> {
-            if (cm.getConfig().getStringList("mundos-ativados").contains(to.getName())) {
+            if (cm.getConfig().getStringList("enabled-worlds").contains(to.getName())) {
                 this.colocarScore(p);
             } else {
                 this.removerScore(p);
@@ -120,14 +120,14 @@ public class ScoreBoard extends Module implements Listener {
     }
 
     void updateScore(Player p) {
-        if (cm.getConfig().getStringList("mundos-ativados").contains(p.getWorld().getName())) {
+        if (cm.getConfig().getStringList("enabled-worlds").contains(p.getWorld().getName())) {
             if (p.getScoreboard() != null) {
                 Scoreboard scoreboard = p.getScoreboard();
                 Objective objective = scoreboard.getObjective("dummy");
 
                 scoreboard.getEntries().forEach(scoreboard::resetScores);
 
-                List<String> linhas = cm.getConfig().getStringList("scores.scoreboard.linhas");
+                List<String> linhas = cm.getConfig().getStringList("scores.scoreboard.lines");
                 int size = linhas.size() + 1;
 
                 for (String s : linhas) {

@@ -61,7 +61,7 @@ public class Kick implements CommandExecutor {
         } else {
             if (sender instanceof Player) {
                 Player p = (Player) sender;
-                va.mandarMensagem(cm.getMessage().getString("comandos.permissão"), p);
+                va.mandarMensagem(cm.getMessage().getString("commands.permission"), p);
             }
         }
 

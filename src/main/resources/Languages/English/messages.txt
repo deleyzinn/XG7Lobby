@@ -1,0 +1,71 @@
+#Use %player_name% to replace player name
+#You need the PlaceHolderAPI for that!
+
+#Colors:
+#&0 - Black           | &9 - Blue
+#&1 - Dark blue       | &b - Cyan
+#&2 - Dark green      | &9 - Blue
+#&3 - Dark cyan       | &b - Cyan
+#&4 - Dark red        | &c - Red
+#&5 - Purple          | &d - Pink
+#&6 - Orange          | &e - Yellow
+#&7 - Gray            | &f - White
+
+#Lettering options:
+#&k - Random    | &n - Underlined
+#&l - Bold     | &o - Italic
+#&m - Track     | &r - Reset
+
+#All this will only work in the lobby world!
+
+#[PLAYER] returns the player (if you are not using PLACEHOLDER API)
+
+#Put [ACTION] at the beginning to send messages in action bar!
+#Only works at +1.10.
+
+commands:
+
+  #All NOT command permission messages
+  permission: "&cYou don't have permission to use this command!"
+
+  #Lobby warns
+  lobby-yarn: "&cThe lobby is not available yet! Wait for an adm to post."
+  adm-lobby-warn: "&cLobby not placed! Type &7/&esetlobby &c to place!"
+
+  #fly messages
+  fly-enabled: "&Your fly has been enabled!"
+  fly-disabled: "&cYour fly has been disabled!"
+
+  #Gamemode messages
+  gamemode-player: "&7Your game mode has been changed to &b[GAMEMODE]"
+  gamemode-target: "&7You changed the game mode from &b[PLAYERG] &7 to &b[GAMEMODE]"
+
+   #Use [WARNS] to return warns
+   warn-kick: "&cYou received &b[WARNS]&c warns. Please, don't break the rules."
+   warn-ban: "&cYou received [WARNS] warns. We warned to don't break the rules."
+
+events:
+
+  #NOT permission messages
+  permission-drop: "& You don't have permission to drop items!"
+  permission-pickup: "& You don't have permission to pick up items!"
+  permission-interact: "&cYou don't have permission to interact with blocks!"
+  permission-place: "&cYou don't have permission to place blocks!"
+  permission-break: "&cYou don't have permission to break blocks!"
+  permission-attack: "&cYou don't have permission to attack!"
+
+  #Mute messages
+  when-muted: "& You have been muted by an admin! Please don't break the rules!"
+  on-mute: "e You cannot send messages. You are muted!"
+
+  #Cooldown message
+  #Use [SECONDS] to return cooldown on-cooldown: "and You need to wait &a[SECONDS] &cseconds to use this again!"
+  on-cooldown: "&cYou must wait [SECONDS] seconds to you can use it again."
+
+  #Hide Player itens message
+  HD-hide: "&aYou hid the players!"
+  HD-show: "&cYou've shown the players again!"
+
+  #Chat messages
+  badword: "&cYou cannot type this word in chat!"
+  command-blocked: "&cYou cannot type this command!"

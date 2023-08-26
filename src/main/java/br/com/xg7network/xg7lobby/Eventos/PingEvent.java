@@ -16,14 +16,14 @@ public class PingEvent implements Listener {
 
     @EventHandler
     public void onPing(ServerListPingEvent e) {
-        if (XG7Lobby.cm.getConfig().getBoolean("motd.ativado")) {
-            String motd = String.join("\n", XG7Lobby.cm.getConfig().getStringList("motd.texto"));
+        if (XG7Lobby.cm.getConfig().getBoolean("motd.enabled")) {
+            String motd = String.join("\n", XG7Lobby.cm.getConfig().getStringList("motd.text"));
             e.setMotd(motd.replace("&", "§"));
 
             try {
                 e.setServerIcon(Bukkit.loadServerIcon(new File("icon.png")));
             } catch (Exception var4) {
-                if (XG7Lobby.cm.getConfig().getBoolean("aviso-imagem")) {
+                if (XG7Lobby.cm.getConfig().getBoolean("warning-image")) {
                     Bukkit.getConsoleSender().sendMessage("Cuidado! Seu servidor não tem imagem, tente colocar um arquivo com o nome icon.png");
                 }
             }

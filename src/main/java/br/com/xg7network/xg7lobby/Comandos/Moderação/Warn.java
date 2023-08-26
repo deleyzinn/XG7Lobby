@@ -71,11 +71,11 @@ public class Warn implements CommandExecutor, Listener {
                         va.mandarMensagem(ChatColor.GOLD + "Você recebeu um aviso pelo motivo: " + ChatColor.RESET + str.trim(), p);
                         playerSection.set("warns", warns);
 
-                        if (warns.size() >= cm.getData().getInt("qtd-warns-kick") && warns.size() < cm.getData().getInt("qtd-warns-ban")) {
-                            p.kickPlayer(ChatColor.RED + "Você recebeu " + ChatColor.AQUA + warns.size() + ChatColor.RED + " warns. Por favor não quebre as regras!");
-                        } else if (warns.size() >= cm.getData().getInt("qtd-warns-ban")) {
-                            p.kickPlayer(ChatColor.RED + "Você foi banido por receber muitos avisos para não quebrar as regras!");
-                            Bukkit.getBanList(BanList.Type.NAME).addBan(p.getName(), ChatColor.RED + "Você foi banido por receber muitos avisos!", null, null);
+                        if (warns.size() >= cm.getData().getInt("warns-to-kick") && warns.size() < cm.getData().getInt("warns-to-ban")) {
+                            p.kickPlayer(cm.getMessage().getString("commands.warns-kick").replace("[WARNS]", String.valueOf(warns.size())).replace("&", "§"));
+                        } else if (warns.size() >= cm.getData().getInt("warns-to-ban")) {
+                            p.kickPlayer(cm.getMessage().getString("commands.warns-ban").replace("[WARNS]", String.valueOf(warns.size())).replace("&", "§"));
+                            Bukkit.getBanList(BanList.Type.NAME).addBan(p.getName(), cm.getMessage().getString("commands.warns-kick").replace("[WARNS]", String.valueOf(warns.size())).replace("&", "§"), null, null);
                         }
                         try {
                             lobbyC.save(lobbyF);
@@ -92,7 +92,7 @@ public class Warn implements CommandExecutor, Listener {
                 } else {
                     if (commandSender instanceof Player) {
                         Player p = (Player) commandSender;
-                        va.mandarMensagem(cm.getMessage().getString("comandos.permissão"), p);
+                        va.mandarMensagem(cm.getMessage().getString("commands.permission"), p);
                     }
                 }
             } else {

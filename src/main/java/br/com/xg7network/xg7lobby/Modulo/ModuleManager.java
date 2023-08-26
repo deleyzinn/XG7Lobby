@@ -1,6 +1,5 @@
 package br.com.xg7network.xg7lobby.Modulo;
 
-import br.com.xg7network.xg7lobby.Eventos.Player.PlayerRespawnEvent;
 import br.com.xg7network.xg7lobby.Modulo.Mundo.CancelDayCycle;
 import br.com.xg7network.xg7lobby.Modulo.Scores.BossBar;
 import br.com.xg7network.xg7lobby.Modulo.Scores.ScoreBoard;

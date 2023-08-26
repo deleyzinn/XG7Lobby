@@ -10,8 +10,8 @@ public class WeatherEvent implements Listener {
 
     @EventHandler
     public void onWheather(WeatherChangeEvent e) {
-        if (!cm.getConfig().getBoolean("CicloDaChuva")){
-            if (cm.getConfig().getStringList("mundos_ativados").contains(e.getWorld().getName())) {
+        if (!cm.getConfig().getBoolean("weather-cycle")){
+            if (cm.getConfig().getStringList("enabled-worlds").contains(e.getWorld().getName())) {
                 e.getWorld().setThundering(false);
                 e.getWorld().setStorm(false);
                 e.setCancelled(true);

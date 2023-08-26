@@ -25,7 +25,7 @@ public class Unmute implements CommandExecutor {
         if (commandSender instanceof Player) {
             Player p = (Player) commandSender;
             if (p.hasPermission(PermissionType.UNMUTE_COMMAND.getPerm())) {
-                va.mandarMensagem(cm.getMessage().getString("comandos.permissão"), p);
+                va.mandarMensagem(cm.getMessage().getString("commands.permission"), p);
                 return true;
             }
         }

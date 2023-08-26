@@ -22,11 +22,11 @@ public class CancelDayCycle extends Module {
     @Override
     public void onEnable() {
         Bukkit.getScheduler().runTaskTimer(this.getPlugin(), () -> {
-            for (String s : cm.getConfig().getStringList("mundos-ativados")) {
+            for (String s : cm.getConfig().getStringList("enabled-worlds")) {
                 World w = Bukkit.getWorld(s);
                 if (w != null) {
-                    if (!cm.getConfig().getBoolean("CicloDoDia")) {
-                        w.setTime(cm.getConfig().getInt("TempoDoDia"));
+                    if (!cm.getConfig().getBoolean("day-cycle")) {
+                        w.setTime(cm.getConfig().getInt("time"));
                         w.setGameRule(GameRule.DO_DAYLIGHT_CYCLE, false);
                     } else {
                         w.setGameRule(GameRule.DO_DAYLIGHT_CYCLE, true);

@@ -73,7 +73,7 @@ public class Mute implements CommandExecutor, Listener {
                     va.mandarMensagem(ChatColor.RED + "O jeito ceto de usar o comando é " + ChatColor.YELLOW + "/" + ChatColor.GREEN + "mute <Player>", p);
                 }
             } else {
-                va.mandarMensagem(cm.getMessage().getString("comandos.permissão"), p);
+                va.mandarMensagem(cm.getMessage().getString("commands.permission"), p);
             }
 
 
@@ -100,7 +100,7 @@ public class Mute implements CommandExecutor, Listener {
                             commandSender.sendMessage(ChatColor.RED + "Não foi possível silenciar a pessoa");
                             throw new RuntimeException(e);
                         }
-                        va.mandarMensagem(cm.getMessage().getString("eventos.quando-mutado"), target);
+                        va.mandarMensagem(cm.getMessage().getString("events.when-muted"), target);
                         commandSender.sendMessage(ChatColor.AQUA + target.getName() + ChatColor.GREEN + "foi silenciado com sucesso!");
                     } else {
                         commandSender.sendMessage(ChatColor.RED + "Você não pode silenciar um Administrador");
@@ -124,7 +124,7 @@ public class Mute implements CommandExecutor, Listener {
         for (String s : mutados) {
             String[] s2 = s.split(": ");
             if (s2[1].equals(p.getUniqueId().toString())) {
-                va.mandarMensagem(cm.getMessage().getString("eventos.no-mute"), p);
+                va.mandarMensagem(cm.getMessage().getString("events.on-mute"), p);
                 e.setCancelled(true);
             }
         }
