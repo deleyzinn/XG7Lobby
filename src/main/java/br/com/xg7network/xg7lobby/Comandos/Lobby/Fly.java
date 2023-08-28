@@ -20,7 +20,7 @@ import org.jetbrains.annotations.NotNull;
 import static br.com.xg7network.xg7lobby.XG7Lobby.*;
 
 public class Fly implements CommandExecutor {
-    public static HashMap<UUID, Boolean> voar = new HashMap();
+    public static HashMap<UUID, Boolean> voar = new HashMap<>();
 
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] args) {
 

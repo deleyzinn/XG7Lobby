@@ -3,7 +3,7 @@ package br.com.xg7network.xg7lobby.Modulo;
 import br.com.xg7network.xg7lobby.Modulo.Mundo.CancelDayCycle;
 import br.com.xg7network.xg7lobby.Modulo.Scores.BossBar;
 import br.com.xg7network.xg7lobby.Modulo.Scores.ScoreBoard;
-import br.com.xg7network.xg7lobby.Modulo.Scores.Tablist;
+import br.com.xg7network.xg7lobby.Modulo.Scores.TabList.Tablist;
 import br.com.xg7network.xg7lobby.Modulo.Seletores.HotbarManager;
 import br.com.xg7network.xg7lobby.XG7Lobby;
 
@@ -31,6 +31,8 @@ public class ModuleManager {
             modules.add(new Anuncios(plugin));
 
             modules.add(new HotbarManager(plugin));
+
+            modules.add(new Chat(plugin));
         for (Module module : modules) {
             module.onEnable();
         }

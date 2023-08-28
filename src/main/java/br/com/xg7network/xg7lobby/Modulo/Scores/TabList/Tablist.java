@@ -1,4 +1,4 @@
-package br.com.xg7network.xg7lobby.Modulo.Scores;
+package br.com.xg7network.xg7lobby.Modulo.Scores.TabList;
 
 import br.com.xg7network.xg7lobby.Modulo.Module;
 import br.com.xg7network.xg7lobby.XG7Lobby;
@@ -6,7 +6,6 @@ import me.clip.placeholderapi.PlaceholderAPI;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -28,8 +27,35 @@ public class Tablist extends Module implements Listener {
         super(plugin);
     }
 
+    @Override
+    public void onEnable() {
+
+        for (Player p : Bukkit.getOnlinePlayers()) {
+            if (cm.getConfig().getBoolean("scores.tablist.enabled")) {
+                if (cm.getConfig().getStringList("enabled-worlds").contains(p.getWorld().getName())) {
+                    colocarTablist(p);
+                }
+            }
+            Bukkit.getScheduler().runTaskTimer(getPlugin(), () -> {
+                updateTablist(p);
+            }, 0, cm.getConfig().getInt("scores.update"));
+        }
+    }
+
+    @Override
+    public void onDisable() {
+
+        Bukkit.getScheduler().cancelTask(tabl);
+        for (Player p : Bukkit.getOnlinePlayers()) {
+            this.removerTablist(p);
+        }
+
+
+    }
+
 
     List<String> getTablist(Player p) {
+
         List<String> s = new ArrayList<>();
         String rodape = String.join("\n", cm.getConfig().getStringList("scores.tablist.footer"));
         String cabecalho = String.join("\n", cm.getConfig().getStringList("scores.tablist.header"));
@@ -43,14 +69,11 @@ public class Tablist extends Module implements Listener {
     }
 
     void colocarTablist(Player p) {
-        List<String> tablist = this.getTablist(p);
-        p.setPlayerListHeader(tablist.get(0));
-        p.setPlayerListFooter(tablist.get(1));
+        updateTablist(p);
     }
 
     void removerTablist(Player p) {
-        p.setPlayerListHeader("");
-        p.setPlayerListFooter("");
+        TabListSender.sendTablist(p, "", "");
     }
 
     @EventHandler
@@ -83,45 +106,15 @@ public class Tablist extends Module implements Listener {
             } else {
                 this.removerTablist(p);
             }
-        }, 1);
+        }, 20);
 
     }
 
     void updateTablist(Player p) {
 
         if (cm.getConfig().getStringList("enabled-worlds").contains(p.getWorld().getName())) {
-
-
-            List<String> tablist = this.getTablist(p);
-            p.setPlayerListHeader(tablist.get(0));
-            p.setPlayerListFooter(tablist.get(1));
+            TabListSender.sendTablist(p, this.getTablist(p).get(0), this.getTablist(p).get(1));
         }
     }
 
-
-    @Override
-    public void onEnable() {
-
-        for (Player p : Bukkit.getOnlinePlayers()) {
-            if (cm.getConfig().getBoolean("scores.tablist.enabled")) {
-                if (cm.getConfig().getStringList("enabled-worlds").contains(p.getWorld().getName())) {
-                    colocarTablist(p);
-                }
-            }
-            Bukkit.getScheduler().runTaskTimer(getPlugin(), () -> {
-                updateTablist(p);
-            }, 0, cm.getConfig().getInt("scores.update"));
-        }
-    }
-
-    @Override
-    public void onDisable() {
-
-        Bukkit.getScheduler().cancelTask(tabl);
-        for (Player p : Bukkit.getOnlinePlayers()) {
-            this.removerTablist(p);
-        }
-
-
-    }
 }

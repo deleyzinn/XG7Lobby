@@ -12,7 +12,7 @@ import br.com.xg7network.xg7lobby.Comandos.Lobby.Vanish;
 import br.com.xg7network.xg7lobby.Comandos.Moderação.*;
 import br.com.xg7network.xg7lobby.Comandos.Reload.ReloadConfigCommand;
 import br.com.xg7network.xg7lobby.Configs.ConfigManager;
-import br.com.xg7network.xg7lobby.Eventos.Chat;
+import br.com.xg7network.xg7lobby.Modulo.Chat;
 import br.com.xg7network.xg7lobby.Eventos.Lauchpad;
 import br.com.xg7network.xg7lobby.Eventos.EntradaESaida;
 import br.com.xg7network.xg7lobby.Eventos.PingEvent;
@@ -21,7 +21,7 @@ import br.com.xg7network.xg7lobby.Eventos.Player.Void;
 import br.com.xg7network.xg7lobby.Modulo.ModuleManager;
 import br.com.xg7network.xg7lobby.Modulo.Mundo.*;
 import br.com.xg7network.xg7lobby.Modulo.Scores.ScoreBoard;
-import br.com.xg7network.xg7lobby.Modulo.Scores.Tablist;
+import br.com.xg7network.xg7lobby.Modulo.Scores.TabList.Tablist;
 import br.com.xg7network.xg7lobby.Modulo.Seletores.HotbarManager;
 import br.com.xg7network.xg7lobby.Utilidades.Ações;
 import br.com.xg7network.xg7lobby.Utilidades.Inventário;
@@ -113,7 +113,7 @@ public final class XG7Lobby extends JavaPlugin {
         this.getServer().getPluginManager().registerEvents(new CancelBlockBurn(), this);
         this.getServer().getPluginManager().registerEvents(new WeatherEvent(), this);
 
-        this.getServer().getPluginManager().registerEvents(new Chat(), this);
+        this.getServer().getPluginManager().registerEvents(new Chat(this), this);
 
         this.getServer().getConsoleSender().sendMessage(prefix + "Loading Module...");
         MM = new ModuleManager(this);

@@ -27,9 +27,6 @@ public class CancelDayCycle extends Module {
                 if (w != null) {
                     if (!cm.getConfig().getBoolean("day-cycle")) {
                         w.setTime(cm.getConfig().getInt("time"));
-                        w.setGameRule(GameRule.DO_DAYLIGHT_CYCLE, false);
-                    } else {
-                        w.setGameRule(GameRule.DO_DAYLIGHT_CYCLE, true);
                     }
                 }
             }

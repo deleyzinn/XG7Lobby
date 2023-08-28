@@ -430,7 +430,7 @@ public class Ações {
                         if (voar.get(p.getUniqueId())) {
                             voar.put(p.getUniqueId(), false);
                             p.setFlying(false);
-                            va.mandarMensagem(cm.getMessage().getString("comandos.fly-disabled"), p);
+                            va.mandarMensagem(cm.getMessage().getString("comands.fly-disabled"), p);
                         } else {
                             voar.put(p.getUniqueId(), true);
                             p.setFlying(true);

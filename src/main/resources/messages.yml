@@ -68,3 +68,4 @@ events:
   #Chat messages
   badword: "&cYou cannot type this word in chat!"
   command-block: "&cYou cannot type this command!"
+  spam: "&cYou are sending messages too fast. Send slower."

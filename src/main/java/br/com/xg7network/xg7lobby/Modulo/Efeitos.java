@@ -26,7 +26,7 @@ public class Efeitos extends Module implements Listener {
                     if (cm.getConfig().getStringList("enabled-worlds").contains(p.getWorld().getName())) {
                         if (e[0] != null) {
                             PotionEffectType effect = PotionEffectType.getByName(e[0]);
-                            p.addPotionEffect(new PotionEffect(effect, 20, Integer.valueOf(e[1]), false, false, false));
+                            p.addPotionEffect(new PotionEffect(effect, 20, Integer.valueOf(e[1]), false, false));
                         }
                     }
                 }

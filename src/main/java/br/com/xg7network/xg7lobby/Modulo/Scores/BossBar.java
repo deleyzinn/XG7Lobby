@@ -22,28 +22,27 @@ public class BossBar extends Module {
 
     @Override
     public void onEnable() {
-        String bossTitulo = ChatColor.translateAlternateColorCodes('&', cm.getConfig().getString("scores.bossbar.title"));
-        boss = Bukkit.createBossBar(bossTitulo,
-                BarColor.valueOf(cm.getConfig().getString("scores.bossbar.color")),
-                BarStyle.valueOf(cm.getConfig().getString("scores.bossbar.style")));
+        if (cm.getConfig().getBoolean("scores.bossbar.enabled")) {
+            String bossTitulo = ChatColor.translateAlternateColorCodes('&', cm.getConfig().getString("scores.bossbar.title"));
+            boss = Bukkit.createBossBar(bossTitulo,
+                    BarColor.valueOf(cm.getConfig().getString("scores.bossbar.color")),
+                    BarStyle.valueOf(cm.getConfig().getString("scores.bossbar.style")));
 
-        boss.setProgress(cm.getConfig().getDouble("scores.bossbar.progress"));
+            boss.setProgress(cm.getConfig().getDouble("scores.bossbar.progress"));
 
 
-
-        bossbar = Bukkit.getScheduler().runTaskTimer(this.getPlugin(), () -> {
-            for (Player p : Bukkit.getOnlinePlayers()) {
-
-                if (cm.getConfig().getBoolean("scores.bossbar.enabled")) {
-                        if (cm.getConfig().getStringList("enabled-worlds").contains(p.getWorld().getName())) {
-                            boss.addPlayer(p);
-                        } else {
-                            boss.removePlayer(p);
-                        }
+            bossbar = Bukkit.getScheduler().runTaskTimer(this.getPlugin(), () -> {
+                for (Player p : Bukkit.getOnlinePlayers()) {
+                    if (cm.getConfig().getStringList("enabled-worlds").contains(p.getWorld().getName())) {
+                        boss.addPlayer(p);
+                    } else {
+                        boss.removePlayer(p);
+                    }
                 }
-            }
+            }, 0, 5).getTaskId();
 
-        }, 0, 5).getTaskId();
+        }
+
     }
 
     @Override
