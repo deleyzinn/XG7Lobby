@@ -62,10 +62,12 @@ events:
   on-cooldown: "&cYou must wait [SECONDS] seconds to you can use it again."
 
   #Hide Player itens message
-  HD-hide: "&aYou hid the players!"
+  HD-hide: "&aYou hide the players!"
   HD-show: "&cYou've shown the players again!"
 
   #Chat messages
   badword: "&cYou cannot type this word in chat!"
   command-block: "&cYou cannot type this command!"
   spam: "&cYou are sending messages too fast. Send slower."
+  message-cooldown: "&cYou must wait [SECONDS] seconds to send other message!"
+  repeated-message: "&cYou cannot send the same message again!"

@@ -61,7 +61,7 @@ public class Mute implements CommandExecutor, Listener {
                             }
 
 
-                            va.mandarMensagem(cm.getMessage().getString("eventos.quando-mutado"), target);
+                            va.mandarMensagem(cm.getMessage().getString("events.when-muted"), target);
                             va.mandarMensagem(ChatColor.AQUA + target.getName() + ChatColor.GREEN + " foi silenciado com sucesso!", p);
                         } else {
                             va.mandarMensagem(ChatColor.RED + "Você não pode silenciar um Administrador", p);

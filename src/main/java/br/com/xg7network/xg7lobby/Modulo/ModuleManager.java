@@ -31,7 +31,6 @@ public class ModuleManager {
             modules.add(new Anuncios(plugin));
 
             modules.add(new HotbarManager(plugin));
-
             modules.add(new Chat(plugin));
         for (Module module : modules) {
             module.onEnable();

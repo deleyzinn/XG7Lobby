@@ -177,11 +177,11 @@ block-commands:
 anti-spam:
   enabled: true
 
-  #To send other message (IN TICKS) (20 = 1 second)
-  cooldown: 500
+  #To send other message (IN SECONDS)
+  cooldown: 1
 
-  #Remove on spam list (IN TICKS) (20 = 1 second)
-  spam-cooldown: 20
+  #Reset spam list (IN TICKS) (20 = 1 second)
+  spam-cooldown: 100
 
   #Messages tolerance
   tolerance: 5
