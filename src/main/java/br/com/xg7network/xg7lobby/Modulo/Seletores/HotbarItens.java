@@ -21,24 +21,26 @@ public class HotbarItens {
     public List<ItemStack> getItens(Player p) {
         List<ItemStack> itens = new ArrayList<>();
         for (String s : cm.getSeletor().getConfigurationSection("selectors.selectors").getKeys(false)) {
-            ItemStack item = new ItemStack(Material.valueOf(cm.getSeletor().getString("selectors.selectors." + s + ".item")), cm.getSeletor().getInt("selectors.selectors." + s + ".amount"));
-            ItemMeta meta = item.getItemMeta();
-            meta.setDisplayName(cm.getSeletor().getString("selectors.selectors." + s + ".name").replace("&", "§"));
-            List<String> lore = new ArrayList<>();
-            for (String l : cm.getSeletor().getStringList("selectors.selectors." + s + ".lore")) {
-                if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
-                    l = PlaceholderAPI.setPlaceholders(p, l);
+            if (Material.matchMaterial(cm.getSeletor().getString("selectors.selectors." + s + ".item")) != null) {
+                ItemStack item = new ItemStack(Material.valueOf(cm.getSeletor().getString("selectors.selectors." + s + ".item")), cm.getSeletor().getInt("selectors.selectors." + s + ".amount"));
+                ItemMeta meta = item.getItemMeta();
+                meta.setDisplayName(cm.getSeletor().getString("selectors.selectors." + s + ".name").replace("&", "§"));
+                List<String> lore = new ArrayList<>();
+                for (String l : cm.getSeletor().getStringList("selectors.selectors." + s + ".lore")) {
+                    if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
+                        l = PlaceholderAPI.setPlaceholders(p, l);
+                    }
+                    l = l.replace("&", "§");
+                    lore.add(l);
                 }
-                l = l.replace("&", "§");
-                lore.add(l);
-            }
-            meta.setLore(lore);
-            if (cm.getSeletor().getBoolean("selectors.selectors." + s + ".glow")) {
-                meta.addEnchant(Enchantment.DURABILITY, 0, true);
-            }
+                meta.setLore(lore);
+                if (cm.getSeletor().getBoolean("selectors.selectors." + s + ".glow")) {
+                    meta.addEnchant(Enchantment.DURABILITY, 0, true);
+                }
 
-            item.setItemMeta(meta);
-            itens.add(item);
+                item.setItemMeta(meta);
+                itens.add(item);
+            }
         }
         return itens;
     }
@@ -53,47 +55,49 @@ public class HotbarItens {
 
     public List<ItemStack> getEJ(Player p) {
         List<ItemStack> itens = new ArrayList<>();
-        ItemStack itemA = new ItemStack(Material.valueOf(cm.getSeletor().getString("hide-players.Item.item-on")), cm.getSeletor().getInt("hide-players.Item.amount-on"));
-        ItemStack itemD = new ItemStack(Material.valueOf(cm.getSeletor().getString("hide-players.Item.item-off")), cm.getSeletor().getInt("hide-players.Item.amount-on"));
+        if (Material.matchMaterial(cm.getSeletor().getString("hide-players.Item.item-on")) != null && Material.matchMaterial(cm.getSeletor().getString("hide-players.Item.item-off")) != null) {
+            ItemStack itemA = new ItemStack(Material.valueOf(cm.getSeletor().getString("hide-players.Item.item-on")), cm.getSeletor().getInt("hide-players.Item.amount-on"));
+            ItemStack itemD = new ItemStack(Material.valueOf(cm.getSeletor().getString("hide-players.Item.item-off")), cm.getSeletor().getInt("hide-players.Item.amount-on"));
 
-        ItemMeta metaA = itemA.getItemMeta();
-        ItemMeta metaD = itemD.getItemMeta();
+            ItemMeta metaA = itemA.getItemMeta();
+            ItemMeta metaD = itemD.getItemMeta();
 
-        metaA.setDisplayName(cm.getSeletor().getString("hide-players.Item.name-on").replace("&", "§"));
-        List<String> loreA = new ArrayList<>();
-        for (String l : cm.getSeletor().getStringList("hide-players.Item.lore-on")) {
-            if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
-                l = PlaceholderAPI.setPlaceholders(p, l);
+            metaA.setDisplayName(cm.getSeletor().getString("hide-players.Item.name-on").replace("&", "§"));
+            List<String> loreA = new ArrayList<>();
+            for (String l : cm.getSeletor().getStringList("hide-players.Item.lore-on")) {
+                if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
+                    l = PlaceholderAPI.setPlaceholders(p, l);
+                }
+                l = l.replace("&", "§");
+                loreA.add(l);
             }
-            l = l.replace("&", "§");
-            loreA.add(l);
-        }
-        metaA.setLore(loreA);
-        if (cm.getSeletor().getBoolean("hide-players.Item.glow")) {
-            metaA.addEnchant(Enchantment.DURABILITY, 0, true);
-        }
-
-        itemA.setItemMeta(metaA);
-
-        metaD.setDisplayName(cm.getSeletor().getString("hide-players.Item.name-off").replace("&", "§"));
-        List<String> loreB = new ArrayList<>();
-        for (String l : cm.getSeletor().getStringList("hide-players.Item.lore-off")) {
-            if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
-                l = PlaceholderAPI.setPlaceholders(p, l);
+            metaA.setLore(loreA);
+            if (cm.getSeletor().getBoolean("hide-players.Item.glow")) {
+                metaA.addEnchant(Enchantment.DURABILITY, 0, true);
             }
-            l = l.replace("&", "§");
-            loreB.add(l);
-        }
-        metaD.setLore(loreB);
-        if (cm.getSeletor().getBoolean("hide-players.Item.glow")) {
-            metaD.addEnchant(Enchantment.DURABILITY, 0, true);
-        }
-        itemD.setItemMeta(metaD);
 
-        itemA.setItemMeta(metaA);
+            itemA.setItemMeta(metaA);
 
-        itens.add(itemD);
-        itens.add(itemA);
+            metaD.setDisplayName(cm.getSeletor().getString("hide-players.Item.name-off").replace("&", "§"));
+            List<String> loreB = new ArrayList<>();
+            for (String l : cm.getSeletor().getStringList("hide-players.Item.lore-off")) {
+                if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
+                    l = PlaceholderAPI.setPlaceholders(p, l);
+                }
+                l = l.replace("&", "§");
+                loreB.add(l);
+            }
+            metaD.setLore(loreB);
+            if (cm.getSeletor().getBoolean("hide-players.Item.glow")) {
+                metaD.addEnchant(Enchantment.DURABILITY, 0, true);
+            }
+            itemD.setItemMeta(metaD);
+
+            itemA.setItemMeta(metaA);
+
+            itens.add(itemD);
+            itens.add(itemA);
+        }
         return itens;
     }
 

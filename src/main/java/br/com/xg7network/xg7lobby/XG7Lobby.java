@@ -1,6 +1,7 @@
 package br.com.xg7network.xg7lobby;
 
 import br.com.xg7network.xg7lobby.Comandos.Abrir;
+import br.com.xg7network.xg7lobby.Comandos.Ajuda;
 import br.com.xg7network.xg7lobby.Comandos.Gamemode.Adventure;
 import br.com.xg7network.xg7lobby.Comandos.Gamemode.Creative;
 import br.com.xg7network.xg7lobby.Comandos.Gamemode.Spectator;
@@ -13,13 +14,13 @@ import br.com.xg7network.xg7lobby.Comandos.Moderação.*;
 import br.com.xg7network.xg7lobby.Comandos.Reload.ReloadConfigCommand;
 import br.com.xg7network.xg7lobby.Configs.ConfigManager;
 import br.com.xg7network.xg7lobby.Modulo.Chat;
-import br.com.xg7network.xg7lobby.Eventos.Lauchpad;
-import br.com.xg7network.xg7lobby.Eventos.EntradaESaida;
-import br.com.xg7network.xg7lobby.Eventos.PingEvent;
-import br.com.xg7network.xg7lobby.Eventos.Player.*;
-import br.com.xg7network.xg7lobby.Eventos.Player.Void;
+import br.com.xg7network.xg7lobby.Modulo.Eventos.Lauchpad;
+import br.com.xg7network.xg7lobby.Modulo.Eventos.EntradaESaida;
+import br.com.xg7network.xg7lobby.Modulo.Eventos.PingEvent;
+import br.com.xg7network.xg7lobby.Modulo.Eventos.Player.*;
+import br.com.xg7network.xg7lobby.Modulo.Eventos.Player.Void;
 import br.com.xg7network.xg7lobby.Modulo.ModuleManager;
-import br.com.xg7network.xg7lobby.Modulo.Mundo.*;
+import br.com.xg7network.xg7lobby.Modulo.Eventos.Mundo.*;
 import br.com.xg7network.xg7lobby.Modulo.Scores.ScoreBoard;
 import br.com.xg7network.xg7lobby.Modulo.Scores.TabList.Tablist;
 import br.com.xg7network.xg7lobby.Modulo.Seletores.HotbarManager;
@@ -90,16 +91,19 @@ public final class XG7Lobby extends JavaPlugin {
         this.getCommand("xg7lobbygms").setExecutor(new Survival());
         this.getCommand("xg7lobbygma").setExecutor(new Adventure());
         this.getCommand("xg7lobbygmsp").setExecutor(new Spectator());
+        this.getCommand("xg7lobbyajuda").setExecutor(new Ajuda(this));
+        this.getServer().getPluginManager().registerEvents(new Ajuda(this), this);
+        this.getCommand("xg7lobbylockchat").setExecutor(new LockChat());
+        this.getServer().getPluginManager().registerEvents(new LockChat(), this);
 
         this.getServer().getConsoleSender().sendMessage(prefix + "Loading Events...");
-        this.getServer().getPluginManager().registerEvents(new Inventário(), this);
+        this.getServer().getPluginManager().registerEvents(new Inventário(this), this);
         this.getServer().getPluginManager().registerEvents(new EntradaESaida(), this);
         this.getServer().getPluginManager().registerEvents(new Lauchpad(), this);
         this.getServer().getPluginManager().registerEvents(new DoubleJump(), this);
         this.getServer().getPluginManager().registerEvents(new PingEvent(), this);
 
         this.getServer().getPluginManager().registerEvents(new Void(), this);
-        this.getServer().getPluginManager().registerEvents(new PlayerHungerEvent(), this);
         this.getServer().getPluginManager().registerEvents(new PlayerDropPickupEvent(), this);
         this.getServer().getPluginManager().registerEvents(new PlayerAttackEvent(), this);
         this.getServer().getPluginManager().registerEvents(new PlayerDamageEvent(), this);
@@ -111,7 +115,6 @@ public final class XG7Lobby extends JavaPlugin {
         this.getServer().getPluginManager().registerEvents(new Explosions(), this);
         this.getServer().getPluginManager().registerEvents(new SpawnMobs(), this);
         this.getServer().getPluginManager().registerEvents(new CancelBlockBurn(), this);
-        this.getServer().getPluginManager().registerEvents(new WeatherEvent(), this);
 
         this.getServer().getPluginManager().registerEvents(new Chat(this), this);
 

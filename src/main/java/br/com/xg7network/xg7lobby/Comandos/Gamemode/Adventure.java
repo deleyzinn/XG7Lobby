@@ -22,6 +22,8 @@ public class Adventure implements CommandExecutor {
                 if (p.hasPermission(PermissionType.GAMEMODE_ADVENTURE.getPerm())) {
                     p.setGameMode(GameMode.ADVENTURE);
                     va.mandarMensagem(cm.getMessage().getString("commands.gamemode-player").replace("[GAMEMODE]", p.getGameMode().toString()), p);
+                } else {
+                    va.mandarMensagem(cm.getMessage().getString("commands.permission"), p);
                 }
             } else {
                 commandSender.sendMessage(XG7Lobby.prefix + ChatColor.RED + "Este comando só pode ser executado por players");
@@ -40,6 +42,11 @@ public class Adventure implements CommandExecutor {
                     }
                 } else {
                     commandSender.sendMessage(prefix + ChatColor.RED + "Esse jogador não foi encontrado");
+                }
+            } else {
+                if (commandSender instanceof Player) {
+                    Player p = (Player) commandSender;
+                    va.mandarMensagem(cm.getMessage().getString("commands.permission"), p);
                 }
             }
         }

@@ -6,8 +6,8 @@ public enum PermissionType {
     SETLOBBY_COMMAND("xg7lobby.command.setlobby"),
     RELOAD_COMMAND("xg7lobby.command.reload"),
     FLY_COMMAND("xg7lobby.command.fly"),
-    FLY_OTHER("xg7.command.flyother"),
-    GUI_COMMAND("xg7lobbycommand.gui"),
+    FLY_OTHER("xg7lobby.command.flyother"),
+    GUI_COMMAND("xg7lobby.command.gui"),
     MUTE_COMMAND("xg7lobby.command.mute"),
     UNMUTE_COMMAND("xg7lobby.command.unmute"),
     BAN_COMMAND("xg7lobby.command.ban"),
@@ -15,6 +15,12 @@ public enum PermissionType {
     TEMPBAN_COMMAND("xg7lobby.command.tempban"),
     KICK_COMMAND("xg7lobby.command.kick"),
     WARN_COMMAND("xg7lobby.command.warn"),
+
+    INV("xg7lobby.inv"),
+
+    HELP_COMMAND("xg7lobby.command.help"),
+
+    LOCK_CHAT("xg7lobby.command.lockchat"),
 
     VANISH_COMMAND("xg7lobby.command.vanish"),
     ITENS_JOGAR("xg7lobby.items.drop"),

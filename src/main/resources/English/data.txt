@@ -1,0 +1,16 @@
+lobby:
+  world:
+  x:
+  y:
+  z:
+  yaw:
+  pitch:
+
+muteds:
+
+
+#Leave -1 for no kick or no ban
+warns-to-kick: 3
+warns-to-ban: 5
+
+warns:

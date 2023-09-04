@@ -36,7 +36,7 @@ public class ScoreBoard extends Module implements Listener {
             if (cm.getConfig().getBoolean("scores.scoreboard.enabled")) {
                 if (cm.getConfig().getStringList("enabled-worlds").contains(p.getWorld().getName())) {
                     this.colocarScore(p);
-                    Bukkit.getScheduler().runTaskTimer(this.getPlugin(), () -> this.updateScore(p), 0L, cm.getConfig().getInt("scores.atualizacao"));
+                    Bukkit.getScheduler().runTaskTimer(this.getPlugin(), () -> this.updateScore(p), 0L, cm.getConfig().getInt("scores.update"));
                 }
             }
         }

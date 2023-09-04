@@ -1,6 +1,8 @@
 package br.com.xg7network.xg7lobby.Modulo;
 
-import br.com.xg7network.xg7lobby.Modulo.Mundo.CancelDayCycle;
+import br.com.xg7network.xg7lobby.Modulo.Eventos.Mundo.CancelDayCycle;
+import br.com.xg7network.xg7lobby.Modulo.Eventos.Mundo.WeatherEvent;
+import br.com.xg7network.xg7lobby.Modulo.Eventos.Player.PlayerHungerEvent;
 import br.com.xg7network.xg7lobby.Modulo.Scores.BossBar;
 import br.com.xg7network.xg7lobby.Modulo.Scores.ScoreBoard;
 import br.com.xg7network.xg7lobby.Modulo.Scores.TabList.Tablist;
@@ -32,6 +34,8 @@ public class ModuleManager {
 
             modules.add(new HotbarManager(plugin));
             modules.add(new Chat(plugin));
+            modules.add(new PlayerHungerEvent(plugin));
+            modules.add(new WeatherEvent(plugin));
         for (Module module : modules) {
             module.onEnable();
         }

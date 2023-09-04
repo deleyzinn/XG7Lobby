@@ -21,7 +21,7 @@ public class Fly extends Module {
 
             for (Player p : Bukkit.getOnlinePlayers()) {
                 if (cm.getConfig().getStringList("enabled-worlds").contains(p.getWorld().getName())) {
-                    if (p.hasPermission(PermissionType.FLY_COMMAND.getPerm())) {
+                    if (!(p.getGameMode() == GameMode.CREATIVE || p.getGameMode() == GameMode.SPECTATOR)) {
                         p.setAllowFlight(true);
                     }
                 } else {

@@ -1,4 +1,4 @@
-package br.com.xg7network.xg7lobby.Eventos.Player;
+package br.com.xg7network.xg7lobby.Modulo.Eventos.Player;
 
 import br.com.xg7network.xg7lobby.Configs.PermissionType;
 import com.google.common.cache.Cache;

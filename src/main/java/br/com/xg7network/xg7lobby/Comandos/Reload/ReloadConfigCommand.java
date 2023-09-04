@@ -20,6 +20,8 @@ public class ReloadConfigCommand implements CommandExecutor {
                 cm.reloadAll();
 
                 va.mandarMensagem(prefix + ChatColor.GREEN + "Recarregado!", p);
+            } else {
+                va.mandarMensagem(cm.getMessage().getString("commands.permission"), p);
             }
         } else {
 

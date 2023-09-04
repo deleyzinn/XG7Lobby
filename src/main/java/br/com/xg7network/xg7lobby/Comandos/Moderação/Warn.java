@@ -71,9 +71,9 @@ public class Warn implements CommandExecutor, Listener {
                         va.mandarMensagem(ChatColor.GOLD + "Você recebeu um aviso pelo motivo: " + ChatColor.RESET + str.trim(), p);
                         playerSection.set("warns", warns);
 
-                        if (warns.size() >= cm.getData().getInt("warns-to-kick") && warns.size() < cm.getData().getInt("warns-to-ban")) {
+                        if (warns.size() < cm.getData().getInt("warns-to-kick") && warns.size() < cm.getData().getInt("warns-to-ban")) {
                             p.kickPlayer(cm.getMessage().getString("commands.warns-kick").replace("[WARNS]", String.valueOf(warns.size())).replace("&", "§"));
-                        } else if (warns.size() >= cm.getData().getInt("warns-to-ban")) {
+                        } else if (warns.size() < cm.getData().getInt("warns-to-ban")) {
                             p.kickPlayer(cm.getMessage().getString("commands.warns-ban").replace("[WARNS]", String.valueOf(warns.size())).replace("&", "§"));
                             Bukkit.getBanList(BanList.Type.NAME).addBan(p.getName(), cm.getMessage().getString("commands.warns-kick").replace("[WARNS]", String.valueOf(warns.size())).replace("&", "§"), null, null);
                         }
@@ -101,7 +101,7 @@ public class Warn implements CommandExecutor, Listener {
         } else if (command.getName().equals("xg7lobbywarns")) {
             if (commandSender instanceof Player) {
                 Player p = (Player) commandSender;
-                if (cm.getData().getConfigurationSection("warns").getKeys(false) != null) {
+                if (cm.getData().getConfigurationSection("warns").getKeys(false) != null && cm.getData().getConfigurationSection("warns." + p.getName()) != null) {
                     for (String sc : cm.getData().getConfigurationSection("warns").getKeys(false)) {
                         if (sc.equals(p.getName())) {
                             commandSender.sendMessage(ChatColor.YELLOW + "Você tem " + ChatColor.GREEN +

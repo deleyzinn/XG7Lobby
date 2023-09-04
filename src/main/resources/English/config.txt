@@ -70,7 +70,7 @@ enabled-worlds:
 #When you join the game you go to the lobby
 tp-when-join: true
 
-#When you die you give tp to the lobby
+# When you die you give tp to the lobby
 tp-when-die: false
 
 warning-image: true

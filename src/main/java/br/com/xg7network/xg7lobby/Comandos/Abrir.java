@@ -16,7 +16,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
-import static br.com.xg7network.xg7lobby.XG7Lobby.ac;
+import static br.com.xg7network.xg7lobby.XG7Lobby.*;
 
 public class Abrir implements CommandExecutor {
 
@@ -30,6 +30,8 @@ public class Abrir implements CommandExecutor {
                     List<String> lista = new ArrayList<>();
                     lista.add(comando);
                     ac.executar(lista, p);
+                } else {
+                    va.mandarMensagem(cm.getMessage().getString("commands.permission"), p);
                 }
             } else {
                 commandSender.sendMessage(ChatColor.RED + "O jeito certo de usar o comando é " + ChatColor.YELLOW + "/" + ChatColor.GREEN + "gui <ID do inventário>");

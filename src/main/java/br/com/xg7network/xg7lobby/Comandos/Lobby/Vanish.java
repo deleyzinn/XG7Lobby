@@ -68,6 +68,8 @@ public class Vanish implements CommandExecutor {
                         }
                     }
                 }
+            } else {
+                va.mandarMensagem(cm.getMessage().getString("commands.permission"), p);
             }
         } else {
             commandSender.sendMessage(prefix + ChatColor.RED + "Este comando só pode ser executado por players");

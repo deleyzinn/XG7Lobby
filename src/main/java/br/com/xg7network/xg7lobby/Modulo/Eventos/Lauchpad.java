@@ -1,4 +1,4 @@
-package br.com.xg7network.xg7lobby.Eventos;
+package br.com.xg7network.xg7lobby.Modulo.Eventos;
 
 import org.bukkit.Location;
 import org.bukkit.Material;

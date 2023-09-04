@@ -1,67 +1,68 @@
-#Define The items that will be given to players when
-#enter the lobby and create.
-#Use %player_name% to replace player name
-#PlaceHolderAPI is needed for this!
+#Use %player_name% para substituir o nome do jogador
+#Você precisa da PlaceHolderAPI para isso!
 
-#Colors:
-#&0 - Black           | &9 - Blue
-#&1 - Dark blue       | &b - Cyan
-#&2 - Dark green      | &9 - Blue
-#&3 - Dark cyan       | &b - Cyan
-#&4 - Dark red        | &c - Red
-#&5 - Purple          | &d - Pink
-#&6 - Orange          | &e - Yellow
-#&7 - Gray            | &f - White
+#Cores:
+#&0 - Preto | &9 - Azul
+#&1 - Azul escuro | &b - Ciano
+#&2 - Verde escuro | &9 - Azul
+#&3 - Ciano escuro | &b - Ciano
+#&4 - Vermelho escuro | &c - Vermelho
+#&5 - Roxo | &d - Rosa
+#&6 - Laranja | &e - Amarelo
+#&7 - Cinza | &f - Branco
 
-#Lettering options:
-#&k - Random    | &n - Underlined
-#&l - Bold     | &o - Italic
-#&m - Track     | &r - Reset
+#Opções de letras:
+#&k - Aleatório | &n - Sublinhado
+#&l - Negrito | &o - Itálico
+#&m - Faixa | &r - Redefinir
 
-#All this will only work in the lobby world!
+#Tudo isso só funcionará no mundo do lobby!
 
-#Actions
+#Ações
 
-#[MESSAGE] Send a message
-#[TITLE] Send a title
-#[TIT&SUBTIT] Send a title and a subtitle (Use " // " to separate one from the other)
-#[BROADCAST] Advertise to everyone.
+#[MESSAGE] Envie uma mensagem
+#[TITLE] Envie um título
+#[TIT&SUBTIT] Envie um título e um subtítulo (Use " // " para separar um do outro)
+#[BROADCAST] Anuncie para todos.
 
-#[SOUND] send a sound
-#"[SOUND] ENTITY_EXPERIENCE_ORB_PICKUP, (Volume) 10.0, (Pitch) 10.0"
+#[COMMAND] Faça o jogador executar um comando
+#[CONSOLE] Faz o console executar um comando
 
-#[SUMMON] Summon an entity
+#[SOUND] envia um som
+#"[SOM] ENTITY_EXPERIENCE_ORB_PICKUP, (Volume) 10,0, (Tom) 10,0"
 
-#[FLY] Makes the player fly
+#[SUMMON] Convocar uma entidade
 
-#[TP] teleport player for an exact location
-#[TP] world, x, y, z (yaw, pitch)
+#[FLY] Faz o jogador voar
 
-#[OPEN] Opens an inventory
-#[CLOSE] Closes an inventory
-#There in the selectors.yml file you can create an inventory
-#Mode of use: [OPEN] (id), [CLOSE]
+#[TP] teletransporta o jogador para um local exato
+#[TP] mundo, x, y, z (guinada, pictch)
 
-#[PLAYER] returns the player (if you are not using PLACEHOLDER API)
+#[OPEN] Abre um inventário
+#[CLOSE] Fecha um inventário
+#Lá no arquivo selectors.yml você pode criar um inventário
+#Modo de uso: [OPEN] (id), [CLOSE]
 
-#[PERMISSION] Only do the action if you have permission
-#ex2.: [OPEN] 1 [PERMISSION] your.permission
-#ex2.: [OPEN] 1 [!PERMISSION] your.permission (If you don't have permission)
+#[PLAYER] retorna o player (se você não estiver usando a API PLACEHOLDER)
+
+#[PERMISSION] Somente execute a ação se você tiver permissão
+#[OPEN] 1 [PERMISSION] sua.permissão
+#[OPEN] 1 [!PERMISSION] your.permission (se você não tiver permissão)
 
 #Links:
 
-#Items: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html
-#Sounds: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Sound.html
-#Entities: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/entity/Entity.html
+#Itens: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html
+#Sons: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Sound.html
+#Entidades: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/entity/Entity.html
 
-#Cooldown to update items
+#Cooldown para atualizar os itens
 cooldown: 10
 
 hide-players:
 
   enabled: true
 
-  #Cooldown for use Hide Players
+  #Cooldown para usar o hide players
   cooldown: 5
 
   Item:
@@ -75,30 +76,30 @@ hide-players:
     name-off: "&7Hide players &6- &cOFF!"
 
     lore-on:
-      - "&aClick to disable!"
+      - "&aClique para desativar!"
     lore-off:
-      - "&cClick to activate!"
+      - "&cClique para ativar!"
 
     glow: true
     slot: 1
 
-  #Actions enabled
+  #Ações quando ativado
   actionsE:
     - ""
 
-  #Actions disabled
+  #Ações quando desativado
   actionsD:
     - ""
 
 selectors:
 
-  #Cooldown for use Selectors
+  #Cooldown para usar os seletores
   cooldown: 5
 
   selectors:
     Info:
       item: BOOK
-      name: "&aInformation"
+      name: "&aInformações"
       amount: 1
       glow: true
       slot: 9
@@ -112,7 +113,7 @@ selectors:
         - "[MESSAGE] &bTwiter&f/&8X: &fwww.twitter.com"
         - "[MESSAGE] &4YT: &fwww.youtube.com"
         - "[MESSAGE] "
-        - "[MESSAGE] &5&oPlugin made by DaviXG7"
+        - "[MESSAGE] &5&oPlugin feito por DaviXG7"
         - "[MESSAGE] &8-------------------&7**&8------------------"
         - "[SOUND] UI_BUTTON_CLICK, 10.0, 0.0"
     Games:
@@ -122,12 +123,13 @@ selectors:
       glow: true
       slot: 5
       lore:
-        - "&aClick to choose a game!"
+        - "&aClique para escolher um jogo!"
       actions:
         - "[OPEN] 2"
 
 
-# Normal inventory slots preview:
+
+#Normal inventory slots preview:
 #[01, 02, 03, 04, 05, 06, 07, 08, 09]
 #[10, 11, 12, 13, 14, 15, 16, 17, 18]
 #[19, 20, 21, 22, 23, 24, 25, 26, 27]
@@ -141,14 +143,13 @@ inventories:
     id: 1
 
     items:
-      #Default is the item that surrounds the inventory
-      #order.
+      #Item que preenche o inventário
       default:
         item: GRAY_STAINED_GLASS_PANE
       Informações:
         item: BOOK
         amount: 1
-        name: "&aInformation"
+        name: "&aInfo"
         glow: true
         slot: 11
         lore:
@@ -159,25 +160,25 @@ inventories:
       Games:
         item: NETHER_STAR
         amount: 1
-        name: "&6Games"
+        name: "&6Jogos"
         glow: true
         slot: 14
         lore:
-          - "&a→ &8Click to see the games"
+          - "&a→ &8Clique para ver os jogos"
         actions:
           - "[OPEN] 2"
-      Example:
+      Exemplo:
         item: DIAMOND
         amount: 1
-        name: "&bExample"
+        name: "&bExemplo"
         glow: true
         slot: 17
         lore:
-          - "&5Example"
+          - "&5Exemplo"
         actions:
           - ""
   Games:
-    name: "&aGames"
+    name: "&aJogos"
     lines: 3
     id: 2
 
@@ -188,21 +189,21 @@ inventories:
       game1:
         item: DIAMOND
         amount: 1
-        name: "&bExample"
+        name: "&bExemplo"
         glow: true
         slot: 12
         lore:
-          - "&5Example"
+          - "&5Exemplo"
         actions:
           - ""
       game2:
         item: REDSTONE
         amount: 1
-        name: "&bExample"
+        name: "&bExemplo"
         glow: true
         slot: 16
         lore:
-          - "&5Example"
+          - "&5Exemplo"
         actions:
           - ""
 
@@ -222,20 +223,20 @@ inventories:
         glow: false
         slot: 11
         lore:
-          - "&7Click to &eactivate!"
+          - "&7Click to &eativar!"
         actions:
           - "[FLY]"
       Commands:
         item: COMMAND_BLOCK
         amount: 1
-        name: "&9Commands!"
+        name: "&9Comandos!"
         glow: true
         slot: 17
         lore:
-          - "&7Plugin commands!"
+          - "&7Comandos do plugin!"
         actions:
-          - "[TO CLOSE]"
-          - "[COMMAND] 7lajuda"
+          - "[CLOSE]"
+          - "[COMMAND] 7lajuda inv pt"
       SETLOBBY:
         item: COMPASS
         amount: 1
@@ -243,19 +244,19 @@ inventories:
         glow: true
         slot: 40
         lore:
-          - "&aClick to place lobby"
-          - "&aon your location"
+          - "&aClique para colocar o lobby"
+          - "&ana sua localização"
         actions:
           - "[COMMAND] setlobby"
 
       PLAYERSON:
         item: PLAYER_HEAD
         amount: 1
-        name: "e People online"
+        name: "&ePessoas online"
         glow: false
         slot: 14
         lore:
-          - "&bThere are &b%server_online% people online on the server!"
+          - "&bHá &b%server_online% pessoas no servidor!"
         actions:
           - ""
 
@@ -266,7 +267,7 @@ inventories:
         glow: true
         slot: 42
         lore:
-          - "&aClick to teleport"
-          - "&ato the lobby"
+          - "&aClique para teletransportar"
+          - "&apara o lobby"
         actions:
           - "[COMMAND] lobby"

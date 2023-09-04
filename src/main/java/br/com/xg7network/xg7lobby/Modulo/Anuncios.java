@@ -8,6 +8,7 @@ import java.util.List;
 import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
 import static br.com.xg7network.xg7lobby.XG7Lobby.cm;
@@ -39,9 +40,15 @@ public class Anuncios extends Module {
                         }
                         if (cm.getConfig().getBoolean("announcements.ASNL")) {
                             if (cm.getConfig().getStringList("enabled-worlds").contains(p.getWorld().getName())) {
+                                String s = cm.getConfig().getString("announcements.sound");
+                                String[] s2 = s.split(", ");
+                                p.playSound(p.getLocation(), Sound.valueOf(s2[0]), Float.parseFloat(s2[1]), Float.parseFloat(s2[2]));
                                 p.sendMessage(ChatColor.translateAlternateColorCodes('&', linhas));
                             }
                         } else {
+                            String s = cm.getConfig().getString("announcements.sound");
+                            String[] s2 = s.split(", ");
+                            p.playSound(p.getLocation(), Sound.valueOf(s2[0]), Float.parseFloat(s2[1]), Float.parseFloat(s2[2]));
                             p.sendMessage(ChatColor.translateAlternateColorCodes('&', linhas));
                         }
 

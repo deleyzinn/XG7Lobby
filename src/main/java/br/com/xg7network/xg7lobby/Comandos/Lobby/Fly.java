@@ -55,12 +55,12 @@ public class Fly implements CommandExecutor {
                         if (voar.get(target.getUniqueId())) {
                             voar.put(target.getUniqueId(), false);
                             target.setFlying(false);
-                            va.mandarMensagem(ChatColor.GRAY + "Você desativou o fly de " + ChatColor.AQUA + target.getName(), p);
+                            va.mandarMensagem(cm.getMessage().getString("commands.fly-disabled-other").replace("[PLAYERT]", target.getName()), p);
                             va.mandarMensagem(cm.getMessage().getString("commands.fly-disabled"), target);
                         } else {
                             voar.put(target.getUniqueId(), true);
                             target.setFlying(true);
-                            va.mandarMensagem(ChatColor.GRAY + "Você ativou o fly de " + ChatColor.AQUA + target.getName(), p);
+                            va.mandarMensagem(cm.getMessage().getString("commands.fly-enabled-other").replace("[PLAYERT]", target.getName()), p);
                             va.mandarMensagem(cm.getMessage().getString("commands.fly-enabled"), target);
                         }
                     } else {

@@ -1,5 +1,5 @@
 name: XG7Lobby
-version: 'BETA-0.9'
+version: '1.0-PRE.RELEASE'
 main: br.com.xg7network.xg7lobby.XG7Lobby
 api-version: 1.13
 prefix: XG7 Lobby
@@ -96,6 +96,14 @@ commands:
     aliases: [7lgmsp, gmsp, xg7lgmsp]
     usage: "/<command> [Player]"
 
+  xg7lobbyajuda:
+    description: Ajuda do plugin
+    aliases: [7lhelp, lhelp, 7lajuda, lajuda, xg7lobbyhelp, xg7lajuda, xg7lhelp]
+
+  xg7lobbylockchat:
+    description: Bloqueia o chat
+    aliases: [7llockchat, llockchat, lockchat, xg7llockchat]
+
 
 permissions:
   xg7lobby.admin:
@@ -109,6 +117,7 @@ permissions:
       xg7lobby.doublejump: true
       xg7lobby.chat.*: true
       xg7lobby.gamemode.*: true
+      xg7lobby.inv: true
 
   xg7lobby.command.*:
     default: op
@@ -127,6 +136,8 @@ permissions:
       xg7lobby.command.flyother: true
       xg7lobby.command.gui: true
       xg7lobby.command.vanish: true
+      xg7lobby.command.help: true
+      xg7lobby.command.lockchat: true
 
   xg7lobby.items.*:
     default: op

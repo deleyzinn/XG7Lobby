@@ -1,6 +1,5 @@
-package br.com.xg7network.xg7lobby.Modulo.Mundo;
+package br.com.xg7network.xg7lobby.Modulo.Eventos.Mundo;
 
-import br.com.xg7network.xg7lobby.XG7Lobby;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.LeavesDecayEvent;

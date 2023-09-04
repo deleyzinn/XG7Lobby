@@ -3,7 +3,7 @@
 // (powered by FernFlower decompiler)
 //
 
-package br.com.xg7network.xg7lobby.Eventos;
+package br.com.xg7network.xg7lobby.Modulo.Eventos;
 
 import br.com.xg7network.xg7lobby.XG7Lobby;
 import java.io.File;

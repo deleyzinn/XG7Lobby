@@ -35,8 +35,10 @@ public class Chat extends Module implements Listener {
         if (cm.getConfig().getBoolean("block-swearing.enabled")) {
             String mensagemSuspeita = e.getMessage();
             if (cm.getConfig().getStringList("block-swearing.blocked-words").contains(mensagemSuspeita.toLowerCase(Locale.ROOT))){
-                e.setCancelled(!p.hasPermission(PermissionType.CHAT_PALAVRAS.getPerm()));
-                va.mandarMensagem(cm.getMessage().getString("events.badword"), p);
+                if (!p.hasPermission(PermissionType.CHAT_PALAVRAS.getPerm())) {
+                    e.setCancelled(true);
+                    va.mandarMensagem(cm.getMessage().getString("events.badword"), p);
+                }
             }
         }
     }
@@ -47,8 +49,10 @@ public class Chat extends Module implements Listener {
         if (cm.getConfig().getBoolean("block-commands.enabled")) {
             String comandobloqueado = e.getMessage();
             if (cm.getConfig().getStringList("block-commands.commands-blocked").contains(comandobloqueado)){
-                e.setCancelled(!p.hasPermission(PermissionType.CHAT_COMANDOS.getPerm()));
-                va.mandarMensagem(cm.getMessage().getString("events.command-block"), p);
+                if (!p.hasPermission(PermissionType.CHAT_COMANDOS.getPerm())) {
+                    e.setCancelled(true);
+                    va.mandarMensagem(cm.getMessage().getString("events.command-block"), p);
+                }
             }
         }
     }

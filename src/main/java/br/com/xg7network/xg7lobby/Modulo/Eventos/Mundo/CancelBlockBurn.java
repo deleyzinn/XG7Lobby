@@ -1,4 +1,4 @@
-package br.com.xg7network.xg7lobby.Modulo.Mundo;
+package br.com.xg7network.xg7lobby.Modulo.Eventos.Mundo;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
