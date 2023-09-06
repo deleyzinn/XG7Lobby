@@ -47,45 +47,49 @@ public class Warn implements CommandExecutor, Listener {
 
                     Player p = Bukkit.getPlayerExact(args[0]);
                     if (p != null) {
+                        if (!p.hasPermission(PermissionType.WARN_COMMAND.getPerm())) {
 
-                        ConfigurationSection playerSection = cm.getData().getConfigurationSection("warns." + p.getName());
+                            ConfigurationSection playerSection = cm.getData().getConfigurationSection("warns." + p.getName());
 
-                        if (playerSection == null) {
-                            playerSection = cm.getData().createSection("warns." + p.getName());
-                            playerSection.set("warns", new ArrayList<String>());
+                            if (playerSection == null) {
+                                playerSection = cm.getData().createSection("warns." + p.getName());
+                                playerSection.set("warns", new ArrayList<String>());
+                                try {
+                                    lobbyC.save(lobbyF);
+                                } catch (IOException e) {
+                                    p.sendMessage(ChatColor.RED + "Não foi possível salvar o warn");
+                                    throw new RuntimeException(e);
+                                }
+                            }
+
+                            warns = cm.getData().getStringList("warns." + p.getName() + ".warns");
+                            String str = "";
+                            for (int i = 1; i < args.length; i++) {
+                                str += args[i] + " ";
+                            }
+
+                            warns.add(str.trim());
+                            va.mandarMensagem(ChatColor.GOLD + "Você recebeu um aviso pelo motivo: " + ChatColor.RESET + str.trim(), p);
+                            playerSection.set("warns", warns);
+
+                            if (warns.size() < cm.getData().getInt("warns-to-kick") && warns.size() < cm.getData().getInt("warns-to-ban")) {
+                                p.kickPlayer(cm.getMessage().getString("commands.warns-kick").replace("[WARNS]", String.valueOf(warns.size())).replace("&", "§"));
+                            } else if (warns.size() < cm.getData().getInt("warns-to-ban")) {
+                                p.kickPlayer(cm.getMessage().getString("commands.warns-ban").replace("[WARNS]", String.valueOf(warns.size())).replace("&", "§"));
+                                Bukkit.getBanList(BanList.Type.NAME).addBan(p.getName(), cm.getMessage().getString("commands.warns-kick").replace("[WARNS]", String.valueOf(warns.size())).replace("&", "§"), null, null);
+                            }
                             try {
                                 lobbyC.save(lobbyF);
                             } catch (IOException e) {
-                                p.sendMessage(ChatColor.RED + "Não foi possível salvar o warn");
+                                p.sendMessage(ChatColor.RED + "Não foi possível salvar o warn!");
                                 throw new RuntimeException(e);
                             }
+
+                            commandSender.sendMessage(ChatColor.GOLD + "Você avisou " + ChatColor.AQUA + p.getName() + ChatColor.GOLD + " por: " + ChatColor.RESET + str.trim());
+
+                        } else {
+                            commandSender.sendMessage(ChatColor.RED + "Você não pode avisar a pessoa que ja tem a permissão!");
                         }
-
-                        warns = cm.getData().getStringList("warns." + p.getName() + ".warns");
-                        String str = "";
-                        for (int i = 1; i < args.length; i++) {
-                            str += args[i] + " ";
-                        }
-
-                        warns.add(str.trim());
-                        va.mandarMensagem(ChatColor.GOLD + "Você recebeu um aviso pelo motivo: " + ChatColor.RESET + str.trim(), p);
-                        playerSection.set("warns", warns);
-
-                        if (warns.size() < cm.getData().getInt("warns-to-kick") && warns.size() < cm.getData().getInt("warns-to-ban")) {
-                            p.kickPlayer(cm.getMessage().getString("commands.warns-kick").replace("[WARNS]", String.valueOf(warns.size())).replace("&", "§"));
-                        } else if (warns.size() < cm.getData().getInt("warns-to-ban")) {
-                            p.kickPlayer(cm.getMessage().getString("commands.warns-ban").replace("[WARNS]", String.valueOf(warns.size())).replace("&", "§"));
-                            Bukkit.getBanList(BanList.Type.NAME).addBan(p.getName(), cm.getMessage().getString("commands.warns-kick").replace("[WARNS]", String.valueOf(warns.size())).replace("&", "§"), null, null);
-                        }
-                        try {
-                            lobbyC.save(lobbyF);
-                        } catch (IOException e) {
-                            p.sendMessage(ChatColor.RED + "Não foi possível salvar o warn!");
-                            throw new RuntimeException(e);
-                        }
-
-                        commandSender.sendMessage(ChatColor.GOLD + "Você avisou " + ChatColor.AQUA + p.getName() + ChatColor.GOLD + " por: " + ChatColor.RESET + str.trim());
-
                     } else {
                         commandSender.sendMessage(ChatColor.RED + "Este jogador não existe!");
                     }

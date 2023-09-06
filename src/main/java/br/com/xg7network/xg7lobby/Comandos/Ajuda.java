@@ -266,9 +266,9 @@ public class Ajuda implements CommandExecutor, Listener {
             inv.setItem(30, getPrincipalInvItens("pt", p).get(1));
             inv.setItem(31, getPrincipalInvItens("pt", p).get(2));
             inv.setItem(32, getPrincipalInvItens("pt", p).get(3));
-            inv.setItem(45, getPrincipalInvItens("pt", p).get(4));
-            inv.setItem(46, getPrincipalInvItens("pt", p).get(5));
-            inv.setItem(35, getPrincipalInvItens("pt", p).get(6));
+            inv.setItem(46, getPrincipalInvItens("pt", p).get(4));
+            inv.setItem(36, getPrincipalInvItens("pt", p).get(5));
+            inv.setItem(45, getPrincipalInvItens("pt", p).get(6));
             inv.setItem(52, getPrincipalInvItens("pt", p).get(8));
             inv.setItem(53, getPrincipalInvItens("pt", p).get(7));
 
@@ -282,9 +282,9 @@ public class Ajuda implements CommandExecutor, Listener {
             inv.setItem(30, getPrincipalInvItens("eng", p).get(1));
             inv.setItem(31, getPrincipalInvItens("eng", p).get(2));
             inv.setItem(32, getPrincipalInvItens("eng", p).get(3));
-            inv.setItem(45, getPrincipalInvItens("eng", p).get(4));
-            inv.setItem(46, getPrincipalInvItens("eng", p).get(5));
-            inv.setItem(35, getPrincipalInvItens("eng", p).get(6));
+            inv.setItem(46, getPrincipalInvItens("eng", p).get(4));
+            inv.setItem(36, getPrincipalInvItens("eng", p).get(5));
+            inv.setItem(45, getPrincipalInvItens("eng", p).get(6));
             inv.setItem(52, getPrincipalInvItens("eng", p).get(8));
             inv.setItem(53, getPrincipalInvItens("eng", p).get(7));
 
@@ -304,7 +304,7 @@ public class Ajuda implements CommandExecutor, Listener {
             if (p.getDisplayName().split(p.getName()).length == 0) {
                 Skullore.add("&cYou don't have rank!");
             } else {
-                Skullore.add("&a rank is &r" + p.getDisplayName().split(p.getName())[0]);
+                Skullore.add("&aYour rank is&r" + p.getDisplayName().split(p.getName())[0]);
             }
             Skullore.add("&eWelcome to help chat");
             boolean isNV = Arrays.stream(Material.values()).map(Material::name).collect(Collectors.toList()).contains("PLAYER_HEAD");

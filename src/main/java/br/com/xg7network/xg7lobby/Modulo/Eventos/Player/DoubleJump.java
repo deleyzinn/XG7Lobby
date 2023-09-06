@@ -24,9 +24,9 @@ public class DoubleJump implements Listener {
     @EventHandler
     public void onPlayerFly(PlayerToggleFlightEvent e) {
         Player p = e.getPlayer();
-        if (cm.getConfig().getBoolean("double-jump.enabled")) {
-            if (!(p.getGameMode() == GameMode.CREATIVE || p.getGameMode() == GameMode.SPECTATOR)) {
-                if (p.hasPermission(PermissionType.DOUBLE_JUMP.getPerm())) {
+        if (!(p.getGameMode() == GameMode.CREATIVE || p.getGameMode() == GameMode.SPECTATOR)) {
+            if (p.hasPermission(PermissionType.DOUBLE_JUMP.getPerm())) {
+                if (cm.getConfig().getBoolean("double-jump.enabled")) {
                     if (!voar.containsKey(p.getUniqueId())) {
                         voar.put(p.getUniqueId(), false);
                     }
@@ -52,8 +52,8 @@ public class DoubleJump implements Listener {
                         }
                     }
                 }
-                e.setCancelled(true);
             }
+            e.setCancelled(true);
         }
 
     }

@@ -29,8 +29,8 @@ public class Lauchpad implements Listener {
                         }
 
                     } else {
-                        if (blockunder.getBlock().getType().equals(Material.valueOf(cm.getConfig().getString("launch-pad.bloco")))) {
-                            String s = cm.getConfig().getString("launchPad.som");
+                        if (blockunder.getBlock().getType().equals(Material.valueOf(cm.getConfig().getString("launch-pad.block")))) {
+                            String s = cm.getConfig().getString("launch-pad.sound");
                             String[] s2 = s.split(", ");
                             p.playSound(p.getLocation(), Sound.valueOf(s2[0]), Float.parseFloat(s2[1]), Float.parseFloat(s2[2]));
                             p.setVelocity(p.getEyeLocation().getDirection().multiply(cm.getConfig().getDouble("launch-pad.strength")).setY(cm.getConfig().getDouble("launch-pad.jump")));
