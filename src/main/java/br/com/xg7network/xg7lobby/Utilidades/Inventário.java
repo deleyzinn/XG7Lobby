@@ -33,9 +33,11 @@ public class Inventário implements Listener {
     }
 
     boolean verifInv(ItemStack item, Inventory inv) {
-        for (int i = 0; i < inv.getSize(); i++) {
-            if (inv.getItem(i) != null && inv.getItem(i).isSimilar(item)) {
-                return true;
+        if (item != null) {
+            for (int i = 0; i < inv.getSize(); i++) {
+                if (inv.getItem(i) != null && inv.getItem(i).isSimilar(item)) {
+                    return true;
+                }
             }
         }
         return false;

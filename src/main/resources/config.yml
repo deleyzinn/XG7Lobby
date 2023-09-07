@@ -127,7 +127,6 @@ announcements:
       - "&8------------------------------"
       - "             &e&lANNOUNCEMENT:"
       - "&9This plugin was made by &bDaviXG7"
-      - "&9And translated by &aRhyan57"
       - "&8------------------------------"
     announcement2:
       - "&8------------------------------"
@@ -395,3 +394,7 @@ cancel-explosions: true
 #Collaborators:
 #Rhyan57: Translate
 #eduardo10YT: Beta-tester
+
+#Special thanks to:
+#Sadness (Video helper)
+#Bultzz (Video helper)

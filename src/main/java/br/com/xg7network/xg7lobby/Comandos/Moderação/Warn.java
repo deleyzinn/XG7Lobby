@@ -72,11 +72,11 @@ public class Warn implements CommandExecutor, Listener {
                             va.mandarMensagem(ChatColor.GOLD + "Você recebeu um aviso pelo motivo: " + ChatColor.RESET + str.trim(), p);
                             playerSection.set("warns", warns);
 
-                            if (warns.size() < cm.getData().getInt("warns-to-kick") && warns.size() < cm.getData().getInt("warns-to-ban")) {
+                            if (warns.size() > cm.getData().getInt("warns-to-kick") && warns.size() < cm.getData().getInt("warns-to-ban")) {
                                 p.kickPlayer(cm.getMessage().getString("commands.warns-kick").replace("[WARNS]", String.valueOf(warns.size())).replace("&", "§"));
-                            } else if (warns.size() < cm.getData().getInt("warns-to-ban")) {
-                                p.kickPlayer(cm.getMessage().getString("commands.warns-ban").replace("[WARNS]", String.valueOf(warns.size())).replace("&", "§"));
-                                Bukkit.getBanList(BanList.Type.NAME).addBan(p.getName(), cm.getMessage().getString("commands.warns-kick").replace("[WARNS]", String.valueOf(warns.size())).replace("&", "§"), null, null);
+                            } else if (warns.size() >= cm.getData().getInt("warns-to-ban") && cm.getData().getInt("warns-to-ban") > -1) {
+                                p.kickPlayer(cm.getMessage().getString("commands.warns-kick").replace("[WARNS]", String.valueOf(warns.size())).replace("&", "§"));
+                                Bukkit.getBanList(BanList.Type.NAME).addBan(p.getName(), cm.getMessage().getString("commands.warns-ban").replace("[WARNS]", String.valueOf(warns.size())).replace("&", "§"), null, null);
                             }
                             try {
                                 lobbyC.save(lobbyF);

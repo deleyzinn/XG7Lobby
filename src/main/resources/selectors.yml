@@ -234,7 +234,7 @@ inventories:
         lore:
           - "&7Plugin commands!"
         actions:
-          - "[TO CLOSE]"
+          - "[CLOSE]"
           - "[COMMAND] 7lajuda"
       SETLOBBY:
         item: COMPASS
@@ -251,7 +251,7 @@ inventories:
       PLAYERSON:
         item: PLAYER_HEAD
         amount: 1
-        name: "e People online"
+        name: "&ePeople online"
         glow: false
         slot: 14
         lore:

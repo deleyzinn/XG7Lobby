@@ -266,11 +266,9 @@ public class Ajuda implements CommandExecutor, Listener {
             inv.setItem(30, getPrincipalInvItens("pt", p).get(1));
             inv.setItem(31, getPrincipalInvItens("pt", p).get(2));
             inv.setItem(32, getPrincipalInvItens("pt", p).get(3));
-            inv.setItem(46, getPrincipalInvItens("pt", p).get(4));
-            inv.setItem(36, getPrincipalInvItens("pt", p).get(5));
-            inv.setItem(45, getPrincipalInvItens("pt", p).get(6));
-            inv.setItem(52, getPrincipalInvItens("pt", p).get(8));
-            inv.setItem(53, getPrincipalInvItens("pt", p).get(7));
+            inv.setItem(45, getPrincipalInvItens("pt", p).get(4));
+            inv.setItem(53, getPrincipalInvItens("pt", p).get(5));
+            inv.setItem(52, getPrincipalInvItens("pt", p).get(5));
 
             return inv;
 
@@ -282,11 +280,9 @@ public class Ajuda implements CommandExecutor, Listener {
             inv.setItem(30, getPrincipalInvItens("eng", p).get(1));
             inv.setItem(31, getPrincipalInvItens("eng", p).get(2));
             inv.setItem(32, getPrincipalInvItens("eng", p).get(3));
-            inv.setItem(46, getPrincipalInvItens("eng", p).get(4));
-            inv.setItem(36, getPrincipalInvItens("eng", p).get(5));
-            inv.setItem(45, getPrincipalInvItens("eng", p).get(6));
-            inv.setItem(52, getPrincipalInvItens("eng", p).get(8));
-            inv.setItem(53, getPrincipalInvItens("eng", p).get(7));
+            inv.setItem(45, getPrincipalInvItens("eng", p).get(4));
+            inv.setItem(53, getPrincipalInvItens("eng", p).get(5));
+            inv.setItem(52, getPrincipalInvItens("eng", p).get(5));
 
             return inv;
 
@@ -339,31 +335,12 @@ public class Ajuda implements CommandExecutor, Listener {
 
 
 
+            List<String> CLore = new ArrayList<>();
+            CLore.add("&8-> &eClick to see the creators and Helpers of the plugin!");
+            ItemStack Citem = getItemStack(Material.GOLD_INGOT, "&cCreators &Fand &6Helpers", 1, CLore, true, p);
 
-            List<String> DaviXG7Lore = new ArrayList<>();
+            itens.add(Citem);
 
-            DaviXG7Lore.add("&bCreator and Developer of the plugin");
-
-            List<String> RhyanLore = new ArrayList<>();
-
-            RhyanLore.add("&bPlugin helper, he was help with configs!");
-
-            List<String> EDLore = new ArrayList<>();
-
-            EDLore.add("&bBeta tester!");
-
-            ItemStack DaviXG7 = getItemStack(Material.PAPER, "&bDavi&1X&3G&97", 1, DaviXG7Lore, false, p);
-
-            itens.add(DaviXG7);
-
-
-            ItemStack Rhyan57 = getItemStack(Material.PAPER, "&eRhyan57", 1, RhyanLore, false, p);
-
-            itens.add(Rhyan57);
-
-            ItemStack ed10 = getItemStack(Material.PAPER, "&bDavi&1X&3G&97", 1, EDLore, false, p);
-
-            itens.add(ed10);
 
 
             List<String> PTlore = new ArrayList<>();
@@ -418,31 +395,11 @@ public class Ajuda implements CommandExecutor, Listener {
 
             itens.add(seletor);
 
-            List<String> DaviXG7Lore = new ArrayList<>();
+            List<String> CLore = new ArrayList<>();
+            CLore.add("&8-> &eClique para ver os criadores e colaboradores do plugin!");
+            ItemStack Citem = getItemStack(Material.GOLD_INGOT, "&cCriadores &fe &6colaboradores", 1, CLore, true, p);
 
-            DaviXG7Lore.add("&bCriador e programador desse plugin");
-
-            List<String> RhyanLore = new ArrayList<>();
-
-            RhyanLore.add("&bAjudante do plugin, ajudou nas configs");
-
-            List<String> EDLore = new ArrayList<>();
-
-            EDLore.add("&bBeta tester!");
-
-            ItemStack DaviXG7 = getItemStack(Material.PAPER, "&1Da&9vi&bXG7", 1, DaviXG7Lore, false, p);
-
-            itens.add(DaviXG7);
-
-            ItemStack eduardo10YT = getItemStack(Material.PAPER, "&aeduardo10YT", 1, EDLore, false, p);
-
-            itens.add(eduardo10YT);
-
-
-
-            ItemStack Rhyan57 = getItemStack(Material.PAPER, "&eRhyan57", 1, RhyanLore, false, p);
-
-            itens.add(Rhyan57);
+            itens.add(Citem);
 
 
             List<String> PTlore = new ArrayList<>();
@@ -460,6 +417,165 @@ public class Ajuda implements CommandExecutor, Listener {
         }
         return itens;
     }
+
+
+
+
+    Inventory getCreatorsInv(String idioma, Player p) {
+
+
+        if (idioma.equals("pt")) {
+
+        /*
+        00, 01, 02, 03, 04, 05, 06, 07, 08
+        09, 10, 11, 12, 13, 14, 15, 16, 17
+        18, 19, 20, 21, 22, 23, 24, 25, 26
+        27, 28, 29, 30, 31, 32, 33, 34, 35
+        36, 37, 38, 39, 40, 41, 42, 43, 44
+        45, 46, 47, 48, 49, 52, 51, 52, 53
+         */
+            Inventory inv = Bukkit.createInventory(p, 27, "&6Ajuda".replace("&", "§"));
+
+            inv.setItem(26, getCreatorsInvItens("pt", p).get(0));
+            inv.setItem(11, getCreatorsInvItens("pt", p).get(1));
+            inv.setItem(12, getCreatorsInvItens("pt", p).get(2));
+            inv.setItem(13, getCreatorsInvItens("pt", p).get(3));
+            inv.setItem(14, getCreatorsInvItens("pt", p).get(4));
+            inv.setItem(15, getCreatorsInvItens("pt", p).get(5));
+
+            return inv;
+
+        } else if (idioma.equals("eng")) {
+
+            Inventory inv = Bukkit.createInventory(p, 27, "&6Help".replace("&", "§"));
+
+            inv.setItem(26, getCreatorsInvItens("eng", p).get(0));
+            inv.setItem(11, getCreatorsInvItens("eng", p).get(1));
+            inv.setItem(12, getCreatorsInvItens("eng", p).get(2));
+            inv.setItem(13, getCreatorsInvItens("eng", p).get(3));
+            inv.setItem(14, getCreatorsInvItens("eng", p).get(4));
+            inv.setItem(15, getCreatorsInvItens("eng", p).get(5));
+
+            return inv;
+
+
+        }
+        return null;
+
+    }
+    List<ItemStack> getCreatorsInvItens(String idioma, Player p) {
+        List<ItemStack> itens = new ArrayList<>();
+        if (idioma.equals("eng")) {
+
+            List<String> nada = new ArrayList<>();
+
+            ItemStack voltar = getItemStack(Material.BARRIER, "&c&lBack", 1, nada, false, p);
+            itens.add(voltar);
+
+
+            List<String> DaviXG7Lore = new ArrayList<>();
+
+            DaviXG7Lore.add("&bCreator and Developer of the plugin");
+
+            List<String> RhyanLore = new ArrayList<>();
+
+            RhyanLore.add("&bPlugin helper, he was help with configs!");
+
+            List<String> EDLore = new ArrayList<>();
+
+            EDLore.add("&bBeta tester!");
+
+            List<String> SLore = new ArrayList<>();
+
+            SLore.add("&bCreator Content!");
+
+            List<String> BLore = new ArrayList<>();
+
+            BLore.add("&bCreator Content!");
+
+            ItemStack DaviXG7 = getItemStack(Material.PAPER, "&bDavi&1X&3G&97", 1, DaviXG7Lore, false, p);
+
+            itens.add(DaviXG7);
+
+
+            ItemStack Rhyan57 = getItemStack(Material.PAPER, "&eRhyan57", 1, RhyanLore, false, p);
+
+            itens.add(Rhyan57);
+
+            ItemStack ed10 = getItemStack(Material.PAPER, "&9eduardo10YT", 1, EDLore, false, p);
+
+            itens.add(ed10);
+
+            ItemStack Sadness = getItemStack(Material.PAPER, "&eSadness", 1, SLore, false, p);
+
+            itens.add(Sadness);
+
+
+            ItemStack Bultzz = getItemStack(Material.PAPER, "&cBultzz", 1, BLore, false, p);
+
+            itens.add(Bultzz);
+
+
+
+        } else if (idioma.equals("pt")) {
+
+            List<String> nada = new ArrayList<>();
+
+            ItemStack voltar = getItemStack(Material.BARRIER, "&c&lVoltar", 1, nada, false, p);
+            itens.add(voltar);
+
+            List<String> DaviXG7Lore = new ArrayList<>();
+
+            DaviXG7Lore.add("&bCriador e desenvolvedor do plugin!");
+
+            List<String> RhyanLore = new ArrayList<>();
+
+            RhyanLore.add("&bAjudador no plugin, ajudou com configs!");
+
+            List<String> EDLore = new ArrayList<>();
+
+            EDLore.add("&bBeta tester!");
+
+            List<String> SLore = new ArrayList<>();
+
+            SLore.add("&bCriador de conteúdo!");
+
+            List<String> BLore = new ArrayList<>();
+
+            BLore.add("&bCriador de conteúdo!");
+
+            ItemStack DaviXG7 = getItemStack(Material.PAPER, "&bDavi&1X&3G&97", 1, DaviXG7Lore, false, p);
+
+            itens.add(DaviXG7);
+
+
+            ItemStack Rhyan57 = getItemStack(Material.PAPER, "&eRhyan57", 1, RhyanLore, false, p);
+
+            itens.add(Rhyan57);
+
+            ItemStack ed10 = getItemStack(Material.PAPER, "&9eduardo10YT", 1, EDLore, false, p);
+
+            itens.add(ed10);
+
+            ItemStack Sadness = getItemStack(Material.PAPER, "&eSadness", 1, SLore, false, p);
+
+            itens.add(Sadness);
+
+
+            ItemStack Bultzz = getItemStack(Material.PAPER, "&cBultzz", 1, BLore, false, p);
+
+            itens.add(Bultzz);
+
+        }
+        return itens;
+    }
+
+
+
+
+
+
+
 
 
 
@@ -1685,9 +1801,11 @@ public class Ajuda implements CommandExecutor, Listener {
 
 
     boolean verifInv(ItemStack item, Inventory inv) {
-        for (int i = 0; i < inv.getSize(); i++) {
-            if (inv.getItem(i) != null && inv.getItem(i).isSimilar(item)) {
-                return true;
+        if (item != null) {
+            for (int i = 0; i < inv.getSize(); i++) {
+                if (inv.getItem(i) != null && inv.getItem(i).isSimilar(item)) {
+                    return true;
+                }
             }
         }
         return false;
@@ -1861,15 +1979,20 @@ public class Ajuda implements CommandExecutor, Listener {
 
                 p.getInventory().addItem(INVitem);
 
+            } else if (e.getCurrentItem().isSimilar(getPrincipalInvItens("eng", p).get(4))) {
+
+                p.closeInventory();
+                p.openInventory(getCreatorsInv("eng", p));
+
+            } else if (e.getCurrentItem().isSimilar(getPrincipalInvItens("eng", p).get(5))) {
+
+                p.closeInventory();
+                p.openInventory(getPrincipalInv("eng", p));
+
             } else if (e.getCurrentItem().isSimilar(getPrincipalInvItens("eng", p).get(6))) {
-
                 p.closeInventory();
-                p.openInventory(getPrincipalInv("pt",p));
+                p.openInventory(getPrincipalInv("eng", p));
 
-            } else if (e.getCurrentItem().isSimilar(getPrincipalInvItens("eng", p).get(7))) {
-                p.closeInventory();
-                p.openInventory(getPrincipalInv("eng",p));
-                
             }
 
         } else if (verifInv(e.getCurrentItem(), getPrincipalInv("pt", p))) {
@@ -1924,7 +2047,6 @@ public class Ajuda implements CommandExecutor, Listener {
                 );
 
                 EJitem.setItemMeta(EJmeta);
-
 
 
                 p.getInventory().addItem(EJitem);
@@ -2033,23 +2155,44 @@ public class Ajuda implements CommandExecutor, Listener {
                 INVitem.setItemMeta(INVmeta);
 
 
-
                 p.getInventory().addItem(INVitem);
 
 
-
-            } else if (e.getCurrentItem().isSimilar(getPrincipalInvItens("pt", p).get(6))) {
+            } else if (e.getCurrentItem().isSimilar(getPrincipalInvItens("pt", p).get(4))) {
 
                 p.closeInventory();
-                p.openInventory(getPrincipalInv("pt",p));
+                p.openInventory(getCreatorsInv("pt", p));
 
-            } else if (e.getCurrentItem().isSimilar(getPrincipalInvItens("pt", p).get(7))) {
+            } else if (e.getCurrentItem().isSimilar(getPrincipalInvItens("pt", p).get(5))) {
+
+                p.closeInventory();
+                p.openInventory(getPrincipalInv("pt", p));
+
+            } else if (e.getCurrentItem().isSimilar(getPrincipalInvItens("pt", p).get(6))) {
+                p.closeInventory();
+                p.openInventory(getPrincipalInv("pt", p));
+
+            }
+
+
+
+        } else if (verifInv(e.getCurrentItem(), getCreatorsInv("eng", p))) {
+            e.setCancelled(true);
+            if (e.getCurrentItem().isSimilar(getCMDInvItens("eng", p).get(0))) {
+
                 p.closeInventory();
                 p.openInventory(getPrincipalInv("eng",p));
 
             }
 
+        } else if (verifInv(e.getCurrentItem(), getCreatorsInv("pt", p))) {
+            e.setCancelled(true);
+            if (e.getCurrentItem().isSimilar(getCMDInvItens("pt", p).get(0))) {
 
+                p.closeInventory();
+                p.openInventory(getPrincipalInv("pt",p));
+
+            }
         //Comandos
         } else if (verifInv(e.getCurrentItem(), getCMDInv("eng", p))) {
             e.setCancelled(true);
